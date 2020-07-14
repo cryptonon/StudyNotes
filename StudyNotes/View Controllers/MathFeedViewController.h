@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MathFeedViewController.h
 //  StudyNotes
 //
 //  Created by Aayush Mani Phuyal on 7/13/20.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface MathFeedViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

@@ -1,23 +1,21 @@
 //
-//  ViewController.m
+//  SettingsViewController.m
 //  StudyNotes
 //
 //  Created by Aayush Mani Phuyal on 7/13/20.
 //  Copyright © 2020 Aayush Phuyal. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SettingsViewController.h"
 
-@interface ViewController ()
+@interface SettingsViewController ()
 
 @end
 
-@implementation ViewController
+@implementation SettingsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
-
 
 @end

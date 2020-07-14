@@ -9,13 +9,21 @@
 /* Begin PBXBuildFile section */
 		2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */; };
 		2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */; };
-		2C4F3D5724BCF8EE003D7B5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5624BCF8EE003D7B5C /* ViewController.m */; };
 		2C4F3D5A24BCF8EE003D7B5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5824BCF8EE003D7B5C /* Main.storyboard */; };
 		2C4F3D5C24BCF8EF003D7B5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5B24BCF8EF003D7B5C /* Assets.xcassets */; };
 		2C4F3D5F24BCF8EF003D7B5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5D24BCF8EF003D7B5C /* LaunchScreen.storyboard */; };
 		2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D6124BCF8EF003D7B5C /* main.m */; };
 		2C4F3D6C24BCF8EF003D7B5C /* StudyNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D6B24BCF8EF003D7B5C /* StudyNotesTests.m */; };
 		2C4F3D7724BCF8EF003D7B5C /* StudyNotesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D7624BCF8EF003D7B5C /* StudyNotesUITests.m */; };
+		2C90A97A24BD12E60000FC18 /* MathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A97924BD12E60000FC18 /* MathCell.m */; };
+		2CE7555724BCFF6900861FEA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555624BCFF6900861FEA /* LoginViewController.m */; };
+		2CE7555A24BD006900861FEA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555924BD006900861FEA /* HomeViewController.m */; };
+		2CE7555D24BD016600861FEA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555C24BD016600861FEA /* SettingsViewController.m */; };
+		2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555F24BD067D00861FEA /* NotesFeedViewController.m */; };
+		2CE7556324BD070000861FEA /* MathFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556224BD070000861FEA /* MathFeedViewController.m */; };
+		2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556524BD089700861FEA /* NoteDetailsViewController.m */; };
+		2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556824BD09CE00861FEA /* NoteCell.m */; };
+		2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +49,6 @@
 		2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2C4F3D5224BCF8EE003D7B5C /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		2C4F3D5524BCF8EE003D7B5C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2C4F3D5624BCF8EE003D7B5C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2C4F3D5924BCF8EE003D7B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C4F3D5B24BCF8EF003D7B5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C4F3D5E24BCF8EF003D7B5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +60,24 @@
 		2C4F3D7224BCF8EF003D7B5C /* StudyNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4F3D7624BCF8EF003D7B5C /* StudyNotesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyNotesUITests.m; sourceTree = "<group>"; };
 		2C4F3D7824BCF8EF003D7B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C90A97824BD12E60000FC18 /* MathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathCell.h; sourceTree = "<group>"; };
+		2C90A97924BD12E60000FC18 /* MathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathCell.m; sourceTree = "<group>"; };
+		2CE7555524BCFF6900861FEA /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2CE7555624BCFF6900861FEA /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2CE7555824BD006900861FEA /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		2CE7555924BD006900861FEA /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		2CE7555B24BD016600861FEA /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		2CE7555C24BD016600861FEA /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		2CE7555E24BD067D00861FEA /* NotesFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotesFeedViewController.h; sourceTree = "<group>"; };
+		2CE7555F24BD067D00861FEA /* NotesFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesFeedViewController.m; sourceTree = "<group>"; };
+		2CE7556124BD070000861FEA /* MathFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathFeedViewController.h; sourceTree = "<group>"; };
+		2CE7556224BD070000861FEA /* MathFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathFeedViewController.m; sourceTree = "<group>"; };
+		2CE7556424BD089700861FEA /* NoteDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteDetailsViewController.h; sourceTree = "<group>"; };
+		2CE7556524BD089700861FEA /* NoteDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteDetailsViewController.m; sourceTree = "<group>"; };
+		2CE7556724BD09CE00861FEA /* NoteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
+		2CE7556824BD09CE00861FEA /* NoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
+		2CE7556A24BD103F00861FEA /* CreateNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateNoteViewController.h; sourceTree = "<group>"; };
+		2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,12 +128,13 @@
 		2C4F3D4E24BCF8EE003D7B5C /* StudyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2CE7555424BCFF4900861FEA /* Models */,
+				2CE7555324BCFF3500861FEA /* View Controllers */,
+				2CE7555224BCFF2500861FEA /* Views */,
 				2C4F3D4F24BCF8EE003D7B5C /* AppDelegate.h */,
 				2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */,
 				2C4F3D5224BCF8EE003D7B5C /* SceneDelegate.h */,
 				2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */,
-				2C4F3D5524BCF8EE003D7B5C /* ViewController.h */,
-				2C4F3D5624BCF8EE003D7B5C /* ViewController.m */,
 				2C4F3D5824BCF8EE003D7B5C /* Main.storyboard */,
 				2C4F3D5B24BCF8EF003D7B5C /* Assets.xcassets */,
 				2C4F3D5D24BCF8EF003D7B5C /* LaunchScreen.storyboard */,
@@ -135,6 +160,45 @@
 				2C4F3D7824BCF8EF003D7B5C /* Info.plist */,
 			);
 			path = StudyNotesUITests;
+			sourceTree = "<group>";
+		};
+		2CE7555224BCFF2500861FEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2CE7556724BD09CE00861FEA /* NoteCell.h */,
+				2CE7556824BD09CE00861FEA /* NoteCell.m */,
+				2C90A97824BD12E60000FC18 /* MathCell.h */,
+				2C90A97924BD12E60000FC18 /* MathCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2CE7555324BCFF3500861FEA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2CE7555524BCFF6900861FEA /* LoginViewController.h */,
+				2CE7555624BCFF6900861FEA /* LoginViewController.m */,
+				2CE7555824BD006900861FEA /* HomeViewController.h */,
+				2CE7555924BD006900861FEA /* HomeViewController.m */,
+				2CE7555B24BD016600861FEA /* SettingsViewController.h */,
+				2CE7555C24BD016600861FEA /* SettingsViewController.m */,
+				2CE7555E24BD067D00861FEA /* NotesFeedViewController.h */,
+				2CE7555F24BD067D00861FEA /* NotesFeedViewController.m */,
+				2CE7556124BD070000861FEA /* MathFeedViewController.h */,
+				2CE7556224BD070000861FEA /* MathFeedViewController.m */,
+				2CE7556424BD089700861FEA /* NoteDetailsViewController.h */,
+				2CE7556524BD089700861FEA /* NoteDetailsViewController.m */,
+				2CE7556A24BD103F00861FEA /* CreateNoteViewController.h */,
+				2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2CE7555424BCFF4900861FEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +331,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4F3D5724BCF8EE003D7B5C /* ViewController.m in Sources */,
+				2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */,
+				2CE7556324BD070000861FEA /* MathFeedViewController.m in Sources */,
+				2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */,
+				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
+				2CE7555724BCFF6900861FEA /* LoginViewController.m in Sources */,
 				2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */,
+				2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */,
+				2C90A97A24BD12E60000FC18 /* MathCell.m in Sources */,
 				2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */,
+				2CE7555D24BD016600861FEA /* SettingsViewController.m in Sources */,
+				2CE7555A24BD006900861FEA /* HomeViewController.m in Sources */,
 				2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
