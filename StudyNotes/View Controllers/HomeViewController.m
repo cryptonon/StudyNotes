@@ -8,6 +8,9 @@
 
 #import "HomeViewController.h"
 #import "HomeCollectionCell.h"
+#import <Parse/Parse.h>
+#import "SceneDelegate.h"
+#import "LoginViewController.h"
 
 @interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -37,6 +40,14 @@
 
 // Logging out the user when Logout button is tapped
 - (IBAction)onLogout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        if (!error) {
+            SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            sceneDelegate.window.rootViewController = loginViewController;
+        }
+    }];
 }
 
 #pragma mark - Delegate Methods

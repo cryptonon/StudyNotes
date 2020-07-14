@@ -1,0 +1,6 @@
+framework module Pods_StudyNotesTests {
+  umbrella header "Pods-StudyNotesTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
