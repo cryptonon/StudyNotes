@@ -10,6 +10,11 @@
 
 @interface NoteDetailsViewController ()
 
+// MARK: Properties
+@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
+
 @end
 
 @implementation NoteDetailsViewController

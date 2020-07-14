@@ -8,6 +8,15 @@
 
 #import "NoteCell.h"
 
+@interface NoteCell()
+
+// MARK: Properties
+@property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+
+@end
+
 @implementation NoteCell
 
 - (void)awakeFromNib {

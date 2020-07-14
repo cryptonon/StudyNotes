@@ -25,6 +25,13 @@
     self.tableView.delegate = self;
 }
 
+// Method to deselect the selected row
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+    [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
+}
+
 #pragma mark - Delegate Methods
 
 // Method to configure the Table View's cell (Table View Data Source's required method)
@@ -37,6 +44,5 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 20;
 }
-
 
 @end

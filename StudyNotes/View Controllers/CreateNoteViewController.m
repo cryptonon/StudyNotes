@@ -10,6 +10,12 @@
 
 @interface CreateNoteViewController ()
 
+// MARK: Properties
+@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet UITextField *noteTitleField;
+@property (weak, nonatomic) IBOutlet UITextView *noteDescriptionTextView;
+
+
 @end
 
 @implementation CreateNoteViewController
@@ -24,6 +30,10 @@
 
 // Method to post note to parse on tapping Post button
 - (IBAction)onPost:(id)sender {
+}
+
+// Method to bring camera on tapping noteImageView
+- (IBAction)didTapNoteImage:(id)sender {
 }
 
 @end

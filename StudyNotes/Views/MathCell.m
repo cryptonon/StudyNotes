@@ -8,6 +8,13 @@
 
 #import "MathCell.h"
 
+@interface MathCell()
+
+// MARK: Properties
+@property (weak, nonatomic) IBOutlet UILabel *mathFactLabel;
+
+@end
+
 @implementation MathCell
 
 - (void)awakeFromNib {
