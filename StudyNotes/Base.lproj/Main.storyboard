@@ -276,7 +276,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-pf-YvG">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-pf-YvG" customClass="PFImageView">
                                                     <rect key="frame" x="294" y="11" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -285,7 +285,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="noteDescriptionLabel" destination="ZYH-sc-oVw" id="6gJ-Ua-zaf"/>
-                                            <outlet property="noteImageView" destination="9M9-pf-YvG" id="NUY-k7-3fz"/>
+                                            <outlet property="noteImageView" destination="9M9-pf-YvG" id="sMl-Wn-opX"/>
                                             <outlet property="noteTitleLabel" destination="V8w-KC-aSi" id="89N-5N-GNd"/>
                                             <segue destination="gGC-St-vpQ" kind="show" identifier="noteDetailsSegue" id="POj-vj-M8b"/>
                                         </connections>
@@ -325,7 +325,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U25-P6-ltv" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="389"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-BH-lGV">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-BH-lGV" customClass="PFImageView">
                                                 <rect key="frame" x="8" y="8" width="204" height="289"/>
                                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -381,7 +381,7 @@
                     <navigationItem key="navigationItem" id="ZiV-BV-6lt"/>
                     <connections>
                         <outlet property="noteDescriptionLabel" destination="xHL-7e-HRU" id="d24-e6-8OE"/>
-                        <outlet property="noteImageView" destination="L0m-BH-lGV" id="xgC-ha-Jm5"/>
+                        <outlet property="noteImageView" destination="L0m-BH-lGV" id="v54-2C-CMW"/>
                         <outlet property="noteTitleLabel" destination="dHC-wy-NXq" id="f3i-pn-Lmr"/>
                     </connections>
                 </viewController>
@@ -451,7 +451,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNY-pG-wBu" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="594"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j54-Ca-iKB">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j54-Ca-iKB">
                                                 <rect key="frame" x="8" y="8" width="206" height="312"/>
                                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>

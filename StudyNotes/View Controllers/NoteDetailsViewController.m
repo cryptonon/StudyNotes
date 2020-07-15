@@ -7,11 +7,12 @@
 //
 
 #import "NoteDetailsViewController.h"
+@import Parse;
 
 @interface NoteDetailsViewController ()
 
 // MARK: Properties
-@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
 
@@ -21,6 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setViewProperties];
+}
+
+// Method that sets properties of DetailsViewController
+- (void) setViewProperties {
+    self.noteTitleLabel.text = self.note.noteTitle;
+    self.noteDescriptionLabel.text = self.note.noteDescription;
+    self.noteImageView.file = self.note.noteImage;
+    [self.noteImageView loadInBackground];
 }
 
 @end

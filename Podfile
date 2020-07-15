@@ -7,6 +7,7 @@ target 'StudyNotes' do
 
   # Pods for StudyNotes
   pod 'Parse'
+  pod 'Parse/UI'
 
   target 'StudyNotesTests' do
     inherit! :search_paths

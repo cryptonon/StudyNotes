@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Note.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NoteCell : UITableViewCell
+
+// MARK: Properties
+@property (strong, nonatomic) Note *note;
 
 @end
 

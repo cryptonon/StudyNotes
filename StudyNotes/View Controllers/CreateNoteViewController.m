@@ -23,7 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self showCameraOrLibrary];
-    self.noteImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 // Method to dismiss modal view on tapping Cancel button

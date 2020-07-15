@@ -7,13 +7,15 @@
 //
 
 #import "NoteCell.h"
+@import Parse;
 
 @interface NoteCell()
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
+
 
 @end
 
@@ -27,4 +29,12 @@
     [super setSelected:selected animated:animated];
 }
 
+// Setter method that sets NoteCell's properties
+- (void) setNote:(Note *)note {
+    _note = note;
+    self.noteTitleLabel.text = note.noteTitle;
+    self.noteDescriptionLabel.text = note.noteDescription;
+    self.noteImageView.file = note.noteImage;
+    [self.noteImageView loadInBackground];
+}
 @end
