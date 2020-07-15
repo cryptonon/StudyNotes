@@ -20,9 +20,21 @@
 
 // Class method to post new setting to parse
 + (void)postSettingWithNotificationsTurnedOn:(BOOL)notificationTurnedOn from:(NSDate *)from to:(NSDate *)to withIntervalOf:(NSNumber *)intervalBetweenNotifications withCompletion:(PFBooleanResultBlock)completion {
+    UserSetting *newSetting = [UserSetting new];
+    newSetting.user = [PFUser currentUser];
+    newSetting.notificationTurnedOn = notificationTurnedOn;
+    newSetting.from = from;
+    newSetting.to = to;
+    newSetting.intervalBetweenNotifications = intervalBetweenNotifications;
+    [newSetting saveInBackgroundWithBlock:completion];
 }
 
 - (void)updateSettingWithNotificationsTurnedOn:(BOOL)notificationTurnedOn from:(NSDate *)from to:(NSDate *)to withIntervalOf:(NSNumber *)intervalBetweenNotifications withCompletion:(PFBooleanResultBlock)completion {
+    self.notificationTurnedOn = notificationTurnedOn;
+    self.from = from;
+    self.to = to;
+    self.intervalBetweenNotifications = intervalBetweenNotifications;
+    [self saveInBackgroundWithBlock:completion];
 }
 
 # pragma mark - Delegate Methods
