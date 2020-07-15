@@ -299,7 +299,7 @@
                     <navigationItem key="navigationItem" title="Notes" id="53a-Ac-SGz">
                         <barButtonItem key="rightBarButtonItem" title="Compose" id="Z8q-cN-zjT">
                             <connections>
-                                <segue destination="eD4-TF-n2K" kind="presentation" id="Fvf-tr-BiF"/>
+                                <segue destination="eD4-TF-n2K" kind="presentation" identifier="composeNoteSegue" id="Fvf-tr-BiF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -378,7 +378,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qql-BY-FDK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZiV-BV-6lt"/>
+                    <navigationItem key="navigationItem" id="ZiV-BV-6lt">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Ud2-WE-Nky">
+                            <connections>
+                                <segue destination="eD4-TF-n2K" kind="presentation" identifier="updateNoteSegue" id="k6t-C7-Hwf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="noteDescriptionLabel" destination="xHL-7e-HRU" id="d24-e6-8OE"/>
                         <outlet property="noteImageView" destination="L0m-BH-lGV" id="v54-2C-CMW"/>
@@ -451,7 +457,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNY-pG-wBu" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="594"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j54-Ca-iKB">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j54-Ca-iKB" customClass="PFImageView">
                                                 <rect key="frame" x="8" y="8" width="206" height="312"/>
                                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
@@ -527,7 +533,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="noteDescriptionTextView" destination="V9w-da-kUU" id="fpL-p8-o2G"/>
-                        <outlet property="noteImageView" destination="j54-Ca-iKB" id="fLu-mt-XV3"/>
+                        <outlet property="noteImageView" destination="j54-Ca-iKB" id="hZj-lX-j9x"/>
                         <outlet property="noteTitleField" destination="QUV-GQ-rJL" id="RSF-PT-aKj"/>
                     </connections>
                 </viewController>
@@ -559,4 +565,7 @@
             <point key="canvasLocation" x="2611.594202898551" y="-600"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="k6t-C7-Hwf"/>
+    </inferredMetricsTieBreakers>
 </document>

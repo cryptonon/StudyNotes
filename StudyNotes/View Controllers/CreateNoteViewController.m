@@ -8,11 +8,12 @@
 
 #import "CreateNoteViewController.h"
 #import "Note.h"
+@import Parse;
 
 @interface CreateNoteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 // MARK: Properties
-@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UITextField *noteTitleField;
 @property (weak, nonatomic) IBOutlet UITextView *noteDescriptionTextView;
 
@@ -22,7 +23,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self showCameraOrLibrary];
+    if (!self.note) {
+       [self showCameraOrLibrary];
+    } else {
+        [self setViewProperties];
+    }
+}
+
+// Method that sets properties of CreateNoteViewController
+- (void)setViewProperties {
+    self.noteTitleField.text = self.note.noteTitle;
+    self.noteDescriptionTextView.text = self.note.noteDescription;
+    self.noteImageView.file = self.note.noteImage;
+    [self.noteImageView loadInBackground];
 }
 
 // Method to dismiss modal view on tapping Cancel button
@@ -32,11 +45,27 @@
 
 // Method to post note to parse on tapping Post button
 - (IBAction)onPost:(id)sender {
-    [Note postNote:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-    }];
+    if (!self.note) {
+        [Note postNote:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }];
+    } else {
+        NSString *noteObjectID = self.note.objectId;
+        PFQuery *noteQuery = [Note query];
+        [noteQuery whereKey:@"objectId" equalTo:noteObjectID];
+        [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
+            if (notes) {
+                Note *noteToEdit = notes[0];
+                [noteToEdit updateNoteWithTitle:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded) {
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
+                }];
+            }
+        }];
+    }
 }
 
 // Method to bring camera/library on tapping noteImageView

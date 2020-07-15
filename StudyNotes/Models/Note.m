@@ -40,6 +40,11 @@
 
 // Method for updating existing notes
 - (void)updateNoteWithTitle:(NSString *)title withDescription:(NSString *)description withImage:(UIImage *)image withCompletion:(PFBooleanResultBlock)completion {
+    self.noteTitle = title;
+    self.noteDescription = description;
+    self.noteImage = [Note getPFFileFromImage:image];
+    self.isPushNotified = NO;
+    [self saveInBackgroundWithBlock: completion];
 }
 
 # pragma mark - Delegate Methods

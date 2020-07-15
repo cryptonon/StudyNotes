@@ -8,6 +8,7 @@
 
 #import "NoteDetailsViewController.h"
 @import Parse;
+#import "CreateNoteViewController.h"
 
 @interface NoteDetailsViewController ()
 
@@ -31,6 +32,15 @@
     self.noteDescriptionLabel.text = self.note.noteDescription;
     self.noteImageView.file = self.note.noteImage;
     [self.noteImageView loadInBackground];
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"updateNoteSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        CreateNoteViewController *updateViewController = (CreateNoteViewController *) navigationController.topViewController;
+        updateViewController.note = self.note;
+    }
 }
 
 @end
