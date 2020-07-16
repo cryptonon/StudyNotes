@@ -11,6 +11,7 @@
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -36,6 +37,37 @@
     CGFloat postersPerLine = 2;
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/postersPerLine;
     layout.itemSize = CGSizeMake(itemWidth, itemWidth*1.5);
+    
+    [self askNotificationPermission];
+}
+
+// Method that asks permission for notification and sending a test notification
+- (void) askNotificationPermission {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert+UNAuthorizationOptionSound;
+    [center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            [self scheduleNotification];
+            
+            
+        }
+    }];
+}
+
+// Method that schedules notification
+- (void) scheduleNotification {
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    UNNotificationCategory *category = [UNNotificationCategory categoryWithIdentifier:@"testPushNotification" actions:@[] intentIdentifiers:@[] options:UNNotificationCategoryOptionNone];
+    [center setNotificationCategories:[[NSSet alloc] initWithArray:@[category]]];
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    content.categoryIdentifier = @"testPushNotification";
+    content.title = @"StudyNotes Notification";
+    content.body = @"Please check out the note by pulling down or using 3D touch";
+    content.sound = [UNNotificationSound defaultSound];
+    
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Test" content:content trigger:trigger];
+    [center addNotificationRequest:request withCompletionHandler:nil];
 }
 
 // Logging out the user when Logout button is tapped

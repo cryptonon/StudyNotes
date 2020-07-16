@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C103AA124C10874005CE015 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C103AA024C10874005CE015 /* UserNotifications.framework */; };
+		2C103AA324C10874005CE015 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C103AA224C10874005CE015 /* UserNotificationsUI.framework */; };
+		2C103AA724C10874005CE015 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C103AA624C10874005CE015 /* NotificationViewController.m */; };
+		2C103AAA24C10874005CE015 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C103AA824C10874005CE015 /* MainInterface.storyboard */; };
+		2C103AAE24C10874005CE015 /* StudyNotesNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C103A9F24C10874005CE015 /* StudyNotesNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2C103AB324C1092E005CE015 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C8DE24BF4DE6001563A5 /* Note.m */; };
+		2C103AB424C10BC2005CE015 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C103AA024C10874005CE015 /* UserNotifications.framework */; };
+		2C103AB524C10BC2005CE015 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C103AA224C10874005CE015 /* UserNotificationsUI.framework */; };
 		2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C106BB824C0BFF20025FA6F /* APIManager.m */; };
 		2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */; };
 		2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */; };
@@ -31,9 +39,17 @@
 		3E402AA28AC0017AAD49313E /* Pods_StudyNotes_StudyNotesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */; };
 		74777B16821483C6A58A9CC9 /* Pods_StudyNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */; };
 		B4647228A8041A2014A48B49 /* Pods_StudyNotesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */; };
+		EEA094CC7AC0272D2AF07C6C /* Pods_StudyNotesNotification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970398CED87B4B829754C5CD /* Pods_StudyNotesNotification.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2C103AAC24C10874005CE015 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C4F3D4424BCF8EE003D7B5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C103A9E24C10874005CE015;
+			remoteInfo = StudyNotesNotification;
+		};
 		2C4F3D6824BCF8EF003D7B5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2C4F3D4424BCF8EE003D7B5C /* Project object */;
@@ -50,10 +66,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2C103AAF24C10874005CE015 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2C103AAE24C10874005CE015 /* StudyNotesNotification.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1961644E0216958B2055C18E /* Pods-StudyNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes.release.xcconfig"; path = "Target Support Files/Pods-StudyNotes/Pods-StudyNotes.release.xcconfig"; sourceTree = "<group>"; };
 		26C47840F9909B909CBF885C /* Pods-StudyNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotes/Pods-StudyNotes.debug.xcconfig"; sourceTree = "<group>"; };
 		273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C103A9F24C10874005CE015 /* StudyNotesNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StudyNotesNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C103AA024C10874005CE015 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		2C103AA224C10874005CE015 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		2C103AA524C10874005CE015 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		2C103AA624C10874005CE015 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		2C103AA924C10874005CE015 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		2C103AAB24C10874005CE015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C106BB724C0BFF20025FA6F /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		2C106BB824C0BFF20025FA6F /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		2C4F3D4C24BCF8EE003D7B5C /* StudyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,17 +135,32 @@
 		2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNoteViewController.m; sourceTree = "<group>"; };
 		307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B939A07C68BC805F3FEA20F /* Pods-StudyNotes-StudyNotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes-StudyNotesUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotes-StudyNotesUITests/Pods-StudyNotes-StudyNotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		60040B0ACDCBE941E549AA04 /* Pods-StudyNotesNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotesNotification.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotesNotification/Pods-StudyNotesNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotes_StudyNotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D59A66C7E95C51B61CBA6EE /* Pods-StudyNotesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotesTests.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotesTests/Pods-StudyNotesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		915EF24A70191715B8136CF3 /* Pods-StudyNotes-StudyNotesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes-StudyNotesUITests.release.xcconfig"; path = "Target Support Files/Pods-StudyNotes-StudyNotesUITests/Pods-StudyNotes-StudyNotesUITests.release.xcconfig"; sourceTree = "<group>"; };
+		970398CED87B4B829754C5CD /* Pods_StudyNotesNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotesNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C4467736AF3879D51BE2E5 /* Pods-StudyNotesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotesTests.release.xcconfig"; path = "Target Support Files/Pods-StudyNotesTests/Pods-StudyNotesTests.release.xcconfig"; sourceTree = "<group>"; };
+		EED77D400AEC89CF0FB7B1EE /* Pods-StudyNotesNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotesNotification.release.xcconfig"; path = "Target Support Files/Pods-StudyNotesNotification/Pods-StudyNotesNotification.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C103A9C24C10874005CE015 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C103AA324C10874005CE015 /* UserNotificationsUI.framework in Frameworks */,
+				2C103AA124C10874005CE015 /* UserNotifications.framework in Frameworks */,
+				EEA094CC7AC0272D2AF07C6C /* Pods_StudyNotesNotification.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C4F3D4924BCF8EE003D7B5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C103AB524C10BC2005CE015 /* UserNotificationsUI.framework in Frameworks */,
+				2C103AB424C10BC2005CE015 /* UserNotifications.framework in Frameworks */,
 				74777B16821483C6A58A9CC9 /* Pods_StudyNotes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +193,8 @@
 				915EF24A70191715B8136CF3 /* Pods-StudyNotes-StudyNotesUITests.release.xcconfig */,
 				8D59A66C7E95C51B61CBA6EE /* Pods-StudyNotesTests.debug.xcconfig */,
 				B1C4467736AF3879D51BE2E5 /* Pods-StudyNotesTests.release.xcconfig */,
+				60040B0ACDCBE941E549AA04 /* Pods-StudyNotesNotification.debug.xcconfig */,
+				EED77D400AEC89CF0FB7B1EE /* Pods-StudyNotesNotification.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -151,8 +205,22 @@
 				307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */,
 				7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */,
 				273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */,
+				2C103AA024C10874005CE015 /* UserNotifications.framework */,
+				2C103AA224C10874005CE015 /* UserNotificationsUI.framework */,
+				970398CED87B4B829754C5CD /* Pods_StudyNotesNotification.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C103AA424C10874005CE015 /* StudyNotesNotification */ = {
+			isa = PBXGroup;
+			children = (
+				2C103AA524C10874005CE015 /* NotificationViewController.h */,
+				2C103AA624C10874005CE015 /* NotificationViewController.m */,
+				2C103AA824C10874005CE015 /* MainInterface.storyboard */,
+				2C103AAB24C10874005CE015 /* Info.plist */,
+			);
+			path = StudyNotesNotification;
 			sourceTree = "<group>";
 		};
 		2C106BB624C0BFD30025FA6F /* API */ = {
@@ -170,6 +238,7 @@
 				2C4F3D4E24BCF8EE003D7B5C /* StudyNotes */,
 				2C4F3D6A24BCF8EF003D7B5C /* StudyNotesTests */,
 				2C4F3D7524BCF8EF003D7B5C /* StudyNotesUITests */,
+				2C103AA424C10874005CE015 /* StudyNotesNotification */,
 				2C4F3D4D24BCF8EE003D7B5C /* Products */,
 				0DFF4BB4D03BB0947CA56CF4 /* Pods */,
 				29224459822D066DF69186FF /* Frameworks */,
@@ -182,6 +251,7 @@
 				2C4F3D4C24BCF8EE003D7B5C /* StudyNotes.app */,
 				2C4F3D6724BCF8EF003D7B5C /* StudyNotesTests.xctest */,
 				2C4F3D7224BCF8EF003D7B5C /* StudyNotesUITests.xctest */,
+				2C103A9F24C10874005CE015 /* StudyNotesNotification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -272,6 +342,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C103A9E24C10874005CE015 /* StudyNotesNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C103AB224C10874005CE015 /* Build configuration list for PBXNativeTarget "StudyNotesNotification" */;
+			buildPhases = (
+				B2ADE6456071470E7E5A18C2 /* [CP] Check Pods Manifest.lock */,
+				2C103A9B24C10874005CE015 /* Sources */,
+				2C103A9C24C10874005CE015 /* Frameworks */,
+				2C103A9D24C10874005CE015 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StudyNotesNotification;
+			productName = StudyNotesNotification;
+			productReference = 2C103A9F24C10874005CE015 /* StudyNotesNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2C4F3D4B24BCF8EE003D7B5C /* StudyNotes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C4F3D7B24BCF8EF003D7B5C /* Build configuration list for PBXNativeTarget "StudyNotes" */;
@@ -281,10 +369,12 @@
 				2C4F3D4924BCF8EE003D7B5C /* Frameworks */,
 				2C4F3D4A24BCF8EE003D7B5C /* Resources */,
 				0EA38176B7036C07581440A3 /* [CP] Embed Pods Frameworks */,
+				2C103AAF24C10874005CE015 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2C103AAD24C10874005CE015 /* PBXTargetDependency */,
 			);
 			name = StudyNotes;
 			productName = StudyNotes;
@@ -339,6 +429,9 @@
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Aayush Phuyal";
 				TargetAttributes = {
+					2C103A9E24C10874005CE015 = {
+						CreatedOnToolsVersion = 11.5;
+					};
 					2C4F3D4B24BCF8EE003D7B5C = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -368,11 +461,20 @@
 				2C4F3D4B24BCF8EE003D7B5C /* StudyNotes */,
 				2C4F3D6624BCF8EF003D7B5C /* StudyNotesTests */,
 				2C4F3D7124BCF8EF003D7B5C /* StudyNotesUITests */,
+				2C103A9E24C10874005CE015 /* StudyNotesNotification */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C103A9D24C10874005CE015 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C103AAA24C10874005CE015 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C4F3D4A24BCF8EE003D7B5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -483,6 +585,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B2ADE6456071470E7E5A18C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudyNotesNotification-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B2DEC10D358F9B7D09862ABA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -503,6 +627,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C103A9B24C10874005CE015 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C103AA724C10874005CE015 /* NotificationViewController.m in Sources */,
+				2C103AB324C1092E005CE015 /* Note.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2C4F3D4824BCF8EE003D7B5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -545,6 +678,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2C103AAD24C10874005CE015 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C103A9E24C10874005CE015 /* StudyNotesNotification */;
+			targetProxy = 2C103AAC24C10874005CE015 /* PBXContainerItemProxy */;
+		};
 		2C4F3D6924BCF8EF003D7B5C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2C4F3D4B24BCF8EE003D7B5C /* StudyNotes */;
@@ -558,6 +696,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2C103AA824C10874005CE015 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C103AA924C10874005CE015 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		2C4F3D5824BCF8EE003D7B5C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -577,6 +723,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2C103AB024C10874005CE015 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60040B0ACDCBE941E549AA04 /* Pods-StudyNotesNotification.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StudyNotesNotification/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aayushphuyal.StudyNotes.StudyNotesNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C103AB124C10874005CE015 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EED77D400AEC89CF0FB7B1EE /* Pods-StudyNotesNotification.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = StudyNotesNotification/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aayushphuyal.StudyNotes.StudyNotesNotification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2C4F3D7924BCF8EF003D7B5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -800,6 +982,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C103AB224C10874005CE015 /* Build configuration list for PBXNativeTarget "StudyNotesNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C103AB024C10874005CE015 /* Debug */,
+				2C103AB124C10874005CE015 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2C4F3D4724BCF8EE003D7B5C /* Build configuration list for PBXProject "StudyNotes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

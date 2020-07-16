@@ -19,3 +19,13 @@ target 'StudyNotes' do
   end
 
 end
+
+target 'StudyNotesNotification' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for StudyNotesNotification
+  pod 'Parse'
+  pod 'Parse/UI'
+
+end
