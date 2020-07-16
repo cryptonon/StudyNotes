@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MathCell : UITableViewCell
 
+// MARK: Properties
+@property (strong, nonatomic) NSString *factString;
+
 @end
 
 NS_ASSUME_NONNULL_END

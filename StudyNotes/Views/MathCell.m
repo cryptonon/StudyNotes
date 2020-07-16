@@ -25,4 +25,9 @@
     [super setSelected:selected animated:animated];
 }
 
+// Setter method that sets MathCell's properties
+- (void)setFactString:(NSString *)factString {
+    self.mathFactLabel.text = factString;
+}
+
 @end

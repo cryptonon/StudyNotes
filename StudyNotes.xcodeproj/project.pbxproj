@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C106BB824C0BFF20025FA6F /* APIManager.m */; };
 		2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */; };
 		2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */; };
 		2C4F3D5A24BCF8EE003D7B5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5824BCF8EE003D7B5C /* Main.storyboard */; };
@@ -53,6 +54,8 @@
 		1961644E0216958B2055C18E /* Pods-StudyNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes.release.xcconfig"; path = "Target Support Files/Pods-StudyNotes/Pods-StudyNotes.release.xcconfig"; sourceTree = "<group>"; };
 		26C47840F9909B909CBF885C /* Pods-StudyNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotes/Pods-StudyNotes.debug.xcconfig"; sourceTree = "<group>"; };
 		273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C106BB724C0BFF20025FA6F /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		2C106BB824C0BFF20025FA6F /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		2C4F3D4C24BCF8EE003D7B5C /* StudyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4F3D4F24BCF8EE003D7B5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -152,6 +155,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C106BB624C0BFD30025FA6F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2C106BB724C0BFF20025FA6F /* APIManager.h */,
+				2C106BB824C0BFF20025FA6F /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		2C4F3D4324BCF8EE003D7B5C = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +189,7 @@
 		2C4F3D4E24BCF8EE003D7B5C /* StudyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2C106BB624C0BFD30025FA6F /* API */,
 				2CE7555424BCFF4900861FEA /* Models */,
 				2CE7555324BCFF3500861FEA /* View Controllers */,
 				2CE7555224BCFF2500861FEA /* Views */,
@@ -506,6 +519,7 @@
 				2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */,
 				2C90A97A24BD12E60000FC18 /* MathCell.m in Sources */,
 				2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */,
+				2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */,
 				2CE7555D24BD016600861FEA /* SettingsViewController.m in Sources */,
 				2CE7555A24BD006900861FEA /* HomeViewController.m in Sources */,
 				2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */,
