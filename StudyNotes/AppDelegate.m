@@ -19,11 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Parse Configuration
-    ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        configuration.applicationId = @"myAppId";
-        configuration.server = @"https://aayushstudynotes.herokuapp.com/parse";
-    }];
-    [Parse initializeWithConfiguration:config];
+    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.com.aayushphuyal.StudyNotes"];
+    Parse.server = @"https://aayushstudynotes.herokuapp.com/parse";
+    [Parse setApplicationId:@"myAppId" clientKey:@""];
     
     // Notification Configuration
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];

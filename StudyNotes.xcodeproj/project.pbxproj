@@ -115,6 +115,8 @@
 		2C90A97924BD12E60000FC18 /* MathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathCell.m; sourceTree = "<group>"; };
 		2C96704F24BE057F006CA805 /* HomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
 		2C96705024BE057F006CA805 /* HomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionCell.m; sourceTree = "<group>"; };
+		2C9E992324C23A820009579F /* StudyNotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyNotes.entitlements; sourceTree = "<group>"; };
+		2C9E992424C23AD70009579F /* StudyNotesNotification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StudyNotesNotification.entitlements; sourceTree = "<group>"; };
 		2CD4C8DD24BF4DE6001563A5 /* Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		2CD4C8DE24BF4DE6001563A5 /* Note.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		2CE7555524BCFF6900861FEA /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		2C103AA424C10874005CE015 /* StudyNotesNotification */ = {
 			isa = PBXGroup;
 			children = (
+				2C9E992424C23AD70009579F /* StudyNotesNotification.entitlements */,
 				2C103AA524C10874005CE015 /* NotificationViewController.h */,
 				2C103AA624C10874005CE015 /* NotificationViewController.m */,
 				2C103AA824C10874005CE015 /* MainInterface.storyboard */,
@@ -259,6 +262,7 @@
 		2C4F3D4E24BCF8EE003D7B5C /* StudyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2C9E992324C23A820009579F /* StudyNotes.entitlements */,
 				2C106BB624C0BFD30025FA6F /* API */,
 				2CE7555424BCFF4900861FEA /* Models */,
 				2CE7555324BCFF3500861FEA /* View Controllers */,
@@ -727,14 +731,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 60040B0ACDCBE941E549AA04 /* Pods-StudyNotesNotification.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StudyNotesNotification/StudyNotesNotification.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AUGJR3KMV;
 				INFOPLIST_FILE = StudyNotesNotification/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aayushphuyal.StudyNotes.StudyNotesNotification;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aayushphuyal.StudyNotes.StudyNotesNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -745,14 +751,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EED77D400AEC89CF0FB7B1EE /* Pods-StudyNotesNotification.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StudyNotesNotification/StudyNotesNotification.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AUGJR3KMV;
 				INFOPLIST_FILE = StudyNotesNotification/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.aayushphuyal.StudyNotes.StudyNotesNotification;
+				PRODUCT_BUNDLE_IDENTIFIER = com.aayushphuyal.StudyNotes.StudyNotesNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -874,7 +882,9 @@
 			baseConfigurationReference = 26C47840F9909B909CBF885C /* Pods-StudyNotes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StudyNotes/StudyNotes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AUGJR3KMV;
 				INFOPLIST_FILE = StudyNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -891,7 +901,9 @@
 			baseConfigurationReference = 1961644E0216958B2055C18E /* Pods-StudyNotes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StudyNotes/StudyNotes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6AUGJR3KMV;
 				INFOPLIST_FILE = StudyNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

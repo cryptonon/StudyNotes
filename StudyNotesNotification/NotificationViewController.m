@@ -23,6 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Parse Configuuration
+    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.com.aayushphuyal.StudyNotes" containingApplication:@"com.aayushphuyal.StudyNotes"];
+    Parse.server = @"https://aayushstudynotes.herokuapp.com/parse";
+    [Parse setApplicationId:@"myAppId" clientKey:@""];
 }
 
 - (void)didReceiveNotification:(UNNotification *)notification {
@@ -32,6 +37,7 @@
 // Method to fetch notes from database
 - (void)fetchNotes {
     PFQuery *noteQuery = [PFQuery queryWithClassName:@"Note"];
+    [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
     [noteQuery orderByDescending:@"createdAt"];
     [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
         if (notes.count) {
