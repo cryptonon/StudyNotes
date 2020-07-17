@@ -55,6 +55,7 @@
 // Method to configure the Collection View's cell (Collection View Data Source's required method)
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     HomeCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeCollectionCell" forIndexPath:indexPath];
+    cell.indexPath = indexPath;
     return cell;
 }
 

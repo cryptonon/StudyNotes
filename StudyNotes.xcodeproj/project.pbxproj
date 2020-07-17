@@ -19,6 +19,7 @@
 		2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */; };
 		2C90A97A24BD12E60000FC18 /* MathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A97924BD12E60000FC18 /* MathCell.m */; };
 		2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C96705024BE057F006CA805 /* HomeCollectionCell.m */; };
+		2C9E990624C204BC0009579F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9E990524C204BC0009579F /* SignupViewController.m */; };
 		2CD4C8DF24BF4DE6001563A5 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C8DE24BF4DE6001563A5 /* Note.m */; };
 		2CE7555724BCFF6900861FEA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555624BCFF6900861FEA /* LoginViewController.m */; };
 		2CE7555A24BD006900861FEA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555924BD006900861FEA /* HomeViewController.m */; };
@@ -50,6 +51,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2C9E991E24C214B80009579F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1961644E0216958B2055C18E /* Pods-StudyNotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes.release.xcconfig"; path = "Target Support Files/Pods-StudyNotes/Pods-StudyNotes.release.xcconfig"; sourceTree = "<group>"; };
 		26C47840F9909B909CBF885C /* Pods-StudyNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotes/Pods-StudyNotes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +92,10 @@
 		2C90A97924BD12E60000FC18 /* MathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathCell.m; sourceTree = "<group>"; };
 		2C96704F24BE057F006CA805 /* HomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
 		2C96705024BE057F006CA805 /* HomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionCell.m; sourceTree = "<group>"; };
+		2C9E990424C204BC0009579F /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		2C9E990524C204BC0009579F /* SignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		2C9E990C24C214B80009579F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		2C9E990E24C214B80009579F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		2CD4C8DD24BF4DE6001563A5 /* Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		2CD4C8DE24BF4DE6001563A5 /* Note.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		2CE7555524BCFF6900861FEA /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -151,6 +169,8 @@
 				307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */,
 				7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */,
 				273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */,
+				2C9E990C24C214B80009579F /* UserNotifications.framework */,
+				2C9E990E24C214B80009579F /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,6 +274,8 @@
 				2CE7556524BD089700861FEA /* NoteDetailsViewController.m */,
 				2CE7556A24BD103F00861FEA /* CreateNoteViewController.h */,
 				2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */,
+				2C9E990424C204BC0009579F /* SignupViewController.h */,
+				2C9E990524C204BC0009579F /* SignupViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -281,6 +303,7 @@
 				2C4F3D4924BCF8EE003D7B5C /* Frameworks */,
 				2C4F3D4A24BCF8EE003D7B5C /* Resources */,
 				0EA38176B7036C07581440A3 /* [CP] Embed Pods Frameworks */,
+				2C9E991E24C214B80009579F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -510,6 +533,7 @@
 				2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */,
 				2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */,
 				2CE7556324BD070000861FEA /* MathFeedViewController.m in Sources */,
+				2C9E990624C204BC0009579F /* SignupViewController.m in Sources */,
 				2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */,
 				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
 				2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */,

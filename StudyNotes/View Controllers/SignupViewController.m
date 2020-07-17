@@ -1,15 +1,15 @@
 //
-//  LoginViewController.m
+//  SignupViewController.m
 //  StudyNotes
 //
-//  Created by Aayush Mani Phuyal on 7/13/20.
+//  Created by Aayush Mani Phuyal on 7/17/20.
 //  Copyright © 2020 Aayush Phuyal. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "SignupViewController.h"
 #import <Parse/Parse.h>
 
-@interface LoginViewController ()
+@interface SignupViewController ()
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -17,19 +17,20 @@
 
 @end
 
-@implementation LoginViewController
+@implementation SignupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
-// Logging in the user when Login button is tapped
-- (IBAction)onLogin:(id)sender {
+// Signing up the new user when Signup button is tapped
+- (IBAction)onSignup:(id)sender {
     if ([self inputIsValid]) {
-        NSString *username = self.usernameField.text;
-        NSString *password = self.passwordField.text;
-        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-            if (!error) {
+        PFUser *newUser = [PFUser user];
+        newUser.username = self.usernameField.text;
+        newUser.password = self.passwordField.text;
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            if (succeeded) {
                 [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             } else {
                 [self displayErrorAlertWithError:error];
@@ -40,7 +41,7 @@
 
 // Method to display login error alert
 - (void)displayErrorAlertWithError: (NSError * _Nonnull)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login Failed!"
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Signup Failed!"
                                                                    message:error.localizedDescription
                                                             preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"

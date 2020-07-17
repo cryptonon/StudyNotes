@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeCollectionCell : UICollectionViewCell
 
+// MARK: Properties
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
 @end
 
 NS_ASSUME_NONNULL_END
