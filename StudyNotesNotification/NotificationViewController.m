@@ -25,9 +25,12 @@
     [super viewDidLoad];
     
     // Parse Configuuration
-    [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.com.aayushphuyal.StudyNotes" containingApplication:@"com.aayushphuyal.StudyNotes"];
-    Parse.server = @"https://aayushstudynotes.herokuapp.com/parse";
-    [Parse setApplicationId:@"myAppId" clientKey:@""];
+    if(![Parse applicationGroupIdentifierForDataSharing]) {
+        [Parse enableDataSharingWithApplicationGroupIdentifier:@"group.com.aayushphuyal.StudyNotes"
+                                         containingApplication:@"com.aayushphuyal.StudyNotes"];
+        Parse.server =  @"https://aayushstudynotes.herokuapp.com/parse";
+        [Parse setApplicationId:@"myAppId" clientKey:@""];
+    }
 }
 
 - (void)didReceiveNotification:(UNNotification *)notification {

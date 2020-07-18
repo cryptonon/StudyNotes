@@ -65,7 +65,7 @@
     content.body = @"Please check out the note by pulling down or using 3D touch";
     content.sound = [UNNotificationSound defaultSound];
     
-    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:60 repeats:YES];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"Test" content:content trigger:trigger];
     [center addNotificationRequest:request withCompletionHandler:nil];
 }
