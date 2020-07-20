@@ -48,8 +48,6 @@
     [center requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
             [self scheduleNotification];
-            
-            
         }
     }];
 }

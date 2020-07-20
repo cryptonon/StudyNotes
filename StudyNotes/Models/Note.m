@@ -47,6 +47,58 @@
     [self saveInBackgroundWithBlock: completion];
 }
 
+// Method for resetting isPushNotified boolean flag to NO after push notifying a note
+- (void)updatePushNotifiedFlag {
+    self.isPushNotified = YES;
+    [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Single Boolean Flag Updated!");
+        }
+    }];
+}
+
+// Method for resetting isPushNotified boolean flag for all Notes
++ (void)resetPushNotifiedFlagForAllNotes {
+    PFQuery *noteQuery = [Note query];
+    [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [noteQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable notes, NSError * _Nullable error) {
+        if (notes.count) {
+            for (Note *note in notes) {
+                note.isPushNotified = NO;
+            }
+            [Note saveAllInBackground:notes];
+        }
+    }];
+}
+
+// Method that returns a note for every push notification
++ (void)getNoteforPushNotificationWithCompletion:(void (^)(Note * _Nullable, NSError * _Nullable))completion {
+    PFQuery *noteQuery = [Note query];
+    [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [noteQuery whereKey:@"isPushNotified" equalTo:@(NO)];
+    [noteQuery orderByAscending:@"updatedAt"];
+    [noteQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable notes, NSError * _Nullable error) {
+        if (!error) {
+            if (notes.count) {
+                Note *noteToBePushNotified = [notes firstObject];
+                [noteToBePushNotified updatePushNotifiedFlag];
+                completion(noteToBePushNotified, nil);
+            } else {
+                [Note resetPushNotifiedFlagForAllNotes];
+                [Note getNoteforPushNotificationWithCompletion:^(Note * note, NSError * error) {
+                    if (note) {
+                        completion(note, nil);
+                    } else {
+                        completion(nil, error);
+                    }
+                }];
+            }
+        } else {
+            completion(nil, error);
+        }
+    }];
+}
+
 # pragma mark - Delegate Methods
 
 // Required delegate method for conforming to PFSubclassing protocol
