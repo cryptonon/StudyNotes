@@ -34,6 +34,29 @@
     [self.noteImageView loadInBackground];
 }
 
+// Method to show image full screen on tapping noteImageView
+- (IBAction)didTapNoteImage:(id)sender {
+    UIImageView *fullScreenImageView = [[UIImageView alloc] initWithImage:self.noteImageView.image];
+    fullScreenImageView.frame = [[UIScreen mainScreen] bounds];
+    fullScreenImageView.backgroundColor = [UIColor blackColor];
+    fullScreenImageView.contentMode = UIViewContentModeScaleAspectFit;
+    fullScreenImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissFullScreenImage:)];
+    [fullScreenImageView addGestureRecognizer:tapGestureRecognizer];
+    [self.view addSubview:fullScreenImageView];
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.tabBarController.tabBar setHidden:YES];
+    
+}
+
+// Method to dismiss full screen image
+- (void)dismissFullScreenImage: (UITapGestureRecognizer *)sender {
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.tabBarController.tabBar setHidden:NO];
+    [sender.view removeFromSuperview];
+}
+
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"updateNoteSegue"]) {
