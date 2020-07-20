@@ -66,6 +66,35 @@
     return self.notesArray.count;
 }
 
+// Method to delete a note after swiping a Table View cell to left (Table View Data Source's optional method)
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    Note *selectedNote = self.notesArray[indexPath.row];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self presentDeleteAlertAndDeleteNote:selectedNote];
+    }
+}
+
+// Method to present alert and delete the note
+- (void) presentDeleteAlertAndDeleteNote: (Note *)note {
+    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete the note?"
+                                                                         message:nil
+                                                                  preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [note deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                [self fetchNotes];
+            }
+        }];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    [deleteAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
+    [deleteAlert addAction:deleteAction];
+    [deleteAlert addAction:cancelAction];
+    [self presentViewController:deleteAlert animated:YES completion:nil];
+}
+
 # pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
