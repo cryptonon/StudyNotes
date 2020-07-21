@@ -50,11 +50,7 @@
 // Method for resetting isPushNotified boolean flag to NO after push notifying a note
 - (void)updatePushNotifiedFlag {
     self.isPushNotified = YES;
-    [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"Single Boolean Flag Updated!");
-        }
-    }];
+    [self saveInBackground];
 }
 
 // Method for resetting isPushNotified boolean flag for all Notes
