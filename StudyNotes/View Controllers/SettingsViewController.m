@@ -17,8 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *toDatePicker;
 @property (weak, nonatomic) IBOutlet UIDatePicker *intervalTimePicker;
 @property (weak, nonatomic) IBOutlet UISwitch *notificationSwitch;
-@property (weak, nonatomic) UIDatePicker *startTimePicker;
-@property (weak, nonatomic) UIDatePicker *endTimePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startTimePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *endTimePicker;
 @property (nonatomic) BOOL notificationPermissionAllowed;
 
 @end
@@ -47,7 +47,7 @@
     // Notification scheduling starts here
     [[UNUserNotificationCenter currentNotificationCenter] removeAllPendingNotificationRequests];
     if (self.notificationPermissionAllowed && self.notificationSwitch.on) {
-    [NotificationSetup scheduleNotificationFrom:self.fromDatePicker.date to:self.toDatePicker.date separatedByInterval:self.intervalTimePicker.countDownDuration fromStartTime:self.startTimePicker.date toEndTime:self.endTimePicker.date];
+        [NotificationSetup scheduleNotificationFrom:self.fromDatePicker.date to:self.toDatePicker.date separatedByInterval:self.intervalTimePicker.countDownDuration fromStartTime:self.startTimePicker.date toEndTime:self.endTimePicker.date];
     }
 }
 

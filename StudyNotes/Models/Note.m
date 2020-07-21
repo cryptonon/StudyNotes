@@ -50,21 +50,20 @@
 // Method for resetting isPushNotified boolean flag to NO after push notifying a note
 - (void)updatePushNotifiedFlag {
     self.isPushNotified = YES;
-    [self saveInBackground];
+    [self save];
 }
 
 // Method for resetting isPushNotified boolean flag for all Notes
 + (void)resetPushNotifiedFlagForAllNotes {
     PFQuery *noteQuery = [Note query];
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
-    [noteQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable notes, NSError * _Nullable error) {
-        if (notes.count) {
-            for (Note *note in notes) {
-                note.isPushNotified = NO;
-            }
-            [Note saveAllInBackground:notes];
+    NSArray *noteArray = [noteQuery findObjects];
+    if (noteArray.count) {
+        for (Note *note in noteArray) {
+            note.isPushNotified = NO;
         }
-    }];
+        [Note saveAll:noteArray];
+    }
 }
 
 // Method that fetches a note for every push notification
@@ -73,26 +72,21 @@
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
     [noteQuery whereKey:@"isPushNotified" equalTo:@(NO)];
     [noteQuery orderByAscending:@"updatedAt"];
-    [noteQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable notes, NSError * _Nullable error) {
-        if (!error) {
-            if (notes.count) {
-                Note *noteToBePushNotified = [notes firstObject];
-                [noteToBePushNotified updatePushNotifiedFlag];
-                completion(noteToBePushNotified, nil);
+    NSArray *noteArray = [noteQuery findObjects];
+    if (noteArray.count) {
+        Note *noteToBePushNotified = [noteArray firstObject];
+        [noteToBePushNotified updatePushNotifiedFlag];
+        completion(noteToBePushNotified, nil);
+    } else if (noteArray) {
+        [Note resetPushNotifiedFlagForAllNotes];
+        [Note getNoteforPushNotificationWithCompletion:^(Note * note, NSError * error) {
+            if (note) {
+                completion(note, nil);
             } else {
-                [Note resetPushNotifiedFlagForAllNotes];
-                [Note getNoteforPushNotificationWithCompletion:^(Note * note, NSError * error) {
-                    if (note) {
-                        completion(note, nil);
-                    } else {
-                        completion(nil, error);
-                    }
-                }];
+                completion(nil, error);
             }
-        } else {
-            completion(nil, error);
-        }
-    }];
+        }];
+    }
 }
 # pragma mark - Delegate Methods
 

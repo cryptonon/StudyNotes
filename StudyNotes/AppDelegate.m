@@ -8,8 +8,9 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()
+@interface AppDelegate () <UNUserNotificationCenterDelegate>
 
 @end
 
@@ -23,10 +24,19 @@
         configuration.server = @"https://aayushstudynotes.herokuapp.com/parse";
     }];
     [Parse initializeWithConfiguration:config];
-    
+    // Notification configuration
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
     return YES;
 }
 
+#pragma mark - Delegate Methods
+
+// UNUserNotificationCenterDelegate method to show notification in foreground
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    UNNotificationPresentationOptions presentationOptions = UNNotificationPresentationOptionAlert + UNNotificationPresentationOptionSound;
+    completionHandler(presentationOptions);
+}
 
 #pragma mark - UISceneSession lifecycle
 
