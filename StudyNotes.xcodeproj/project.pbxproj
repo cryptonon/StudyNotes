@@ -16,6 +16,8 @@
 		2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D6124BCF8EF003D7B5C /* main.m */; };
 		2C4F3D6C24BCF8EF003D7B5C /* StudyNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D6B24BCF8EF003D7B5C /* StudyNotesTests.m */; };
 		2C4F3D7724BCF8EF003D7B5C /* StudyNotesUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D7624BCF8EF003D7B5C /* StudyNotesUITests.m */; };
+		2C55F4E924C73814006B48B1 /* NotificationSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55F4E824C73814006B48B1 /* NotificationSetup.m */; };
+		2C55F4EA24C73BCC006B48B1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9E990C24C214B80009579F /* UserNotifications.framework */; };
 		2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */; };
 		2C90A97A24BD12E60000FC18 /* MathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A97924BD12E60000FC18 /* MathCell.m */; };
 		2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C96705024BE057F006CA805 /* HomeCollectionCell.m */; };
@@ -86,6 +88,8 @@
 		2C4F3D7224BCF8EF003D7B5C /* StudyNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4F3D7624BCF8EF003D7B5C /* StudyNotesUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyNotesUITests.m; sourceTree = "<group>"; };
 		2C4F3D7824BCF8EF003D7B5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C55F4E724C73814006B48B1 /* NotificationSetup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationSetup.h; sourceTree = "<group>"; };
+		2C55F4E824C73814006B48B1 /* NotificationSetup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationSetup.m; sourceTree = "<group>"; };
 		2C6D3FF124BF4FAD0041ABD2 /* UserSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
 		2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
 		2C90A97824BD12E60000FC18 /* MathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathCell.h; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C55F4EA24C73BCC006B48B1 /* UserNotifications.framework in Frameworks */,
 				74777B16821483C6A58A9CC9 /* Pods_StudyNotes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +214,7 @@
 		2C4F3D4E24BCF8EE003D7B5C /* StudyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2C55F4E624C737E3006B48B1 /* Notification */,
 				2C106BB624C0BFD30025FA6F /* API */,
 				2CE7555424BCFF4900861FEA /* Models */,
 				2CE7555324BCFF3500861FEA /* View Controllers */,
@@ -242,6 +248,15 @@
 				2C4F3D7824BCF8EF003D7B5C /* Info.plist */,
 			);
 			path = StudyNotesUITests;
+			sourceTree = "<group>";
+		};
+		2C55F4E624C737E3006B48B1 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				2C55F4E724C73814006B48B1 /* NotificationSetup.h */,
+				2C55F4E824C73814006B48B1 /* NotificationSetup.m */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		2CE7555224BCFF2500861FEA /* Views */ = {
@@ -532,6 +547,7 @@
 			files = (
 				2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */,
 				2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */,
+				2C55F4E924C73814006B48B1 /* NotificationSetup.m in Sources */,
 				2CE7556324BD070000861FEA /* MathFeedViewController.m in Sources */,
 				2C9E990624C204BC0009579F /* SignupViewController.m in Sources */,
 				2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */,
