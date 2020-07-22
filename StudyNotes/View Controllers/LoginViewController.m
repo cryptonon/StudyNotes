@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+@import Parse;
 
 @interface LoginViewController ()
 
@@ -36,6 +37,15 @@
             }
         }];
     }
+}
+
+// Signing the user with facebook when Continue with Facebook is tapped
+- (IBAction)onContinueWithFB:(id)sender {
+  [PFFacebookUtils logInInBackgroundWithReadPermissions:nil block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+      if (user) {
+          [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+      }
+    }];
 }
 
 // Method to display login error alert
