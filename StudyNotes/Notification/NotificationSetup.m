@@ -12,25 +12,39 @@
 @implementation NotificationSetup
 
 // Method to schedule all notifications using a loop
-+ (void)scheduleNotificationFrom:(NSDate *)fromDate to:(NSDate *)toDate separatedByInterval:(NSInteger)interval fromStartTime:(NSDate *)startTime toEndTime:(NSDate *)endTime {
-    NSDate *trackingDate = fromDate;
-    while ([self dateTime:trackingDate isBefore:toDate]) {
-        [self scheduleNotificationWithNote:nil forTime:trackingDate];
-        trackingDate = [trackingDate dateByAddingTimeInterval:interval];
-        if ([self hourComponentForTime:trackingDate] > [self hourComponentForTime:endTime] ) {
-            trackingDate = endTime;
-            trackingDate = [trackingDate dateByAddingTimeInterval:(24-([self hourComponentForTime:endTime] - [self hourComponentForTime:startTime]))*3600];
++ (void)scheduleNotificationFrom:(NSDate *)fromDateTime to:(NSDate *)toDateTime separatedByIntervalInSeconds:(NSInteger)intervalInSeconds {
+    NSDate *notificationDateTime = fromDateTime;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
+    NSInteger toHourComponent = [self hourAndMinuteComponentForTime:toDateTime].hour;
+    NSInteger toMinuteComponent = [self hourAndMinuteComponentForTime:toDateTime].minute;
+    NSDate *dailyEndTime = [calendar dateBySettingHour:toHourComponent minute:toMinuteComponent second:00 ofDate:fromDateTime options:0];
+
+    while ([self dateTime:notificationDateTime isBefore:toDateTime]) {
+        [self scheduleNotificationForTime:notificationDateTime];
+        notificationDateTime = [notificationDateTime dateByAddingTimeInterval:intervalInSeconds];
+        // Skipping to tomorrow once notification is done for today
+        if (![self dateTime:notificationDateTime isBefore:dailyEndTime]) {
+            // All differences are between today's EndTime and tomorrow's StartTime
+            NSInteger dailyStartTimeHourComponent = [self hourAndMinuteComponentForTime:fromDateTime].hour;
+            NSInteger dailyEndTimeHourComponent = [self hourAndMinuteComponentForTime:toDateTime].hour;
+            NSInteger dailyStartTimeMinuteComponent = [self hourAndMinuteComponentForTime:fromDateTime].minute;
+            NSInteger dailyEndTimeMinuteComponent = [self hourAndMinuteComponentForTime:toDateTime].minute;
+            NSInteger hoursDifference = 24 - (dailyEndTimeHourComponent - dailyStartTimeHourComponent);
+            NSInteger minutesDifference = dailyStartTimeMinuteComponent - dailyEndTimeMinuteComponent;
+            NSInteger timeDifferenceInSeconds = hoursDifference*3600 + minutesDifference*60;
+            notificationDateTime = [dailyEndTime dateByAddingTimeInterval:timeDifferenceInSeconds];
+            dailyEndTime = [dailyEndTime dateByAddingTimeInterval:24*60*60];
         }
     }
 }
 
-#pragma mark - Helper Methods for Notification Scheduling
+#pragma mark - Helper Methods for Scheduling Notifications
 
-// Method to get hour components from a Date
-+ (NSInteger) hourComponentForTime: (NSDate *)dateTime {
+// Method to get hour and minute components from a Date
++ (NSDateComponents *) hourAndMinuteComponentForTime: (NSDate *)dateTime {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:dateTime];
-    return [components hour];
+    return components;
 }
 
 // Method to compare two dates (one is earlier than other)
@@ -43,22 +57,21 @@
 }
 
 // Method to schedule a single notification at given time
-+ (void) scheduleNotificationWithNote: (Note * _Nullable)note forTime: (NSDate * _Nullable)dateTime {
-    [Note getNoteforPushNotificationWithCompletion:^(Note * _Nullable note, NSError * _Nullable error) {
-        if (note) {
-            UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-            UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-            content.title =note.noteTitle;
-            content.body = note.noteDescription;;
-            content.sound = [UNNotificationSound defaultSound];
++ (void) scheduleNotificationForTime: (NSDate * _Nullable)dateTime {
+    Note *notificationNote = [Note getNoteforPushNotification];
+    if (notificationNote) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+        content.title =notificationNote.noteTitle;
+        content.body = notificationNote.noteDescription;;
+        content.sound = [UNNotificationSound defaultSound];
 
-            NSCalendar *calendar = [NSCalendar currentCalendar];
-            NSDateComponents *components = [calendar components:( NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:dateTime];
-            UNCalendarNotificationTrigger *dateTimeTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:NO];
-            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:[NSString stringWithFormat:@"%u", arc4random()] content:content trigger:dateTimeTrigger];
-            [center addNotificationRequest:request withCompletionHandler:nil];
-        }
-    }];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:( NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:dateTime];
+        UNCalendarNotificationTrigger *dateTimeTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:NO];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:[NSString stringWithFormat:@"%u", arc4random()] content:content trigger:dateTimeTrigger];
+        [center addNotificationRequest:request withCompletionHandler:nil];
+    }
 }
 
 @end

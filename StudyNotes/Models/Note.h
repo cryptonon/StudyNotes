@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
                    withImage: ( UIImage * _Nullable )image
               withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
-+ (void) getNoteforPushNotificationWithCompletion: (void (^)(Note * _Nullable, NSError * _Nullable))completion;
++ (Note *) getNoteforPushNotification;
 
 @end
 

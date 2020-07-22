@@ -14,11 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NotificationSetup : NSObject
 
 // MARK: Methods
-+ (void) scheduleNotificationFrom:(NSDate * _Nonnull)fromDate
-                               to:(NSDate * _Nonnull)toDate
-              separatedByInterval:(NSInteger)interval
-                         fromStartTime:(NSDate * _Nonnull)startTime
-                           toEndTime:(NSDate * _Nonnull)endTime;
++ (void) scheduleNotificationFrom:(NSDate * _Nonnull)fromDateTime
+                               to:(NSDate * _Nonnull)toDateTime
+     separatedByIntervalInSeconds:(NSInteger)intervalInSeconds;
 
 @end
 
