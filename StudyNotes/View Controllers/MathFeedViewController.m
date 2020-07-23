@@ -15,6 +15,7 @@
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *numberFactString;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -25,6 +26,11 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchMathFacts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
     [self fetchMathFacts];
 }
 
@@ -37,6 +43,7 @@
         }
         [self.tableView reloadData];
     }];
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Delegate Methods

@@ -9,6 +9,7 @@
 #import "CreateNoteViewController.h"
 #import "Note.h"
 @import Parse;
+#import <JGProgressHUD/JGProgressHUD.h>
 
 @interface CreateNoteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -23,8 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerForKeyboardNotifications];
     if (!self.note) {
-       [self showCameraOrLibrary];
+        [self presentSourceSelectionAlert];
     } else {
         [self setViewProperties];
     }
@@ -46,12 +48,24 @@
 // Method to post note to parse on tapping Post button
 - (IBAction)onPost:(id)sender {
     if (!self.note) {
+        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+        progressHUD.textLabel.text = @"Posting...";
+        [progressHUD showInView:self.view];
         [Note postNote:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
+                Note *newNote = [[Note alloc] init];
+                newNote.noteTitle = self.noteTitleField.text;
+                newNote.noteDescription = self.noteDescriptionTextView.text;
+                newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
+                [self.delegate postedNote:newNote];
                 [self dismissViewControllerAnimated:YES completion:nil];
+                [progressHUD dismiss];
             }
         }];
     } else {
+        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+        progressHUD.textLabel.text = @"Updating...";
+        [progressHUD showInView:self.view];
         NSString *noteObjectID = self.note.objectId;
         PFQuery *noteQuery = [Note query];
         [noteQuery whereKey:@"objectId" equalTo:noteObjectID];
@@ -60,7 +74,9 @@
                 Note *noteToEdit = notes[0];
                 [noteToEdit updateNoteWithTitle:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                     if (succeeded) {
+                        [self.delegate updatedNoteToTitle:self.noteTitleField.text toDescription:self.noteDescriptionTextView.text toImage:self.noteImageView.image];
                         [self dismissViewControllerAnimated:YES completion:nil];
+                        [progressHUD dismiss];
                     }
                 }];
             }
@@ -70,19 +86,45 @@
 
 // Method to bring camera/library on tapping noteImageView
 - (IBAction)didTapNoteImage:(id)sender {
-    [self showCameraOrLibrary];
+    [self presentSourceSelectionAlert];
 }
 
-// Method to bring up camera/library to select photo for note
-- (void)showCameraOrLibrary {
+// Method that presents alert that lets user choose camera or library
+- (void) presentSourceSelectionAlert {
+    UIAlertController *cameraOrLibraryAlert = [UIAlertController alertControllerWithTitle:@"Please Choose a Source"
+                                                                                  message:nil
+                                                                           preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+        [self showCamera];
+    }];
+    UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Library"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * _Nonnull action) {
+        [self showLibrary];
+    }];
+    [cameraOrLibraryAlert addAction:cameraAction];
+    [cameraOrLibraryAlert addAction:libraryAction];
+    [self presentViewController:cameraOrLibraryAlert animated:YES completion:nil];
+}
+
+// Method that brings camera
+- (void) showCamera {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-       imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else {
-       imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+// Method that brings library
+- (void) showLibrary {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
@@ -96,6 +138,31 @@
     UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return resizedImage;
+}
+
+// Method that registers keyboard notifications
+- (void)registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillAppear:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillDisappear:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Method that pushes up the view once keyboard appears
+- (void)keyboardWillAppear:(NSNotification*)keyboardNotification {
+    NSDictionary* info = [keyboardNotification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - (keyboardSize.height), self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
+// Method that pushes down the view to original state once keyboard disappers
+- (void)keyboardWillDisappear:(NSNotification*)keyboardNotification {
+    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
 
 # pragma mark - Delegate Methods

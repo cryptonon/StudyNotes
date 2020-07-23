@@ -8,6 +8,7 @@
 
 #import "SignupViewController.h"
 #import <Parse/Parse.h>
+#import <JGProgressHUD/JGProgressHUD.h>
 
 @interface SignupViewController ()
 
@@ -25,14 +26,19 @@
 
 // Signing up the new user when Signup button is tapped
 - (IBAction)onSignup:(id)sender {
+    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    progressHUD.textLabel.text = @"Signing up";
+    [progressHUD showInView:self.view];
     if ([self inputIsValid]) {
         PFUser *newUser = [PFUser user];
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (succeeded) {
+                [progressHUD dismiss];
                 [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             } else {
+                [progressHUD dismiss];
                 [self displayErrorAlertWithError:error];
             }
         }];

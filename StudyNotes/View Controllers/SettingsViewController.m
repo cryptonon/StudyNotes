@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "UserSetting.h"
 #import "NotificationSetup.h"
+#import <JGProgressHUD/JGProgressHUD.h>
 
 @interface SettingsViewController ()
 
@@ -21,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *endTimePicker;
 @property (nonatomic) BOOL notificationPermissionAllowed;
 @property (strong, nonatomic) UserSetting *currentUserSetting;
+@property (weak, nonatomic) IBOutlet UILabel *fromDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *toDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeIntervalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 
 @end
 
@@ -43,6 +49,11 @@
     [self.intervalTimePicker setHidden:YES];
     [self.startTimePicker setHidden:YES];
     [self.endTimePicker setHidden:YES];
+    [self.fromDateLabel setHidden:YES];
+    [self.toDateLabel setHidden:YES];
+    [self.timeIntervalLabel setHidden:YES];
+    [self.startTimeLabel setHidden:YES];
+    [self.endTimeLabel setHidden:YES];
 }
 
 // Method that updates SettingViewController's view as per user's saved settings
@@ -59,6 +70,7 @@
                 self.startTimePicker.date = currentSetting.from;
                 self.endTimePicker.date = currentSetting.to;
                 self.currentUserSetting = currentSetting;
+                [self didTapNotificationSwitch:self.notificationSwitch];
             }
         }
     }];
@@ -66,6 +78,9 @@
 
 // Method to update user settings when Update button is tapped
 - (IBAction)onUpdate:(id)sender {
+    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    progressHUD.textLabel.text = @"Updating...";
+    [progressHUD showInView:self.view];
     [self combineDateTime];
     if (self.currentUserSetting) {
         [self.currentUserSetting updateSettingWithNotificationsTurnedOn:self.notificationSwitch.on from:self.fromDatePicker.date to:self.toDatePicker.date withIntervalOf:@(self.intervalTimePicker.countDownDuration) withCompletion:nil];
@@ -77,6 +92,8 @@
     if (self.notificationPermissionAllowed && self.notificationSwitch.on) {
         [NotificationSetup scheduleNotificationFrom:self.fromDatePicker.date to:self.toDatePicker.date separatedByIntervalInSeconds:self.intervalTimePicker.countDownDuration];
     }
+    [progressHUD dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // Method that asks permission for sending notifications
@@ -98,12 +115,22 @@
         [self.intervalTimePicker setHidden:YES];
         [self.startTimePicker setHidden:YES];
         [self.endTimePicker setHidden:YES];
+        [self.fromDateLabel setHidden:YES];
+        [self.toDateLabel setHidden:YES];
+        [self.timeIntervalLabel setHidden:YES];
+        [self.startTimeLabel setHidden:YES];
+        [self.endTimeLabel setHidden:YES];
     } else {
         [self.fromDatePicker setHidden:NO];
         [self.toDatePicker setHidden:NO];
         [self.intervalTimePicker setHidden:NO];
         [self.startTimePicker setHidden:NO];
         [self.endTimePicker setHidden:NO];
+        [self.fromDateLabel setHidden:NO];
+        [self.toDateLabel setHidden:NO];
+        [self.timeIntervalLabel setHidden:NO];
+        [self.startTimeLabel setHidden:NO];
+        [self.endTimeLabel setHidden:NO];
     }
 }
 

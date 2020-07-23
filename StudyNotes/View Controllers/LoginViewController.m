@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 @import Parse;
+#import <JGProgressHUD/JGProgressHUD.h>
 
 @interface LoginViewController ()
 
@@ -26,13 +27,18 @@
 
 // Logging in the user when Login button is tapped
 - (IBAction)onLogin:(id)sender {
+    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    progressHUD.textLabel.text = @"Logging in";
+    [progressHUD showInView:self.view];
     if ([self inputIsValid]) {
         NSString *username = self.usernameField.text;
         NSString *password = self.passwordField.text;
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
             if (!error) {
+                [progressHUD dismiss];
                 [self performSegueWithIdentifier:@"loginSegue" sender:nil];
             } else {
+                [progressHUD dismiss];
                 [self displayErrorAlertWithError:error];
             }
         }];

@@ -9,6 +9,8 @@ target 'StudyNotes' do
   pod 'Parse'
   pod 'Parse/UI'
   pod 'Parse/FacebookUtils'
+  pod 'JGProgressHUD'
+
 
   target 'StudyNotesTests' do
     inherit! :search_paths

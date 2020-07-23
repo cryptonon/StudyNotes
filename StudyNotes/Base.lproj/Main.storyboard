@@ -264,11 +264,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="endTimeLabel" destination="kmo-ne-glY" id="ei1-NV-rFZ"/>
                         <outlet property="endTimePicker" destination="wqk-7w-LOo" id="RVn-Q6-T23"/>
+                        <outlet property="fromDateLabel" destination="6L7-gV-GI6" id="t5A-dq-0C6"/>
                         <outlet property="fromDatePicker" destination="1Jh-8h-V8e" id="Snd-gt-J6l"/>
                         <outlet property="intervalTimePicker" destination="Og3-bH-gK3" id="Kh8-W9-Cwd"/>
                         <outlet property="notificationSwitch" destination="Afx-if-kSt" id="tkB-TB-WRx"/>
+                        <outlet property="startTimeLabel" destination="4Gc-G0-LAo" id="e5E-rK-Kon"/>
                         <outlet property="startTimePicker" destination="BYU-ck-3Bj" id="dbH-FW-Ioe"/>
+                        <outlet property="timeIntervalLabel" destination="sMb-OX-u84" id="YBS-qH-zqP"/>
+                        <outlet property="toDateLabel" destination="GP4-Y1-BrY" id="EcH-Pd-Npu"/>
                         <outlet property="toDatePicker" destination="zW6-0I-elx" id="m04-uU-hG0"/>
                     </connections>
                 </viewController>
@@ -702,7 +707,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="k6t-C7-Hwf"/>
+        <segue reference="Fvf-tr-BiF"/>
         <segue reference="VLm-FW-Blu"/>
     </inferredMetricsTieBreakers>
 </document>

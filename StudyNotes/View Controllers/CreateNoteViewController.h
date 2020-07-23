@@ -11,10 +11,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// MARK: Protocol
+@protocol CreateNoteViewControllerDelegate
+
+//Optional Methods
+@optional
+- (void) updatedNoteToTitle: (NSString *)noteTitle toDescription: (NSString *)noteDescription toImage: (UIImage *)noteImage;
+- (void) postedNote: (Note *)newNote;
+
+@end
+
 @interface CreateNoteViewController : UIViewController
 
 // MARK: Properties
 @property (strong, nonatomic) Note *note;
+@property (weak, nonatomic) id<CreateNoteViewControllerDelegate> delegate;
 
 @end
 

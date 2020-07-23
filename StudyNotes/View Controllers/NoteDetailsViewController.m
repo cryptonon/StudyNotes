@@ -10,7 +10,7 @@
 @import Parse;
 #import "CreateNoteViewController.h"
 
-@interface NoteDetailsViewController ()
+@interface NoteDetailsViewController () <CreateNoteViewControllerDelegate>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
@@ -56,6 +56,15 @@
     [sender.view removeFromSuperview];
 }
 
+#pragma mark - Delegate Methods
+
+// Method to update details after the note has been updated (CreateNoteViewController's delegate method)
+- (void)updatedNoteToTitle:(NSString *)noteTitle toDescription:(NSString *)noteDescription toImage:(UIImage *)noteImage {
+    self.noteTitleLabel.text = noteTitle;
+    self.noteDescriptionLabel.text = noteDescription;
+    self.noteImageView.image = noteImage;
+    [self.delegate updatedNoteAtIndexPath:self.indexPath toTitle:noteTitle toDescription:noteDescription toImage:noteImage];
+}
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -63,6 +72,7 @@
         UINavigationController *navigationController = [segue destinationViewController];
         CreateNoteViewController *updateViewController = (CreateNoteViewController *) navigationController.topViewController;
         updateViewController.note = self.note;
+        updateViewController.delegate = self;
     }
 }
 
