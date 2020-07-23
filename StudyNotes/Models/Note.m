@@ -67,7 +67,7 @@
 }
 
 // Method that fetches a note for every push notification
-+ (void)getNoteforPushNotificationWithCompletion:(void (^)(Note * _Nullable, NSError * _Nullable))completion {
++ (Note *)getNoteforPushNotification {
     PFQuery *noteQuery = [Note query];
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
     [noteQuery whereKey:@"isPushNotified" equalTo:@(NO)];
@@ -76,16 +76,10 @@
     if (noteArray.count) {
         Note *noteToBePushNotified = [noteArray firstObject];
         [noteToBePushNotified updatePushNotifiedFlag];
-        completion(noteToBePushNotified, nil);
-    } else if (noteArray) {
+        return noteToBePushNotified;
+    } else {
         [Note resetPushNotifiedFlagForAllNotes];
-        [Note getNoteforPushNotificationWithCompletion:^(Note * note, NSError * error) {
-            if (note) {
-                completion(note, nil);
-            } else {
-                completion(nil, error);
-            }
-        }];
+        return [Note getNoteforPushNotification];
     }
 }
 # pragma mark - Delegate Methods
