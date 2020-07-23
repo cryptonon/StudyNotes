@@ -27,10 +27,10 @@
 
 // Logging in the user when Login button is tapped
 - (IBAction)onLogin:(id)sender {
-    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-    progressHUD.textLabel.text = @"Logging in";
-    [progressHUD showInView:self.view];
     if ([self inputIsValid]) {
+        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+        progressHUD.textLabel.text = @"Logging in";
+        [progressHUD showInView:self.view];
         NSString *username = self.usernameField.text;
         NSString *password = self.passwordField.text;
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
