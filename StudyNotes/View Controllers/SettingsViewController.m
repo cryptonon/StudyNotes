@@ -82,6 +82,15 @@
     JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     progressHUD.textLabel.text = @"Updating...";
     [progressHUD showInView:self.view];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSelectorOnMainThread:@selector(updateUserSettingsAndScheduleNotifications) withObject:nil waitUntilDone:YES];
+        [progressHUD dismiss];
+        [self.navigationController popViewControllerAnimated:YES];
+    });
+}
+
+// Method that handles upating/creating settings and scheduling notifications
+- (void)updateUserSettingsAndScheduleNotifications {
     [self combineDateTime];
     if (self.currentUserSetting) {
         [self.currentUserSetting updateSettingWithNotificationsTurnedOn:self.notificationSwitch.on from:self.fromDatePicker.date to:self.toDatePicker.date withIntervalOf:@(self.intervalTimePicker.countDownDuration) withCompletion:nil];
@@ -93,8 +102,6 @@
     if (self.notificationPermissionAllowed && self.notificationSwitch.on) {
         [NotificationSetup scheduleNotificationFrom:self.fromDatePicker.date to:self.toDatePicker.date separatedByIntervalInSeconds:self.intervalTimePicker.countDownDuration];
     }
-    [progressHUD dismiss];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // Method that asks permission for sending notifications
