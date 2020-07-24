@@ -10,6 +10,7 @@
 #import "UserSetting.h"
 #import "NotificationSetup.h"
 #import <JGProgressHUD/JGProgressHUD.h>
+#import "DateTimeHelper.h"
 
 @interface SettingsViewController ()
 
@@ -134,31 +135,12 @@
     }
 }
 
-# pragma mark - Helper methods for DateTime processing
-
 // Method to combine fromDate with startTime and toDate with endTime
 - (void) combineDateTime {
-    NSDate *fromDate = self.fromDatePicker.date;
-    NSDate *fromTime = self.startTimePicker.date;
-    NSDate *toDate = self.toDatePicker.date;
-    NSDate *toTime = self.endTimePicker.date;
-    NSInteger fromHourComponent = [self hourAndMinuteComponentForTime:fromTime].hour;
-    NSInteger fromMinuteComponent = [self hourAndMinuteComponentForTime:fromTime].minute;
-    NSInteger toHourComponent = [self hourAndMinuteComponentForTime:toTime].hour;
-    NSInteger toMinuteComponent = [self hourAndMinuteComponentForTime:toTime].minute;
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
-    NSDate *combinedFromDateTime = [calendar dateBySettingHour:fromHourComponent minute:fromMinuteComponent second:00 ofDate:fromDate options:0];
-    self.fromDatePicker.date = combinedFromDateTime;
-    NSDate *combinedToDateTime = [calendar dateBySettingHour:toHourComponent minute:toMinuteComponent second:00 ofDate:toDate options:0];
-    self.toDatePicker.date = combinedToDateTime;
-}
-
-
-// Method to get hour and minute components from a Date
-- (NSDateComponents *) hourAndMinuteComponentForTime: (NSDate *)dateTime {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:dateTime];
-    return components;
+    NSDate *notificationStartDateTime = [DateTimeHelper combinedDate:self.fromDatePicker.date withTimeOfNSDate:self.startTimePicker.date];
+    NSDate *notificationEndDateTime = [DateTimeHelper combinedDate:self.toDatePicker.date withTimeOfNSDate:self.endTimePicker.date];
+    self.fromDatePicker.date = notificationStartDateTime;
+    self.toDatePicker.date = notificationEndDateTime;
 }
 
 @end

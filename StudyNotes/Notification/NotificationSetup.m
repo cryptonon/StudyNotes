@@ -8,31 +8,28 @@
 
 #import "NotificationSetup.h"
 #import "Note.h"
+#import "DateTimeHelper.h"
 
 @implementation NotificationSetup
 
 // Method to schedule all notifications using a loop
 + (void)scheduleNotificationFrom:(NSDate *)fromDateTime to:(NSDate *)toDateTime separatedByIntervalInSeconds:(NSInteger)intervalInSeconds {
-    NSDate *notificationDateTime = fromDateTime;
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
-    NSInteger toHourComponent = [self hourAndMinuteComponentForTime:toDateTime].hour;
-    NSInteger toMinuteComponent = [self hourAndMinuteComponentForTime:toDateTime].minute;
-    NSDate *dailyEndTime = [calendar dateBySettingHour:toHourComponent minute:toMinuteComponent second:00 ofDate:fromDateTime options:0];
+    NSDate *currentDateTime = [NSDate date];
+    NSDate *notificationDateTime;
+    if ([DateTimeHelper dateTime:fromDateTime isBefore:currentDateTime]) {
+        notificationDateTime = currentDateTime;
+    } else {
+        notificationDateTime = fromDateTime;
+    }
+    NSDate *dailyEndTime = [DateTimeHelper combinedDate:fromDateTime withTimeOfNSDate:toDateTime];
+    NSTimeInterval dailySkipIntervalInSeconds = [DateTimeHelper dailySkipIntervalInSecondsForStart:fromDateTime andEnd:toDateTime];
 
-    while ([self dateTime:notificationDateTime isBefore:toDateTime]) {
+    while ([DateTimeHelper dateTime:notificationDateTime isBefore:toDateTime]) {
         [self scheduleNotificationForTime:notificationDateTime];
         notificationDateTime = [notificationDateTime dateByAddingTimeInterval:intervalInSeconds];
         // Skipping to tomorrow once notification is done for today
-        if (![self dateTime:notificationDateTime isBefore:dailyEndTime]) {
-            // All differences are between today's EndTime and tomorrow's StartTime
-            NSInteger dailyStartTimeHourComponent = [self hourAndMinuteComponentForTime:fromDateTime].hour;
-            NSInteger dailyEndTimeHourComponent = [self hourAndMinuteComponentForTime:toDateTime].hour;
-            NSInteger dailyStartTimeMinuteComponent = [self hourAndMinuteComponentForTime:fromDateTime].minute;
-            NSInteger dailyEndTimeMinuteComponent = [self hourAndMinuteComponentForTime:toDateTime].minute;
-            NSInteger hoursDifference = 24 - (dailyEndTimeHourComponent - dailyStartTimeHourComponent);
-            NSInteger minutesDifference = dailyStartTimeMinuteComponent - dailyEndTimeMinuteComponent;
-            NSInteger timeDifferenceInSeconds = hoursDifference*3600 + minutesDifference*60;
-            notificationDateTime = [dailyEndTime dateByAddingTimeInterval:timeDifferenceInSeconds];
+        if (![DateTimeHelper dateTime:notificationDateTime isBefore:dailyEndTime]) {
+            notificationDateTime = [dailyEndTime dateByAddingTimeInterval:dailySkipIntervalInSeconds];
             dailyEndTime = [dailyEndTime dateByAddingTimeInterval:24*60*60];
         }
     }
@@ -40,29 +37,13 @@
 
 #pragma mark - Helper Methods for Scheduling Notifications
 
-// Method to get hour and minute components from a Date
-+ (NSDateComponents *) hourAndMinuteComponentForTime: (NSDate *)dateTime {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:dateTime];
-    return components;
-}
-
-// Method to compare two dates (one is earlier than other)
-+ (BOOL) dateTime: (NSDate * )firstTime isBefore: (NSDate * )secondTime {
-    if ([firstTime compare:secondTime] == NSOrderedDescending) {
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
 // Method to schedule a single notification at given time
 + (void) scheduleNotificationForTime: (NSDate * _Nullable)dateTime {
     Note *notificationNote = [Note getNoteforPushNotification];
     if (notificationNote) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-        content.title =notificationNote.noteTitle;
+        content.title = notificationNote.noteTitle;
         content.body = notificationNote.noteDescription;;
         content.sound = [UNNotificationSound defaultSound];
 

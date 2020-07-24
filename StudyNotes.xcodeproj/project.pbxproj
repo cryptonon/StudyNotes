@@ -21,6 +21,7 @@
 		2C55F4EA24C73BCC006B48B1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9E990C24C214B80009579F /* UserNotifications.framework */; };
 		2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */; };
 		2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C96705024BE057F006CA805 /* HomeCollectionCell.m */; };
+		2C9D42D224CB6D3000BF275B /* DateTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9D42D124CB6D3000BF275B /* DateTimeHelper.m */; };
 		2C9E990624C204BC0009579F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9E990524C204BC0009579F /* SignupViewController.m */; };
 		2CD4C8DF24BF4DE6001563A5 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C8DE24BF4DE6001563A5 /* Note.m */; };
 		2CE7555724BCFF6900861FEA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555624BCFF6900861FEA /* LoginViewController.m */; };
@@ -95,6 +96,8 @@
 		2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
 		2C96704F24BE057F006CA805 /* HomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
 		2C96705024BE057F006CA805 /* HomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionCell.m; sourceTree = "<group>"; };
+		2C9D42D024CB6D3000BF275B /* DateTimeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateTimeHelper.h; sourceTree = "<group>"; };
+		2C9D42D124CB6D3000BF275B /* DateTimeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateTimeHelper.m; sourceTree = "<group>"; };
 		2C9E990424C204BC0009579F /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		2C9E990524C204BC0009579F /* SignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		2C9E990C24C214B80009579F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -211,6 +214,7 @@
 		2C4F3D4E24BCF8EE003D7B5C /* StudyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2C9D42CF24CB6D0C00BF275B /* Helper Methods */,
 				2C55F4E624C737E3006B48B1 /* Notification */,
 				2C106BB624C0BFD30025FA6F /* API */,
 				2CE7555424BCFF4900861FEA /* Models */,
@@ -254,6 +258,15 @@
 				2C55F4E824C73814006B48B1 /* NotificationSetup.m */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		2C9D42CF24CB6D0C00BF275B /* Helper Methods */ = {
+			isa = PBXGroup;
+			children = (
+				2C9D42D024CB6D3000BF275B /* DateTimeHelper.h */,
+				2C9D42D124CB6D3000BF275B /* DateTimeHelper.m */,
+			);
+			path = "Helper Methods";
 			sourceTree = "<group>";
 		};
 		2CE7555224BCFF2500861FEA /* Views */ = {
@@ -554,6 +567,7 @@
 				2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */,
 				2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */,
 				2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */,
+				2C9D42D224CB6D3000BF275B /* DateTimeHelper.m in Sources */,
 				2CE7555D24BD016600861FEA /* SettingsViewController.m in Sources */,
 				2CE7555A24BD006900861FEA /* HomeViewController.m in Sources */,
 				2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */,
