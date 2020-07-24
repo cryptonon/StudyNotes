@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C106BB824C0BFF20025FA6F /* APIManager.m */; };
+		2C11A2BD24CA5E3000003CA1 /* NumbersFactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C11A2BC24CA5E3000003CA1 /* NumbersFactViewController.m */; };
 		2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */; };
 		2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */; };
 		2C4F3D5A24BCF8EE003D7B5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5824BCF8EE003D7B5C /* Main.storyboard */; };
@@ -19,7 +20,6 @@
 		2C55F4E924C73814006B48B1 /* NotificationSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55F4E824C73814006B48B1 /* NotificationSetup.m */; };
 		2C55F4EA24C73BCC006B48B1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9E990C24C214B80009579F /* UserNotifications.framework */; };
 		2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */; };
-		2C90A97A24BD12E60000FC18 /* MathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C90A97924BD12E60000FC18 /* MathCell.m */; };
 		2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C96705024BE057F006CA805 /* HomeCollectionCell.m */; };
 		2C9E990624C204BC0009579F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9E990524C204BC0009579F /* SignupViewController.m */; };
 		2CD4C8DF24BF4DE6001563A5 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C8DE24BF4DE6001563A5 /* Note.m */; };
@@ -27,7 +27,6 @@
 		2CE7555A24BD006900861FEA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555924BD006900861FEA /* HomeViewController.m */; };
 		2CE7555D24BD016600861FEA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555C24BD016600861FEA /* SettingsViewController.m */; };
 		2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7555F24BD067D00861FEA /* NotesFeedViewController.m */; };
-		2CE7556324BD070000861FEA /* MathFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556224BD070000861FEA /* MathFeedViewController.m */; };
 		2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556524BD089700861FEA /* NoteDetailsViewController.m */; };
 		2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556824BD09CE00861FEA /* NoteCell.m */; };
 		2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */; };
@@ -72,6 +71,8 @@
 		273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C106BB724C0BFF20025FA6F /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		2C106BB824C0BFF20025FA6F /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		2C11A2BB24CA5E3000003CA1 /* NumbersFactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersFactViewController.h; sourceTree = "<group>"; };
+		2C11A2BC24CA5E3000003CA1 /* NumbersFactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersFactViewController.m; sourceTree = "<group>"; };
 		2C4F3D4C24BCF8EE003D7B5C /* StudyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4F3D4F24BCF8EE003D7B5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,8 +93,6 @@
 		2C55F4E824C73814006B48B1 /* NotificationSetup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationSetup.m; sourceTree = "<group>"; };
 		2C6D3FF124BF4FAD0041ABD2 /* UserSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
 		2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
-		2C90A97824BD12E60000FC18 /* MathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathCell.h; sourceTree = "<group>"; };
-		2C90A97924BD12E60000FC18 /* MathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathCell.m; sourceTree = "<group>"; };
 		2C96704F24BE057F006CA805 /* HomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
 		2C96705024BE057F006CA805 /* HomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionCell.m; sourceTree = "<group>"; };
 		2C9E990424C204BC0009579F /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
@@ -110,8 +109,6 @@
 		2CE7555C24BD016600861FEA /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		2CE7555E24BD067D00861FEA /* NotesFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotesFeedViewController.h; sourceTree = "<group>"; };
 		2CE7555F24BD067D00861FEA /* NotesFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotesFeedViewController.m; sourceTree = "<group>"; };
-		2CE7556124BD070000861FEA /* MathFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MathFeedViewController.h; sourceTree = "<group>"; };
-		2CE7556224BD070000861FEA /* MathFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MathFeedViewController.m; sourceTree = "<group>"; };
 		2CE7556424BD089700861FEA /* NoteDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteDetailsViewController.h; sourceTree = "<group>"; };
 		2CE7556524BD089700861FEA /* NoteDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteDetailsViewController.m; sourceTree = "<group>"; };
 		2CE7556724BD09CE00861FEA /* NoteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
@@ -264,8 +261,6 @@
 			children = (
 				2CE7556724BD09CE00861FEA /* NoteCell.h */,
 				2CE7556824BD09CE00861FEA /* NoteCell.m */,
-				2C90A97824BD12E60000FC18 /* MathCell.h */,
-				2C90A97924BD12E60000FC18 /* MathCell.m */,
 				2C96704F24BE057F006CA805 /* HomeCollectionCell.h */,
 				2C96705024BE057F006CA805 /* HomeCollectionCell.m */,
 			);
@@ -283,14 +278,14 @@
 				2CE7555C24BD016600861FEA /* SettingsViewController.m */,
 				2CE7555E24BD067D00861FEA /* NotesFeedViewController.h */,
 				2CE7555F24BD067D00861FEA /* NotesFeedViewController.m */,
-				2CE7556124BD070000861FEA /* MathFeedViewController.h */,
-				2CE7556224BD070000861FEA /* MathFeedViewController.m */,
 				2CE7556424BD089700861FEA /* NoteDetailsViewController.h */,
 				2CE7556524BD089700861FEA /* NoteDetailsViewController.m */,
 				2CE7556A24BD103F00861FEA /* CreateNoteViewController.h */,
 				2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */,
 				2C9E990424C204BC0009579F /* SignupViewController.h */,
 				2C9E990524C204BC0009579F /* SignupViewController.m */,
+				2C11A2BB24CA5E3000003CA1 /* NumbersFactViewController.h */,
+				2C11A2BC24CA5E3000003CA1 /* NumbersFactViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -547,8 +542,8 @@
 			files = (
 				2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */,
 				2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */,
+				2C11A2BD24CA5E3000003CA1 /* NumbersFactViewController.m in Sources */,
 				2C55F4E924C73814006B48B1 /* NotificationSetup.m in Sources */,
-				2CE7556324BD070000861FEA /* MathFeedViewController.m in Sources */,
 				2C9E990624C204BC0009579F /* SignupViewController.m in Sources */,
 				2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */,
 				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
@@ -557,7 +552,6 @@
 				2CE7555724BCFF6900861FEA /* LoginViewController.m in Sources */,
 				2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */,
 				2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */,
-				2C90A97A24BD12E60000FC18 /* MathCell.m in Sources */,
 				2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */,
 				2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */,
 				2CE7555D24BD016600861FEA /* SettingsViewController.m in Sources */,

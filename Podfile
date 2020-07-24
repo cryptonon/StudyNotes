@@ -10,6 +10,7 @@ target 'StudyNotes' do
   pod 'Parse/UI'
   pod 'Parse/FacebookUtils'
   pod 'JGProgressHUD'
+  pod 'AFNetworking'
 
 
   target 'StudyNotesTests' do

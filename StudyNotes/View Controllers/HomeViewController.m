@@ -28,7 +28,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
-    self.segueIdentifierArray = @[@"notesSegue", @"mathSegue"];
+    self.segueIdentifierArray = @[@"notesSegue", @"numbersFactSegue"];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     layout.minimumInteritemSpacing = 2.5;
