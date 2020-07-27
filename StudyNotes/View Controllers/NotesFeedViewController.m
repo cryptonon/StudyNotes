@@ -13,7 +13,7 @@
 #import "CreateNoteViewController.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 
-@interface NotesFeedViewController () <UITableViewDelegate, UITableViewDataSource, CreateNoteViewControllerDelegate, DetailsViewControllerDelegate>
+@interface NotesFeedViewController () <UITableViewDelegate, UITableViewDataSource, CreateNoteViewControllerDelegate, DetailsViewControllerDelegate, NoteCellDelegate>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -90,6 +90,7 @@
     NoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
     Note *note = self.notesArray[indexPath.row];
     cell.note = note;
+    cell.delegate = self;
     return cell;
 }
 
@@ -119,6 +120,26 @@
     PFFileObject *imageFile = [Note getPFFileFromImage:noteImage];
     self.notesArray[indexPath.row].noteImage = imageFile;
     [self.tableView reloadData];
+}
+
+// Method to hide Nav Bar (NoteCell's required delegate method)
+- (void)hideNavigationBar {
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+// Method to unhide Nav Bar (NoteCell's required delegate method)
+- (void)unhideNavigationBar {
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+// Method to hide Tab Bar Controller (NoteCell's required delegate method)
+- (void)hideTabBarController {
+    [self.tabBarController.tabBar setHidden:YES];
+}
+
+// Method to unhide Tab Bar Controller (NoteCell's required delegate method)
+- (void)unhideTabBarController {
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 # pragma mark - Navigation

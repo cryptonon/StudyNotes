@@ -36,6 +36,45 @@
     self.noteDescriptionLabel.text = note.noteDescription;
     self.noteImageView.file = note.noteImage;
     [self.noteImageView loadInBackground];
+    [self configureLongPressGesture];
+}
+
+// Method that configures longPressGesture on noteImageView
+- (void) configureLongPressGesture {
+    [self.noteImageView setUserInteractionEnabled:YES];
+    UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressNoteImage:)];
+    [self.noteImageView addGestureRecognizer:longPressGesture];
+}
+
+// Method that handles actions when Note Image is long pressed
+- (void) didLongPressNoteImage: (UILongPressGestureRecognizer *) longPressGesture {
+    if (longPressGesture.state == UIGestureRecognizerStateEnded) {
+        UIImageView *fullScreenImageView = [[UIImageView alloc] initWithImage:self.noteImageView.image];
+        fullScreenImageView.frame = [[UIScreen mainScreen] bounds];
+        fullScreenImageView.backgroundColor = [UIColor blackColor];
+        fullScreenImageView.contentMode = UIViewContentModeScaleAspectFit;
+        fullScreenImageView.userInteractionEnabled = YES;
+        fullScreenImageView.alpha = 0;
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissFullScreenImage:)];
+        [fullScreenImageView addGestureRecognizer:tapGesture];
+        [UIView animateWithDuration:1 animations:^{
+            [self.superview.superview addSubview:fullScreenImageView];
+            [self.delegate hideNavigationBar];
+            [self.delegate hideTabBarController];
+           fullScreenImageView.alpha = 1;
+        }];
+    }
+}
+
+// Method that dismisses full screen Note Image
+- (void) dismissFullScreenImage: (UITapGestureRecognizer *) tapGesture {
+    self.superview.alpha = 0;
+    [UIView animateWithDuration:1 animations:^{
+        [self.delegate unhideNavigationBar];
+        [self.delegate unhideTabBarController];
+        [tapGesture.view removeFromSuperview];
+        self.superview.alpha = 1;
+    }];
 }
 
 @end
