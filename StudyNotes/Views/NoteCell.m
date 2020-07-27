@@ -37,4 +37,5 @@
     self.noteImageView.file = note.noteImage;
     [self.noteImageView loadInBackground];
 }
+
 @end

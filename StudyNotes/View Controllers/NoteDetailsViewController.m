@@ -24,10 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setViewProperties];
+    [self animateNoteImage];
 }
 
 // Method that sets properties of DetailsViewController
 - (void) setViewProperties {
+    self.navigationItem.title = self.note.noteTitle;
     self.noteTitleLabel.text = self.note.noteTitle;
     self.noteDescriptionLabel.text = self.note.noteDescription;
     self.noteImageView.file = self.note.noteImage;
@@ -43,17 +45,32 @@
     fullScreenImageView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissFullScreenImage:)];
     [fullScreenImageView addGestureRecognizer:tapGestureRecognizer];
-    [self.view addSubview:fullScreenImageView];
-    [self.navigationController setNavigationBarHidden:YES];
-    [self.tabBarController.tabBar setHidden:YES];
-    
+    fullScreenImageView.alpha = 0;
+    [UIView animateWithDuration:1 animations:^{
+        [self.view addSubview:fullScreenImageView];
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.tabBarController.tabBar setHidden:YES];
+        fullScreenImageView.alpha = 1;
+    }];
 }
 
-// Method to dismiss full screen image
+// Method to dismiss full screen image when full screen view is tapped
 - (void)dismissFullScreenImage: (UITapGestureRecognizer *)sender {
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.tabBarController.tabBar setHidden:NO];
-    [sender.view removeFromSuperview];
+    self.view.alpha = 0;
+    [UIView animateWithDuration:1 animations:^{
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.tabBarController.tabBar setHidden:NO];
+        [sender.view removeFromSuperview];
+        self.view.alpha = 1;
+    }];
+}
+
+// Method that fades in the note image
+- (void) animateNoteImage {
+    [self.noteImageView setAlpha:0];
+    [UIView animateWithDuration:1 animations:^{
+        [self.noteImageView setAlpha:1];
+    }];
 }
 
 #pragma mark - Delegate Methods

@@ -483,6 +483,7 @@
                                                     <rect key="frame" x="294" y="11" width="100" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -730,7 +731,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="k6t-C7-Hwf"/>
+        <segue reference="Fvf-tr-BiF"/>
         <segue reference="VLm-FW-Blu"/>
     </inferredMetricsTieBreakers>
     <resources>
