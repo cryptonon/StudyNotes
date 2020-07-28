@@ -17,6 +17,7 @@
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *segueIdentifierArray;
+@property (strong, nonatomic) NSArray *cellNameArray;
 
 @end
 
@@ -29,6 +30,7 @@
     self.collectionView.delegate = self;
     
     self.segueIdentifierArray = @[@"notesSegue", @"numbersFactSegue"];
+    self.cellNameArray = @[@"Notes", @"Numbers"];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -67,6 +69,7 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     HomeCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HomeCollectionCell" forIndexPath:indexPath];
     cell.indexPath = indexPath;
+    cell.cellNameLabel.text = self.cellNameArray[indexPath.item];
     return cell;
 }
 

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: Properties
 @property (strong, nonatomic) NSIndexPath *indexPath;
+@property (weak, nonatomic) IBOutlet UILabel *cellNameLabel;
 
 @end
 

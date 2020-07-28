@@ -21,6 +21,21 @@
 - (void)setIndexPath:(NSIndexPath *)indexPath {
     NSString *imageName = [NSString stringWithFormat:@"Cell%li", indexPath.item];
     self.cellPosterView.image = [UIImage imageNamed:imageName];
+    self.cellPosterView.alpha = 0.875;
+    [self configureColorGradient];
+}
+
+// Method that configures color gradient over cell images
+- (void)configureColorGradient {
+    [self layoutIfNeeded];
+    UIView *gradientView = [[UIView alloc] initWithFrame: self.contentView.frame];
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    gradientLayer.frame = gradientView.frame;
+    gradientLayer.colors = @[ (id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor] ];
+    gradientLayer.locations = @[@0.0, @1.0];
+    [gradientView.layer insertSublayer:gradientLayer atIndex:0];
+    [self.cellPosterView addSubview:gradientView];
+    [self.cellPosterView bringSubviewToFront:gradientView];
 }
 
 @end

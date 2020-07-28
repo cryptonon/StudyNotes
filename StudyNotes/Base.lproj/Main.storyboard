@@ -449,10 +449,20 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIN-fy-yd9">
+                                                    <rect key="frame" x="33" y="44" width="62" height="40"/>
+                                                    <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="dIN-fy-yd9" firstAttribute="centerX" secondItem="xeu-Nd-lEs" secondAttribute="centerX" id="UKv-M1-NzL"/>
+                                                <constraint firstItem="dIN-fy-yd9" firstAttribute="centerY" secondItem="xeu-Nd-lEs" secondAttribute="centerY" id="mhb-Fv-mE2"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="cellNameLabel" destination="dIN-fy-yd9" id="Wfz-Sx-u1N"/>
                                             <outlet property="cellPosterView" destination="pZh-7m-tmb" id="AsT-lx-rbw"/>
                                         </connections>
                                     </collectionViewCell>
