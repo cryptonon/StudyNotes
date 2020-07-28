@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *studyNotesLabelTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *usernameFieldTopConstraint;
 
 @end
 
@@ -26,6 +28,13 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     [self disableSignupButton];
+}
+
+- (void)viewDidLayoutSubviews {
+    CGFloat viewHeight = self.view.frame.size.height;
+    // Changing constraints proportionally to view height
+    self.studyNotesLabelTopConstraint.constant = viewHeight*0.14;
+    self.usernameFieldTopConstraint.constant = viewHeight*0.07;
 }
 
 // Signing up the new user when Signup button is tapped
