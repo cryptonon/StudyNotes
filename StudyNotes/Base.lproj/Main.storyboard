@@ -70,6 +70,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="gaM-ST-Vwv" id="xA6-A6-C2z"/>
                         <outlet property="passwordField" destination="gb4-sl-FUJ" id="4ki-RB-5Zf"/>
                         <outlet property="usernameField" destination="Xl0-o2-K8K" id="LbQ-9I-HMq"/>
                         <segue destination="ROb-OJ-nML" kind="presentation" identifier="loginSegue" id="VLm-FW-Blu"/>
@@ -132,6 +133,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="HCX-Zh-OvH" id="Gl8-m9-uN8"/>
+                        <outlet property="signupButton" destination="I1f-It-x4D" id="EkQ-m7-O3Y"/>
                         <outlet property="usernameField" destination="7u7-px-Upo" id="YhZ-p8-mcb"/>
                         <segue destination="ROb-OJ-nML" kind="presentation" identifier="loginSegue" id="Rbb-7J-J25"/>
                     </connections>
@@ -732,7 +734,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Fvf-tr-BiF"/>
-        <segue reference="VLm-FW-Blu"/>
+        <segue reference="Rbb-7J-J25"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>

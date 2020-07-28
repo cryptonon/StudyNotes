@@ -11,11 +11,12 @@
 @import Parse;
 #import <JGProgressHUD/JGProgressHUD.h>
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -23,6 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+    [self disableLoginButton];
 }
 
 // Logging in the user when Login button is tapped
@@ -78,6 +82,38 @@
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
         return NO;
+    }
+    return YES;
+}
+
+// Helper Method to disable Login button
+- (void) disableLoginButton {
+    self.loginButton.enabled = NO;
+    self.loginButton.alpha = 0.625;
+}
+
+// Helper Method to enable Login button
+- (void) enableLoginButton {
+    self.loginButton.enabled = YES;
+    self.loginButton.alpha = 1;
+}
+
+# pragma mark - Delegate Methods
+
+// Method that gets called everytime text in Text Field Changes (UITextField's Delegate Method) - enabling/disabling Login button is handled here
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *username, *password;
+    if (textField == self.usernameField) {
+        username = [self.usernameField.text stringByReplacingCharactersInRange:range withString:string];
+        password = self.passwordField.text;
+    } else {
+        username = self.usernameField.text;
+        password = [self.passwordField.text stringByReplacingCharactersInRange:range withString:string];
+    }
+    if ([username length] && [password length]) {
+        [self enableLoginButton];
+    } else {
+        [self disableLoginButton];
     }
     return YES;
 }
