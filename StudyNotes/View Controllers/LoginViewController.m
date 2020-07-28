@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *studyNoteLabelTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *usernameFieldTopConstraint;
 
 @end
 
@@ -27,6 +29,23 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     [self disableLoginButton];
+}
+
+- (void)viewDidLayoutSubviews {
+    CGFloat viewHeight = self.view.frame.size.height;
+    // Changing constraints proportionally to view height
+    self.studyNoteLabelTopConstraint.constant = viewHeight*0.14;
+    self.usernameFieldTopConstraint.constant = viewHeight*0.07;
+}
+
+// Method to disable device rotation
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+// Method to set supported device orientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 // Logging in the user when Login button is tapped
