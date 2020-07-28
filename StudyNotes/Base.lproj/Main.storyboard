@@ -428,9 +428,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DU2-rD-6vO">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DU2-rD-6vO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M45-1V-0r9">
                                     <size key="itemSize" width="128" height="128"/>
@@ -461,6 +460,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DU2-rD-6vO" firstAttribute="trailing" secondItem="PCJ-jJ-XP3" secondAttribute="trailing" id="9Th-i2-uAz"/>
+                            <constraint firstAttribute="bottom" secondItem="DU2-rD-6vO" secondAttribute="bottom" id="NlY-kY-zVH"/>
+                            <constraint firstItem="DU2-rD-6vO" firstAttribute="leading" secondItem="PCJ-jJ-XP3" secondAttribute="leading" id="Qlu-MY-D1Y"/>
+                            <constraint firstItem="DU2-rD-6vO" firstAttribute="top" secondItem="PsO-ob-K0F" secondAttribute="top" id="xqI-L9-Ke2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PCJ-jJ-XP3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="fqB-k5-zB0">

@@ -29,13 +29,24 @@
     self.collectionView.delegate = self;
     
     self.segueIdentifierArray = @[@"notesSegue", @"numbersFactSegue"];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     
+    // Collection view cell size setup
+    CGFloat postersPerLine;
+    CGSize collectionViewSize = self.collectionView.frame.size;
+    if (collectionViewSize.width >= 800) {
+        postersPerLine = 3;
+    } else {
+        postersPerLine = 2;
+    }
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     layout.minimumInteritemSpacing = 2.5;
     layout.minimumLineSpacing = 2.5;
-    CGFloat postersPerLine = 2;
-    CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/postersPerLine;
-    layout.itemSize = CGSizeMake(itemWidth, itemWidth*1.5);
+    CGFloat itemWidth = (collectionViewSize.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/postersPerLine;
+    layout.itemSize = CGSizeMake(itemWidth, itemWidth);
 }
 
 // Logging out the user when Logout button is tapped
