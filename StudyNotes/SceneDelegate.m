@@ -8,6 +8,7 @@
 
 #import "SceneDelegate.h"
 #import <Parse/Parse.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface SceneDelegate ()
 
@@ -26,25 +27,13 @@
     }
 }
 
+# pragma mark - FBSDK Setup
 
-- (void)sceneDidDisconnect:(UIScene *)scene {
+- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+    UIOpenURLContext *urlContext = (UIOpenURLContext *)[[URLContexts allObjects] firstObject];
+    if (!urlContext) return;
+    NSURL *url = urlContext.URL;
+    [FBSDKApplicationDelegate.sharedInstance application:UIApplication.sharedApplication openURL:url sourceApplication:nil annotation:@ [UIApplicationLaunchOptionsAnnotationKey]];
 }
-
-
-- (void)sceneDidBecomeActive:(UIScene *)scene {
-}
-
-
-- (void)sceneWillResignActive:(UIScene *)scene {
-}
-
-
-- (void)sceneWillEnterForeground:(UIScene *)scene {
-}
-
-
-- (void)sceneDidEnterBackground:(UIScene *)scene {
-}
-
 
 @end

@@ -33,8 +33,10 @@
 }
 
 #pragma mark - Facebook SDK setup
+
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options];
+    [FBSDKApplicationDelegate.sharedInstance application:app openURL:url sourceApplication:options[UIApplicationLaunchOptionsSourceApplicationKey] annotation:UIApplicationLaunchOptionsAnnotationKey];
+    return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
