@@ -10,8 +10,9 @@
 #import "Note.h"
 @import Parse;
 #import <JGProgressHUD/JGProgressHUD.h>
+@import TOCropViewController;
 
-@interface CreateNoteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CreateNoteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
@@ -26,11 +27,11 @@
     [super viewDidLoad];
     [self registerForKeyboardNotifications];
     if (!self.note) {
+        [self configureNoteImageView];
         [self presentSourceSelectionAlert];
     } else {
         [self setViewProperties];
     }
-    [self configureNoteImageView];
 }
 
 // Configure noteImageView
@@ -121,7 +122,7 @@
 - (void) showCamera {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.allowsEditing = NO;
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
@@ -130,7 +131,7 @@
 - (void) showLibrary {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.allowsEditing = NO;
     imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
@@ -176,11 +177,26 @@
 
 // UIImagePickerController's Delegate method to get and process captured image locally
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    self.noteImageView.alpha = 1.0;
-    self.noteImageView.image = [self resizeImage:editedImage withSize:CGSizeMake(399, 399)];
-    [self.noteTitleField becomeFirstResponder];
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self presentCropViewController:originalImage];
 }
+
+// TOCropViewController's Delegate method to present a cropping view
+- (void)presentCropViewController:(UIImage*)image {
+  TOCropViewController *cropViewController = [[TOCropViewController alloc] initWithImage:image];
+  cropViewController.delegate = self;
+  [self presentViewController:cropViewController animated:YES completion:nil];
+}
+
+// TOCropViewController's Delegate method to get and process cropped image
+- (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle {
+    self.noteImageView.alpha = 1.0;
+    self.noteImageView.image = image;
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self.noteTitleField becomeFirstResponder];
+    }];
+}
+
 
 @end

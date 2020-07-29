@@ -11,6 +11,7 @@ target 'StudyNotes' do
   pod 'Parse/FacebookUtils'
   pod 'JGProgressHUD'
   pod 'AFNetworking'
+  pod 'TOCropViewController'
 
 
   target 'StudyNotesTests' do
