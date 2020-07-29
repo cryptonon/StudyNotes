@@ -29,6 +29,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self customizeTableView];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchNotes) forControlEvents:UIControlEventValueChanged];
@@ -36,6 +37,16 @@
     
     [self fetchNotes];
 }
+
+// Method that customizes tableView
+- (void)customizeTableView {
+    self.tableView.separatorColor = [UIColor blackColor];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.alpha = 0.25;
+    self.tableView.backgroundView = backgroundImageView;
+}
+
 
 // Method to deselect the selected row
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,16 +74,14 @@
 }
 
 // Method to present alert and delete the note
-- (void) presentDeleteAlertAndDeleteNote: (Note *)note {
+- (void) presentDeleteAlertAndDeleteNote: (Note *)note atIndexPath: (NSIndexPath *) indexPath {
     UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete the note?"
                                                                          message:nil
                                                                   preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [note deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                [self fetchNotes];
-            }
-        }];
+        [self.notesArray removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+        [note deleteInBackground];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No"
                                                            style:UIAlertActionStyleCancel
@@ -103,7 +112,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     Note *selectedNote = self.notesArray[indexPath.row];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self presentDeleteAlertAndDeleteNote:selectedNote];
+        [self presentDeleteAlertAndDeleteNote:selectedNote atIndexPath:indexPath];
     }
 }
 

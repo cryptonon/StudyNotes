@@ -32,11 +32,21 @@
 // Setter method that sets NoteCell's properties
 - (void) setNote:(Note *)note {
     _note = note;
+    self.backgroundColor = [UIColor clearColor];
     self.noteTitleLabel.text = note.noteTitle;
     self.noteDescriptionLabel.text = note.noteDescription;
     self.noteImageView.file = note.noteImage;
     [self.noteImageView loadInBackground];
+    [self animateNoteImageView];
     [self configureLongPressGesture];
+}
+
+// Method that animates noteImageView
+- (void)animateNoteImageView {
+    self.noteImageView.alpha = 0;
+    [UIView animateWithDuration:0.625 animations:^{
+        self.noteImageView.alpha = 1;
+    }];
 }
 
 // Method that configures longPressGesture on noteImageView
