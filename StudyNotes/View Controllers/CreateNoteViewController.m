@@ -30,6 +30,13 @@
     } else {
         [self setViewProperties];
     }
+    [self configureNoteImageView];
+}
+
+// Configure noteImageView
+- (void)configureNoteImageView {
+    self.noteImageView.image = [UIImage imageNamed:@"note"];
+    self.noteImageView.alpha = 0.25;
 }
 
 // Method that sets properties of CreateNoteViewController
@@ -155,7 +162,7 @@
 - (void)keyboardWillAppear:(NSNotification*)keyboardNotification {
     NSDictionary* info = [keyboardNotification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - (keyboardSize.height), self.view.frame.size.width, self.view.frame.size.height);
+    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - (keyboardSize.height)*0.5, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
@@ -170,7 +177,9 @@
 // UIImagePickerController's Delegate method to get and process captured image locally
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    self.noteImageView.alpha = 1.0;
     self.noteImageView.image = [self resizeImage:editedImage withSize:CGSizeMake(399, 399)];
+    [self.noteTitleField becomeFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
