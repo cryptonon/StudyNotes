@@ -616,10 +616,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U25-P6-ltv" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="389"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="372.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-BH-lGV" customClass="PFImageView">
-                                                <rect key="frame" x="8" y="8" width="204" height="289"/>
+                                                <rect key="frame" x="105" y="8" width="204" height="289"/>
                                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -630,14 +630,14 @@
                                                     <outletCollection property="gestureRecognizers" destination="E0U-RZ-IYR" appends="YES" id="qlK-8q-XXg"/>
                                                 </connections>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHC-wy-NXq">
-                                                <rect key="frame" x="8" y="329" width="78" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHC-wy-NXq">
+                                                <rect key="frame" x="16" y="313" width="382" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHL-7e-HRU">
-                                                <rect key="frame" x="8" y="358" width="129" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHL-7e-HRU">
+                                                <rect key="frame" x="10" y="342" width="394" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -645,13 +645,16 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="L0m-BH-lGV" firstAttribute="leading" secondItem="U25-P6-ltv" secondAttribute="leading" constant="8" id="6Kn-Iy-LhW"/>
+                                            <constraint firstItem="dHC-wy-NXq" firstAttribute="centerX" secondItem="U25-P6-ltv" secondAttribute="centerX" id="9wG-R3-KsK"/>
+                                            <constraint firstItem="dHC-wy-NXq" firstAttribute="leading" secondItem="U25-P6-ltv" secondAttribute="leading" constant="16" id="Ack-lS-Onc"/>
                                             <constraint firstItem="L0m-BH-lGV" firstAttribute="top" secondItem="U25-P6-ltv" secondAttribute="top" constant="8" id="KIj-Ge-YVf"/>
-                                            <constraint firstItem="xHL-7e-HRU" firstAttribute="leading" secondItem="U25-P6-ltv" secondAttribute="leading" constant="8" id="THJ-Mp-hVh"/>
+                                            <constraint firstItem="L0m-BH-lGV" firstAttribute="centerX" secondItem="U25-P6-ltv" secondAttribute="centerX" id="W4V-IR-OgG"/>
+                                            <constraint firstAttribute="trailing" secondItem="dHC-wy-NXq" secondAttribute="trailing" constant="16" id="Z53-xa-oRp"/>
+                                            <constraint firstItem="xHL-7e-HRU" firstAttribute="leading" secondItem="U25-P6-ltv" secondAttribute="leading" constant="10" id="aiU-Mp-eEk"/>
                                             <constraint firstAttribute="bottom" secondItem="xHL-7e-HRU" secondAttribute="bottom" constant="10" id="fVy-2v-cde"/>
-                                            <constraint firstItem="dHC-wy-NXq" firstAttribute="top" secondItem="L0m-BH-lGV" secondAttribute="bottom" constant="32" id="n0V-qt-QGA"/>
-                                            <constraint firstItem="dHC-wy-NXq" firstAttribute="leading" secondItem="U25-P6-ltv" secondAttribute="leading" constant="8" id="nwM-44-jGA"/>
+                                            <constraint firstItem="dHC-wy-NXq" firstAttribute="top" secondItem="L0m-BH-lGV" secondAttribute="bottom" constant="16" id="n0V-qt-QGA"/>
                                             <constraint firstItem="xHL-7e-HRU" firstAttribute="top" secondItem="dHC-wy-NXq" secondAttribute="bottom" constant="8" id="olf-OI-YRV"/>
+                                            <constraint firstAttribute="trailing" secondItem="xHL-7e-HRU" secondAttribute="trailing" constant="10" id="teg-E1-6Lf"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -683,9 +686,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentView" destination="U25-P6-ltv" id="QkE-WS-gOZ"/>
                         <outlet property="noteDescriptionLabel" destination="xHL-7e-HRU" id="d24-e6-8OE"/>
                         <outlet property="noteImageView" destination="L0m-BH-lGV" id="v54-2C-CMW"/>
                         <outlet property="noteTitleLabel" destination="dHC-wy-NXq" id="f3i-pn-Lmr"/>
+                        <outlet property="scrollView" destination="xxQ-hX-lFS" id="hBb-Ok-jFO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gnn-5O-O2W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -820,7 +825,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fvf-tr-BiF"/>
+        <segue reference="k6t-C7-Hwf"/>
         <segue reference="Rbb-7J-J25"/>
     </inferredMetricsTieBreakers>
     <resources>

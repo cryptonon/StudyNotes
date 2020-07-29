@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -24,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setViewProperties];
+    [self customizeScrollView];
     [self animateNoteImage];
 }
 
@@ -36,6 +39,15 @@
     [self.noteImageView loadInBackground];
 }
 
+// Method that customizes scrollView's appearance
+- (void)customizeScrollView {
+    self.contentView.backgroundColor = [UIColor clearColor];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.alpha = 0.25;
+    [self.scrollView insertSubview:backgroundImageView atIndex:0];
+}
+
 // Method to show image full screen on tapping noteImageView
 - (IBAction)didTapNoteImage:(id)sender {
     UIImageView *fullScreenImageView = [[UIImageView alloc] initWithImage:self.noteImageView.image];
@@ -46,7 +58,7 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissFullScreenImage:)];
     [fullScreenImageView addGestureRecognizer:tapGestureRecognizer];
     fullScreenImageView.alpha = 0;
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:0.625 animations:^{
         [self.view addSubview:fullScreenImageView];
         [self.navigationController setNavigationBarHidden:YES];
         [self.tabBarController.tabBar setHidden:YES];
@@ -57,7 +69,7 @@
 // Method to dismiss full screen image when full screen view is tapped
 - (void)dismissFullScreenImage: (UITapGestureRecognizer *)sender {
     self.view.alpha = 0;
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:0.625 animations:^{
         [self.navigationController setNavigationBarHidden:NO];
         [self.tabBarController.tabBar setHidden:NO];
         [sender.view removeFromSuperview];
@@ -68,7 +80,7 @@
 // Method that fades in the note image
 - (void) animateNoteImage {
     [self.noteImageView setAlpha:0];
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:0.625 animations:^{
         [self.noteImageView setAlpha:1];
     }];
 }
