@@ -13,7 +13,7 @@
 @interface NoteDetailsViewController () <CreateNoteViewControllerDelegate>
 
 // MARK: Properties
-@property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -35,8 +35,7 @@
     self.navigationItem.title = self.note.noteTitle;
     self.noteTitleLabel.text = self.note.noteTitle;
     self.noteDescriptionLabel.text = self.note.noteDescription;
-    self.noteImageView.file = self.note.noteImage;
-    [self.noteImageView loadInBackground];
+    self.noteImageView.image = [UIImage imageWithData:self.note.noteImageData];
 }
 
 // Method that customizes scrollView's appearance

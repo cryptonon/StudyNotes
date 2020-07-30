@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSString *noteTitle;
 @property (nonatomic, strong) NSString *noteDescription;
-@property (nonatomic, strong) PFFileObject *noteImage;
+@property (nonatomic, strong) NSData *noteImageData;
 @property (nonatomic) BOOL isPushNotified;
 
 //MARK: Methods
@@ -33,8 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
               withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 + (Note *) getNoteforPushNotification;
-
-+ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image;
 
 @end
 

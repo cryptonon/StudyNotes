@@ -15,7 +15,7 @@
 @interface CreateNoteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate>
 
 // MARK: Properties
-@property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UITextField *noteTitleField;
 @property (weak, nonatomic) IBOutlet UITextView *noteDescriptionTextView;
 
@@ -44,8 +44,7 @@
 - (void)setViewProperties {
     self.noteTitleField.text = self.note.noteTitle;
     self.noteDescriptionTextView.text = self.note.noteDescription;
-    self.noteImageView.file = self.note.noteImage;
-    [self.noteImageView loadInBackground];
+    self.noteImageView.image = [UIImage imageWithData:self.note.noteImageData];
 }
 
 // Method to dismiss modal view on tapping Cancel button
@@ -64,7 +63,7 @@
                 Note *newNote = [[Note alloc] init];
                 newNote.noteTitle = self.noteTitleField.text;
                 newNote.noteDescription = self.noteDescriptionTextView.text;
-                newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
+                newNote.noteImageData = UIImageJPEGRepresentation(self.noteImageView.image, 0.6);
                 [self.delegate postedNote:newNote];
                 [self dismissViewControllerAnimated:YES completion:nil];
                 [progressHUD dismiss];

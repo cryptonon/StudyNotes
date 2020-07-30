@@ -14,7 +14,7 @@
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
-@property (weak, nonatomic) IBOutlet PFImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
 
 
 @end
@@ -35,8 +35,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.noteTitleLabel.text = note.noteTitle;
     self.noteDescriptionLabel.text = note.noteDescription;
-    self.noteImageView.file = note.noteImage;
-    [self.noteImageView loadInBackground];
+    self.noteImageView.image = [UIImage imageWithData:note.noteImageData];
     [self animateNoteImageView];
     [self configureLongPressGesture];
 }
