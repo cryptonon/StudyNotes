@@ -66,24 +66,19 @@
     }
 }
 
-// Method that returns a note for every push notification
-+ (Note *)getNoteforPushNotification {
-    Note *noteToBePushNotified = [self fetchNoteForPushNotification];
-    if (noteToBePushNotified) {
-        return noteToBePushNotified;
-    } else {
-        Note *noteToBePushNotified = [self fetchNoteForPushNotification];
-        return noteToBePushNotified;
-    }
-}
-
-// Helper method that fetches a note for getNoteforPushNotification method
-+ (Note *)fetchNoteForPushNotification {
+// Helper method that fetches noteArray for push notification
++ (NSArray *)fetchNoteArrayForPushNotification {
     PFQuery *noteQuery = [Note query];
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
     [noteQuery whereKey:@"isPushNotified" equalTo:@(NO)];
     [noteQuery orderByAscending:@"updatedAt"];
     NSArray *noteArray = [noteQuery findObjects];
+    return noteArray;
+}
+
+// Method that returns a note for every push notification
++ (Note *)getNoteforPushNotification {
+    NSArray *noteArray = [self fetchNoteArrayForPushNotification];
     if (noteArray) {
         if (noteArray.count) {
             Note *noteToBePushNotified = [noteArray firstObject];
@@ -91,11 +86,15 @@
             return noteToBePushNotified;
         } else {
             [Note resetPushNotifiedFlagForAllNotes];
-            return nil;
+            noteArray = [self fetchNoteArrayForPushNotification]; // Retrying the fetch call once again
+            if (noteArray.count) {
+                Note *noteToBePushNotified = [noteArray firstObject];
+                 [noteToBePushNotified updatePushNotifiedFlag];
+                 return noteToBePushNotified;
+            }
         }
-    } else {
-        return nil;
     }
+    return nil;
 }
 
 # pragma mark - Delegate Methods
