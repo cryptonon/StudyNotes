@@ -35,7 +35,9 @@
     self.navigationItem.title = self.note.noteTitle;
     self.noteTitleLabel.text = self.note.noteTitle;
     self.noteDescriptionLabel.text = self.note.noteDescription;
-    self.noteImageView.image = [UIImage imageWithData:self.note.noteImageData];
+    [self.note.noteImage getDataInBackgroundWithBlock:^(NSData * _Nullable imageData, NSError * _Nullable error) {
+        self.noteImageView.image = [UIImage imageWithData:imageData];
+    }];
 }
 
 // Method that customizes scrollView's appearance

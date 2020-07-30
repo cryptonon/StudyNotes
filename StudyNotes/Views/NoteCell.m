@@ -35,7 +35,9 @@
     self.backgroundColor = [UIColor clearColor];
     self.noteTitleLabel.text = note.noteTitle;
     self.noteDescriptionLabel.text = note.noteDescription;
-    self.noteImageView.image = [UIImage imageWithData:note.noteImageData];
+    [note.noteImage getDataInBackgroundWithBlock:^(NSData * _Nullable imageData, NSError * _Nullable error) {
+        self.noteImageView.image = [UIImage imageWithData:imageData];
+    }];
     [self animateNoteImageView];
     [self configureLongPressGesture];
 }

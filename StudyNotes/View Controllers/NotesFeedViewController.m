@@ -126,8 +126,8 @@
 - (void)updatedNoteAtIndexPath:(NSIndexPath *)indexPath toTitle:(NSString *)noteTitle toDescription:(NSString *)noteDescription toImage:(UIImage *)noteImage {
     self.notesArray[indexPath.row].noteTitle = noteTitle;
     self.notesArray[indexPath.row].noteDescription = noteDescription;
-    NSData *imageData = UIImageJPEGRepresentation(noteImage, 0.6);
-    self.notesArray[indexPath.row].noteImageData = imageData;
+    PFFileObject *imageFile = [Note getPFFileFromImage:noteImage];
+    self.notesArray[indexPath.row].noteImage = imageFile;
     [self.tableView reloadData];
 }
 
