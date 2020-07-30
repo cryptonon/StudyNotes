@@ -70,8 +70,19 @@
 
 // Signing the user with facebook when Continue with Facebook is tapped
 - (IBAction)onContinueWithFB:(id)sender {
-  [PFFacebookUtils logInInBackgroundWithReadPermissions:nil block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+  [PFFacebookUtils logInInBackgroundWithReadPermissions:@[@"public_profile", @"email"] block:^(PFUser * _Nullable user, NSError * _Nullable error) {
       if (user) {
+          if (user.isNew) {
+              FBSDKGraphRequest *graphRequest = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:@{ @"fields": @"id,email",}];
+              [graphRequest startWithCompletionHandler:^(FBSDKGraphRequestConnection * _Nullable connection, id  _Nullable result, NSError * _Nullable error) {
+                  if (!error) {
+                          user[@"FBID"] = result[@"id"];
+                          user[@"email"] = result[@"email"];
+                          user[@"username"] = [[result[@"email"] componentsSeparatedByString:@"@"] objectAtIndex:0];
+                          [user saveInBackground];
+                      }
+                  }];
+              }
           [self performSegueWithIdentifier:@"loginSegue" sender:nil];
       }
     }];
