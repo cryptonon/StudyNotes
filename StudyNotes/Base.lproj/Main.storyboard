@@ -312,7 +312,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="1Jh-8h-V8e">
-                                                <rect key="frame" x="81" y="66" width="325" height="110"/>
+                                                <rect key="frame" x="80.5" y="66" width="325.5" height="110"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="110" id="6Ag-lG-0E7"/>
                                                 </constraints>
@@ -324,13 +324,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="zW6-0I-elx">
-                                                <rect key="frame" x="81" y="184" width="325" height="110"/>
+                                                <rect key="frame" x="80.5" y="184" width="325.5" height="110"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="110" id="Yjd-ve-bon"/>
                                                 </constraints>
                                             </datePicker>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og3-bH-gK3">
-                                                <rect key="frame" x="81" y="302" width="325" height="110"/>
+                                                <rect key="frame" x="80.5" y="302" width="325.5" height="110"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="110" id="aYK-EN-GbS"/>
                                                 </constraints>
@@ -348,7 +348,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqk-7w-LOo">
-                                                <rect key="frame" x="81" y="538" width="325" height="110"/>
+                                                <rect key="frame" x="80.5" y="538" width="325.5" height="110"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="110" id="9aB-ze-i8Z"/>
                                                 </constraints>
@@ -363,7 +363,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="30" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-ck-3Bj">
-                                                <rect key="frame" x="81" y="420" width="325" height="110"/>
+                                                <rect key="frame" x="80.5" y="420" width="325.5" height="110"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="110" id="CHD-Yk-ZCE"/>
                                                 </constraints>
@@ -581,7 +581,7 @@
                                                     <color key="textColor" red="0.01384711567" green="0.1152725309" blue="0.1853484839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-pf-YvG" customClass="PFImageView">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-pf-YvG">
                                                     <rect key="frame" x="294" y="10" width="100" height="100"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -604,7 +604,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="noteDescriptionLabel" destination="ZYH-sc-oVw" id="6gJ-Ua-zaf"/>
-                                            <outlet property="noteImageView" destination="9M9-pf-YvG" id="sMl-Wn-opX"/>
+                                            <outlet property="noteImageView" destination="9M9-pf-YvG" id="IRP-wi-kVW"/>
                                             <outlet property="noteTitleLabel" destination="V8w-KC-aSi" id="89N-5N-GNd"/>
                                             <segue destination="gGC-St-vpQ" kind="show" identifier="noteDetailsSegue" id="POj-vj-M8b"/>
                                         </connections>
@@ -650,7 +650,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U25-P6-ltv" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="372.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-BH-lGV" customClass="PFImageView">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-BH-lGV">
                                                 <rect key="frame" x="105" y="8" width="204" height="289"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -719,7 +719,7 @@
                     <connections>
                         <outlet property="contentView" destination="U25-P6-ltv" id="QkE-WS-gOZ"/>
                         <outlet property="noteDescriptionLabel" destination="xHL-7e-HRU" id="d24-e6-8OE"/>
-                        <outlet property="noteImageView" destination="L0m-BH-lGV" id="v54-2C-CMW"/>
+                        <outlet property="noteImageView" destination="L0m-BH-lGV" id="cjP-xx-5lg"/>
                         <outlet property="noteTitleLabel" destination="dHC-wy-NXq" id="f3i-pn-Lmr"/>
                         <outlet property="scrollView" destination="xxQ-hX-lFS" id="hBb-Ok-jFO"/>
                     </connections>
@@ -842,7 +842,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="noteDescriptionTextView" destination="V9w-da-kUU" id="fpL-p8-o2G"/>
-                        <outlet property="noteImageView" destination="j54-Ca-iKB" id="hZj-lX-j9x"/>
+                        <outlet property="noteImageView" destination="j54-Ca-iKB" id="QEx-GK-jhe"/>
                         <outlet property="noteTitleField" destination="QUV-GQ-rJL" id="RSF-PT-aKj"/>
                     </connections>
                 </viewController>

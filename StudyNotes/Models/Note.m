@@ -16,23 +16,15 @@
 @dynamic author;
 @dynamic noteTitle;
 @dynamic noteDescription;
-@dynamic noteImage;
+@dynamic noteImageData;
 @dynamic isPushNotified;
-
-// Class method for making PFFileObject from UIImage
-+ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
-    if (!image) return nil;
-    NSData *imageData = UIImagePNGRepresentation(image);
-    if (!imageData) return nil;
-    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
-}
 
 // Class method for posting a new note to parse
 + (void)postNote:(NSString *)title withDescription:(NSString *)description withImage:(UIImage *)image withCompletion:(PFBooleanResultBlock)completion {
     Note *newNote = [Note new];
     newNote.noteTitle = title;
     newNote.noteDescription = description;
-    newNote.noteImage = [self getPFFileFromImage:image];
+    newNote.noteImageData = UIImageJPEGRepresentation(image, 0.6);
     newNote.author = [PFUser currentUser];
     newNote.isPushNotified = NO;
     [newNote saveInBackgroundWithBlock: completion];
@@ -42,7 +34,7 @@
 - (void)updateNoteWithTitle:(NSString *)title withDescription:(NSString *)description withImage:(UIImage *)image withCompletion:(PFBooleanResultBlock)completion {
     self.noteTitle = title;
     self.noteDescription = description;
-    self.noteImage = [Note getPFFileFromImage:image];
+    self.noteImageData = UIImageJPEGRepresentation(image, 0.6);
     self.isPushNotified = NO;
     [self saveInBackgroundWithBlock: completion];
 }
