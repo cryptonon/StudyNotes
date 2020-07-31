@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UITextField *noteTitleField;
 @property (weak, nonatomic) IBOutlet UITextView *noteDescriptionTextView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UILabel *noteTitlePlaceHolderLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noteDescriptionPlaceHolderLabel;
 
 @end
 
@@ -25,6 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setScrollViewBackground];
+    [self addShadowToNoteTitleField];
+    [self customizeNoteDescriptionTextView];
+    [self customizeNoteImageView];
     [self registerForKeyboardNotifications];
     if (!self.note) {
         [self configureNoteImageView];
@@ -47,6 +55,51 @@
     [self.note.noteImage getDataInBackgroundWithBlock:^(NSData * _Nullable imageData, NSError * _Nullable error) {
         self.noteImageView.image = [UIImage imageWithData:imageData];
     }];
+}
+
+// Method that sets scrollView's background matching to app theme image
+- (void)setScrollViewBackground {
+    self.contentView.backgroundColor = [UIColor clearColor];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.alpha = 0.25;
+    [self.scrollView insertSubview:backgroundImageView atIndex:0];
+}
+
+// Method that adds shadow to noteTitleField
+-(void)addShadowToNoteTitleField {
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 2.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 5.0f;
+    self.noteTitleField.layer.shadowColor = shadowColor;
+    self.noteTitleField.layer.shadowOffset = shadowOffset;
+    self.noteTitleField.layer.shadowOpacity = shadowOpacity;
+    self.noteTitleField.layer.shadowRadius = shadowRadius;
+}
+
+// Method that adds shadow, corner radius, and border to noteDescriptionTextView
+-(void)customizeNoteDescriptionTextView {
+    [self.noteDescriptionTextView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.45] CGColor]];
+    [self.noteDescriptionTextView.layer setBorderWidth:1.5];
+    self.noteDescriptionTextView.layer.cornerRadius = 15;
+    self.noteDescriptionTextView.clipsToBounds = YES;
+    
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 5.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 12.5f;
+    self.noteDescriptionTextView.layer.shadowColor = shadowColor;
+    self.noteDescriptionTextView.layer.shadowOffset = shadowOffset;
+    self.noteDescriptionTextView.layer.shadowOpacity = shadowOpacity;
+    self.noteDescriptionTextView.layer.shadowRadius = shadowRadius;
+    self.noteDescriptionTextView.layer.masksToBounds = NO;
+}
+
+// Method that adds border to noteImageView
+-(void)customizeNoteImageView {
+    [self.noteImageView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.75] CGColor]];
+    [self.noteImageView.layer setBorderWidth:1.5];
 }
 
 // Method to dismiss modal view on tapping Cancel button

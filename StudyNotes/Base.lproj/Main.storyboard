@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -780,7 +781,7 @@
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V9w-da-kUU">
                                                 <rect key="frame" x="8" y="420" width="398" height="174"/>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="backgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="174" id="Ogr-Xj-jMQ"/>
                                                 </constraints>
@@ -844,9 +845,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentView" destination="ZNY-pG-wBu" id="JlT-Mj-3kB"/>
                         <outlet property="noteDescriptionTextView" destination="V9w-da-kUU" id="fpL-p8-o2G"/>
                         <outlet property="noteImageView" destination="j54-Ca-iKB" id="QEx-GK-jhe"/>
                         <outlet property="noteTitleField" destination="QUV-GQ-rJL" id="RSF-PT-aKj"/>
+                        <outlet property="scrollView" destination="vcl-aw-DRJ" id="gzg-dl-Dc7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6F-Wz-QzE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -883,5 +886,8 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <namedColor name="backgroundColor">
+            <color red="0.94099998474121094" green="0.93000000715255737" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>
