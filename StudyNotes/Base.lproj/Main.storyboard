@@ -98,12 +98,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="continueWithFBButton" destination="Pud-jl-H3U" id="6CN-6G-R7e"/>
                         <outlet property="loginButton" destination="gaM-ST-Vwv" id="xA6-A6-C2z"/>
                         <outlet property="passwordField" destination="gb4-sl-FUJ" id="4ki-RB-5Zf"/>
                         <outlet property="studyNoteLabelTopConstraint" destination="WwM-7h-dCs" id="VBJ-xC-ETn"/>
+                        <outlet property="studyNotesLabel" destination="HF9-Tg-wT5" id="pqu-z5-hha"/>
                         <outlet property="usernameField" destination="Xl0-o2-K8K" id="LbQ-9I-HMq"/>
                         <outlet property="usernameFieldTopConstraint" destination="gzb-SR-ZKk" id="Jmg-9v-Nq9"/>
-                        <segue destination="ROb-OJ-nML" kind="presentation" identifier="loginSegue" id="VLm-FW-Blu"/>
+                        <segue destination="ROb-OJ-nML" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="VLm-FW-Blu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -188,10 +190,11 @@
                     <connections>
                         <outlet property="passwordField" destination="HCX-Zh-OvH" id="Gl8-m9-uN8"/>
                         <outlet property="signupButton" destination="I1f-It-x4D" id="EkQ-m7-O3Y"/>
+                        <outlet property="studyNotesLabel" destination="BhN-sR-ddZ" id="ZE6-12-AVU"/>
                         <outlet property="studyNotesLabelTopConstraint" destination="q2X-pH-pe2" id="dgx-vI-0o0"/>
                         <outlet property="usernameField" destination="7u7-px-Upo" id="YhZ-p8-mcb"/>
                         <outlet property="usernameFieldTopConstraint" destination="DNY-tI-Dc6" id="9dT-ZL-W70"/>
-                        <segue destination="ROb-OJ-nML" kind="presentation" identifier="loginSegue" id="Rbb-7J-J25"/>
+                        <segue destination="ROb-OJ-nML" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="Rbb-7J-J25"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4m9-R8-hbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -203,26 +206,26 @@
             <objects>
                 <viewController id="dtP-32-Tk8" customClass="NumbersFactViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OCW-yK-urK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hz0-dd-kCb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STs-d8-WAr">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Image ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ln-Eq-aHE">
-                                                <rect key="frame" x="141.5" y="200" width="131" height="21"/>
+                                                <rect key="frame" x="141.5" y="213.5" width="131" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ndr-ZQ-ioY">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="421"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just making sure this gets displayed correctly in the view" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvN-Xe-0Xi">
-                                                <rect key="frame" x="8" y="445" width="398" height="41"/>
+                                                <rect key="frame" x="8" y="472" width="398" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -284,11 +287,11 @@
             <objects>
                 <viewController id="zIG-pv-eJk" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uTa-vV-fA7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZ4-8H-PT4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SE7-B1-Cmv" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="658"/>
@@ -457,11 +460,11 @@
             <objects>
                 <viewController id="Zrf-hi-ac2" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PsO-ob-K0F">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DU2-rD-6vO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M45-1V-0r9">
                                     <size key="itemSize" width="128" height="128"/>
@@ -538,7 +541,7 @@
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ROb-OJ-nML" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0kM-qO-fIK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -555,11 +558,11 @@
             <objects>
                 <viewController id="p7t-U2-fgC" customClass="NotesFeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rpp-d7-E07">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="122" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Uc-qv-Fnr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="122" id="jLx-TJ-tyI" customClass="NoteCell">
@@ -641,11 +644,11 @@
             <objects>
                 <viewController id="gGC-St-vpQ" customClass="NoteDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rf3-ff-VjB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxQ-hX-lFS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U25-P6-ltv" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="372.5"/>

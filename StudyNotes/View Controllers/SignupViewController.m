@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *signupButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *studyNotesLabelTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *usernameFieldTopConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *studyNotesLabel;
 
 @end
 
@@ -28,6 +29,9 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     [self disableSignupButton];
+    [self addShadowToStudyNotesLabel];
+    [self addShadowToTextFields];
+    [self customizeSignupButton];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -35,6 +39,48 @@
     // Changing constraints proportionally to view height
     self.studyNotesLabelTopConstraint.constant = viewHeight*0.14;
     self.usernameFieldTopConstraint.constant = viewHeight*0.07;
+}
+
+// Method that adds shadow to usernameField and passwordField
+-(void)addShadowToTextFields {
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 2.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 5.0f;
+    self.usernameField.layer.shadowColor = shadowColor;
+    self.usernameField.layer.shadowOffset = shadowOffset;
+    self.usernameField.layer.shadowOpacity = shadowOpacity;
+    self.usernameField.layer.shadowRadius = shadowRadius;
+    self.passwordField.layer.shadowColor = shadowColor;
+    self.passwordField.layer.shadowOffset = shadowOffset;
+    self.passwordField.layer.shadowOpacity = shadowOpacity;
+    self.passwordField.layer.shadowRadius = shadowRadius;
+}
+
+// Method that adds shadow to studyNotesLabel
+-(void)addShadowToStudyNotesLabel {
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.625f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 2.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 2.5f;
+    self.studyNotesLabel.layer.shadowColor = shadowColor;
+    self.studyNotesLabel.layer.shadowOffset = shadowOffset;
+    self.studyNotesLabel.layer.shadowOpacity = shadowOpacity;
+    self.studyNotesLabel.layer.shadowRadius = shadowRadius;
+}
+
+// Method that adds shadow and corner radius to Signup button
+-(void)customizeSignupButton {
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.45f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 1.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 1.25f;
+    CGFloat cornerRadius = 15.0f;
+    self.signupButton.layer.shadowColor = shadowColor;
+    self.signupButton.layer.shadowOffset = shadowOffset;
+    self.signupButton.layer.shadowOpacity = shadowOpacity;
+    self.signupButton.layer.shadowRadius = shadowRadius;
+    self.signupButton.layer.cornerRadius = cornerRadius;
 }
 
 // Signing up the new user when Signup button is tapped

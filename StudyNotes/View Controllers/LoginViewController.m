@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *studyNoteLabelTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *usernameFieldTopConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *studyNotesLabel;
+@property (weak, nonatomic) IBOutlet UIButton *continueWithFBButton;
 
 @end
 
@@ -29,6 +31,9 @@
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
     [self disableLoginButton];
+    [self addShadowToStudyNotesLabel];
+    [self addShadowToTextFields];
+    [self customizeLoginButtons];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -46,6 +51,53 @@
 // Method to set supported device orientations
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
+}
+
+// Method that adds shadow to usernameField and passwordField
+-(void)addShadowToTextFields {
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 2.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 5.0f;
+    self.usernameField.layer.shadowColor = shadowColor;
+    self.usernameField.layer.shadowOffset = shadowOffset;
+    self.usernameField.layer.shadowOpacity = shadowOpacity;
+    self.usernameField.layer.shadowRadius = shadowRadius;
+    self.passwordField.layer.shadowColor = shadowColor;
+    self.passwordField.layer.shadowOffset = shadowOffset;
+    self.passwordField.layer.shadowOpacity = shadowOpacity;
+    self.passwordField.layer.shadowRadius = shadowRadius;
+}
+
+// Method that adds shadow to studyNotesLabel
+-(void)addShadowToStudyNotesLabel {
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.625f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 2.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 2.5f;
+    self.studyNotesLabel.layer.shadowColor = shadowColor;
+    self.studyNotesLabel.layer.shadowOffset = shadowOffset;
+    self.studyNotesLabel.layer.shadowOpacity = shadowOpacity;
+    self.studyNotesLabel.layer.shadowRadius = shadowRadius;
+}
+
+// Method that adds shadow and corner radius to Login and Continue with FB buttons
+-(void)customizeLoginButtons {
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.45f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 1.0f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 1.25f;
+    CGFloat cornerRadius = 15.0f;
+    self.loginButton.layer.shadowColor = shadowColor;
+    self.loginButton.layer.shadowOffset = shadowOffset;
+    self.loginButton.layer.shadowOpacity = shadowOpacity;
+    self.loginButton.layer.shadowRadius = shadowRadius;
+    self.loginButton.layer.cornerRadius = cornerRadius;
+    self.continueWithFBButton.layer.shadowColor = shadowColor;
+    self.continueWithFBButton.layer.shadowOffset = shadowOffset;
+    self.continueWithFBButton.layer.shadowOpacity = shadowOpacity;
+    self.continueWithFBButton.layer.shadowRadius = shadowRadius;
+    self.continueWithFBButton.layer.cornerRadius = cornerRadius;
 }
 
 // Logging in the user when Login button is tapped
