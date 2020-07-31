@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) postNote: ( NSString * _Nonnull )title
   withDescription: ( NSString * _Nullable )description
         withImage: ( UIImage * _Nullable )image
+       withNoteID: ( NSString * _Nonnull )noteID
    withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 - (void) updateNoteWithTitle: ( NSString * _Nonnull )title

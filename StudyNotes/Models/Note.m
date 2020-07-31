@@ -28,8 +28,9 @@
 
 
 // Class method for posting a new note to parse
-+ (void)postNote:(NSString *)title withDescription:(NSString *)description withImage:(UIImage *)image withCompletion:(PFBooleanResultBlock)completion {
++ (void)postNote:(NSString *)title withDescription:(NSString *)description withImage:(UIImage *)image withNoteID:(NSString *)noteID withCompletion:(PFBooleanResultBlock)completion {
     Note *newNote = [Note new];
+    newNote.noteID = noteID;
     newNote.noteTitle = title;
     newNote.noteDescription = description;
     newNote.noteImage = [self getPFFileFromImage:image];

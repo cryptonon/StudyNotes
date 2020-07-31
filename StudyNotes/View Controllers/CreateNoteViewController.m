@@ -60,9 +60,11 @@
         JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
         progressHUD.textLabel.text = @"Posting...";
         [progressHUD showInView:self.view];
-        [Note postNote:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        NSString *newNoteID = [[NSUUID UUID] UUIDString];
+        [Note postNote:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 Note *newNote = [[Note alloc] init];
+                newNote.noteID = newNoteID;
                 newNote.noteTitle = self.noteTitleField.text;
                 newNote.noteDescription = self.noteDescriptionTextView.text;
                 newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
@@ -75,9 +77,9 @@
         JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
         progressHUD.textLabel.text = @"Updating...";
         [progressHUD showInView:self.view];
-        NSString *noteObjectID = self.note.objectId;
+        NSString *noteID = self.note.noteID;
         PFQuery *noteQuery = [Note query];
-        [noteQuery whereKey:@"objectId" equalTo:noteObjectID];
+        [noteQuery whereKey:@"noteID" equalTo:noteID];
         [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
             if (notes) {
                 Note *noteToEdit = notes[0];
