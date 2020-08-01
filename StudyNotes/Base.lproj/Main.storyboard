@@ -849,7 +849,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNY-pG-wBu" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="591"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMF-4v-h8k">
                                                 <rect key="frame" x="105" y="8" width="204" height="289"/>
@@ -890,32 +890,42 @@
                                                 <color key="textColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V9w-da-kUU">
-                                                <rect key="frame" x="8" y="405" width="398" height="174"/>
-                                                <color key="backgroundColor" name="backgroundColor"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-fr-nQY">
+                                                <rect key="frame" x="8" y="409" width="398" height="174"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V9w-da-kUU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="174"/>
+                                                        <color key="backgroundColor" name="backgroundColor"/>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="174" id="Ogr-Xj-jMQ"/>
+                                                    <constraint firstItem="V9w-da-kUU" firstAttribute="leading" secondItem="jPq-fr-nQY" secondAttribute="leading" id="5gj-Ip-DB4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="V9w-da-kUU" secondAttribute="bottom" id="720-3F-QSR"/>
+                                                    <constraint firstItem="V9w-da-kUU" firstAttribute="top" secondItem="jPq-fr-nQY" secondAttribute="top" id="DJn-VP-xhW"/>
+                                                    <constraint firstAttribute="height" constant="174" id="bqd-y4-Pao"/>
+                                                    <constraint firstAttribute="trailing" secondItem="V9w-da-kUU" secondAttribute="trailing" id="qm0-yX-2Ih"/>
                                                 </constraints>
-                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="gv8-fp-YBa" secondAttribute="trailing" constant="16" id="1wh-jI-Omv"/>
                                             <constraint firstItem="BMF-4v-h8k" firstAttribute="centerX" secondItem="ZNY-pG-wBu" secondAttribute="centerX" id="45F-1S-k49"/>
                                             <constraint firstItem="gv8-fp-YBa" firstAttribute="centerX" secondItem="ZNY-pG-wBu" secondAttribute="centerX" id="CN8-ck-U7B"/>
+                                            <constraint firstItem="jPq-fr-nQY" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="8" id="GkD-ff-AXh"/>
+                                            <constraint firstAttribute="bottom" secondItem="jPq-fr-nQY" secondAttribute="bottom" constant="8" id="LA6-nr-gAc"/>
                                             <constraint firstItem="QUV-GQ-rJL" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="8" id="NA4-wY-Vtw"/>
                                             <constraint firstItem="gv8-fp-YBa" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="16" id="QRb-mc-HQx"/>
                                             <constraint firstAttribute="trailing" secondItem="QUV-GQ-rJL" secondAttribute="trailing" constant="8" id="Qe9-HV-vR7"/>
                                             <constraint firstAttribute="trailing" secondItem="wOc-lI-IaW" secondAttribute="trailing" constant="16" id="Qzb-5h-rj0"/>
-                                            <constraint firstAttribute="trailing" secondItem="V9w-da-kUU" secondAttribute="trailing" constant="8" id="Rim-Nf-01z"/>
                                             <constraint firstItem="QUV-GQ-rJL" firstAttribute="top" secondItem="gv8-fp-YBa" secondAttribute="bottom" constant="4" id="Rov-sB-YMp"/>
-                                            <constraint firstItem="V9w-da-kUU" firstAttribute="top" secondItem="wOc-lI-IaW" secondAttribute="bottom" constant="4" id="Sfp-iY-q4p"/>
-                                            <constraint firstAttribute="bottom" secondItem="V9w-da-kUU" secondAttribute="bottom" constant="8" id="UNE-hp-q6s"/>
+                                            <constraint firstItem="jPq-fr-nQY" firstAttribute="top" secondItem="wOc-lI-IaW" secondAttribute="bottom" constant="8" id="TYZ-vi-gCI"/>
                                             <constraint firstItem="wOc-lI-IaW" firstAttribute="top" secondItem="QUV-GQ-rJL" secondAttribute="bottom" constant="8" id="VdL-a8-cnn"/>
-                                            <constraint firstItem="V9w-da-kUU" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="8" id="cJV-Ob-0qE"/>
+                                            <constraint firstAttribute="trailing" secondItem="jPq-fr-nQY" secondAttribute="trailing" constant="8" id="a9V-54-Y0C"/>
                                             <constraint firstItem="wOc-lI-IaW" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="16" id="hOr-wa-z8F"/>
                                             <constraint firstItem="gv8-fp-YBa" firstAttribute="top" secondItem="BMF-4v-h8k" secondAttribute="bottom" constant="16" id="htn-hJ-9fh"/>
                                             <constraint firstItem="wOc-lI-IaW" firstAttribute="centerX" secondItem="ZNY-pG-wBu" secondAttribute="centerX" id="kqf-3O-BHg"/>
@@ -958,6 +968,7 @@
                     <connections>
                         <outlet property="contentView" destination="ZNY-pG-wBu" id="JlT-Mj-3kB"/>
                         <outlet property="noteDescriptionTextView" destination="V9w-da-kUU" id="fpL-p8-o2G"/>
+                        <outlet property="noteDescriptionViewContainer" destination="jPq-fr-nQY" id="mda-hM-xRE"/>
                         <outlet property="noteImageView" destination="j54-Ca-iKB" id="QEx-GK-jhe"/>
                         <outlet property="noteImageViewContainer" destination="BMF-4v-h8k" id="vVV-a3-ZYs"/>
                         <outlet property="noteTitleField" destination="QUV-GQ-rJL" id="RSF-PT-aKj"/>

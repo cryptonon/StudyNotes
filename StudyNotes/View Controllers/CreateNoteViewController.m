@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *noteImageViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *noteDescriptionViewContainer;
 
 @end
 
@@ -82,17 +83,16 @@
     [self.noteDescriptionTextView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.45] CGColor]];
     [self.noteDescriptionTextView.layer setBorderWidth:1.5];
     self.noteDescriptionTextView.layer.cornerRadius = 15;
-    self.noteDescriptionTextView.clipsToBounds = YES;
     
     CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75f] CGColor];
     CGSize shadowOffset = CGSizeMake(0, 5.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 12.5f;
-    self.noteDescriptionTextView.layer.shadowColor = shadowColor;
-    self.noteDescriptionTextView.layer.shadowOffset = shadowOffset;
-    self.noteDescriptionTextView.layer.shadowOpacity = shadowOpacity;
-    self.noteDescriptionTextView.layer.shadowRadius = shadowRadius;
-    self.noteDescriptionTextView.layer.masksToBounds = NO;
+    self.noteDescriptionViewContainer.layer.shadowColor = shadowColor;
+    self.noteDescriptionViewContainer.layer.shadowOffset = shadowOffset;
+    self.noteDescriptionViewContainer.layer.shadowOpacity = shadowOpacity;
+    self.noteDescriptionViewContainer.layer.shadowRadius = shadowRadius;
+    self.noteDescriptionViewContainer.layer.cornerRadius = 15.0f;
 }
 
 // Method that adds border and shadow to noteImageView
