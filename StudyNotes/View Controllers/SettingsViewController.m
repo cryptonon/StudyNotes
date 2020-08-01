@@ -12,6 +12,12 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "DateTimeHelper.h"
 
+// Constants required for adding shadow to containers
+#define shadeColor [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.875f] CGColor];
+const CGSize shadowOffset = {0.0f, 2.0f};
+const CGFloat shadowOpacity = 1.0f;
+const CGFloat shadowRadius = 5.0f;
+
 @interface SettingsViewController ()
 
 // MARK: Properties
@@ -23,11 +29,14 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *endTimePicker;
 @property (nonatomic) BOOL notificationPermissionAllowed;
 @property (strong, nonatomic) UserSetting *currentUserSetting;
-@property (weak, nonatomic) IBOutlet UILabel *fromDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *toDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeIntervalLabel;
-@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+@property (weak, nonatomic) IBOutlet UIView *switchContainer;
+@property (weak, nonatomic) IBOutlet UIView *fromDateContainer;
+@property (weak, nonatomic) IBOutlet UIView *toDateContainer;
+@property (weak, nonatomic) IBOutlet UIView *timeIntervalContainer;
+@property (weak, nonatomic) IBOutlet UIView *startTimeContainer;
+@property (weak, nonatomic) IBOutlet UIView *endTimeContainer;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -38,23 +47,17 @@
     [self askNotificationPermission];
     [self configureInitialView];
     [self setviewProperties];
+    [self setScrollViewBackground];
+    [self setShadowForAllContainers];
 }
 
 // Method that sets up first time default view of SettingViewController
 - (void)configureInitialView {
-    self.fromDatePicker.minimumDate = [NSDate date];
-    self.toDatePicker.minimumDate = [NSDate date];
-    self.notificationSwitch.on = NO;
-    [self.fromDatePicker setHidden:YES];
-    [self.toDatePicker setHidden:YES];
-    [self.intervalTimePicker setHidden:YES];
-    [self.startTimePicker setHidden:YES];
-    [self.endTimePicker setHidden:YES];
-    [self.fromDateLabel setHidden:YES];
-    [self.toDateLabel setHidden:YES];
-    [self.timeIntervalLabel setHidden:YES];
-    [self.startTimeLabel setHidden:YES];
-    [self.endTimeLabel setHidden:YES];
+    [self.fromDateContainer setHidden:YES];
+    [self.toDateContainer setHidden:YES];
+    [self.timeIntervalContainer setHidden:YES];
+    [self.startTimeContainer setHidden:YES];
+    [self.endTimeContainer setHidden:YES];
 }
 
 // Method that updates SettingViewController's view as per user's saved settings
@@ -75,6 +78,34 @@
             }
         }
     }];
+}
+
+// Method that sets scrollView's background
+- (void)setScrollViewBackground {
+    self.contentView.backgroundColor = [UIColor clearColor];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.alpha = 0.25;
+    [self.scrollView insertSubview:backgroundImageView atIndex:0];
+}
+
+// Method that sets shadow for all containers
+-(void)setShadowForAllContainers {
+    [self setShadowForContainer:self.switchContainer];
+    [self setShadowForContainer:self.fromDateContainer];
+    [self setShadowForContainer:self.toDateContainer];
+    [self setShadowForContainer:self.timeIntervalContainer];
+    [self setShadowForContainer:self.startTimeContainer];
+    [self setShadowForContainer:self.endTimeContainer];
+}
+
+// Helper method that sets shadow for a container
+-(void)setShadowForContainer: (UIView *)container {
+    container.layer.shadowColor = shadeColor;
+    container.layer.shadowOffset = shadowOffset;
+    container.layer.shadowOpacity = shadowOpacity;
+    container.layer.shadowRadius = shadowRadius;
+    container.layer.masksToBounds = NO;
 }
 
 // Method to update user settings when Update button is tapped
@@ -118,27 +149,17 @@
 // Method for hiding/unhiding time pickers based on notification switch
 - (IBAction)didTapNotificationSwitch:(id)sender {
     if (!self.notificationSwitch.on) {
-        [self.fromDatePicker setHidden:YES];
-        [self.toDatePicker setHidden:YES];
-        [self.intervalTimePicker setHidden:YES];
-        [self.startTimePicker setHidden:YES];
-        [self.endTimePicker setHidden:YES];
-        [self.fromDateLabel setHidden:YES];
-        [self.toDateLabel setHidden:YES];
-        [self.timeIntervalLabel setHidden:YES];
-        [self.startTimeLabel setHidden:YES];
-        [self.endTimeLabel setHidden:YES];
+        [self.fromDateContainer setHidden:YES];
+        [self.toDateContainer setHidden:YES];
+        [self.timeIntervalContainer setHidden:YES];
+        [self.startTimeContainer setHidden:YES];
+        [self.endTimeContainer setHidden:YES];
     } else {
-        [self.fromDatePicker setHidden:NO];
-        [self.toDatePicker setHidden:NO];
-        [self.intervalTimePicker setHidden:NO];
-        [self.startTimePicker setHidden:NO];
-        [self.endTimePicker setHidden:NO];
-        [self.fromDateLabel setHidden:NO];
-        [self.toDateLabel setHidden:NO];
-        [self.timeIntervalLabel setHidden:NO];
-        [self.startTimeLabel setHidden:NO];
-        [self.endTimeLabel setHidden:NO];
+        [self.fromDateContainer setHidden:NO];
+        [self.toDateContainer setHidden:NO];
+        [self.timeIntervalContainer setHidden:NO];
+        [self.startTimeContainer setHidden:NO];
+        [self.endTimeContainer setHidden:NO];
     }
 }
 
