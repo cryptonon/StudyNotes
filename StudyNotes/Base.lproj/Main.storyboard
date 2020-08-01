@@ -647,34 +647,44 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8w-KC-aSi">
-                                                    <rect key="frame" x="20" y="8" width="254" height="21"/>
+                                                    <rect key="frame" x="20" y="8" width="258" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYH-sc-oVw">
-                                                    <rect key="frame" x="20" y="37" width="254" height="20.5"/>
+                                                    <rect key="frame" x="20" y="37" width="258" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.01384711567" green="0.1152725309" blue="0.1853484839" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-pf-YvG">
-                                                    <rect key="frame" x="294" y="10" width="100" height="100"/>
-                                                    <gestureRecognizers/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3di-hR-nGc">
+                                                    <rect key="frame" x="294" y="11" width="100" height="100"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9M9-pf-YvG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                            <gestureRecognizers/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="U64-Fd-hU8"/>
-                                                        <constraint firstAttribute="width" constant="100" id="ZrH-2b-8Hf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="9M9-pf-YvG" secondAttribute="bottom" id="2hi-Kn-nHL"/>
+                                                        <constraint firstAttribute="width" constant="100" id="DkX-cb-PGS"/>
+                                                        <constraint firstItem="9M9-pf-YvG" firstAttribute="top" secondItem="3di-hR-nGc" secondAttribute="top" id="Ds0-Sd-Qpg"/>
+                                                        <constraint firstItem="9M9-pf-YvG" firstAttribute="leading" secondItem="3di-hR-nGc" secondAttribute="leading" id="PG8-cn-mHW"/>
+                                                        <constraint firstAttribute="height" constant="100" id="cTY-Zv-Vqe"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9M9-pf-YvG" secondAttribute="trailing" id="s3J-6N-Jqa"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="9M9-pf-YvG" firstAttribute="leading" secondItem="ZYH-sc-oVw" secondAttribute="trailing" constant="20" id="0Na-PX-au9"/>
-                                                <constraint firstItem="9M9-pf-YvG" firstAttribute="leading" secondItem="V8w-KC-aSi" secondAttribute="trailing" constant="20" id="0m5-Jn-ML3"/>
-                                                <constraint firstItem="9M9-pf-YvG" firstAttribute="top" secondItem="Nih-RP-QHo" secondAttribute="top" constant="10" id="1dV-ez-qTz"/>
-                                                <constraint firstAttribute="trailing" secondItem="9M9-pf-YvG" secondAttribute="trailing" constant="20" id="9bV-NI-k3E"/>
                                                 <constraint firstItem="ZYH-sc-oVw" firstAttribute="top" secondItem="V8w-KC-aSi" secondAttribute="bottom" constant="8" id="Q5u-8l-cyh"/>
+                                                <constraint firstItem="3di-hR-nGc" firstAttribute="leading" secondItem="ZYH-sc-oVw" secondAttribute="trailing" constant="16" id="TaK-Z8-gb6"/>
+                                                <constraint firstItem="3di-hR-nGc" firstAttribute="top" secondItem="Nih-RP-QHo" secondAttribute="top" constant="11" id="cRA-GD-CAp"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZYH-sc-oVw" secondAttribute="bottom" constant="8" id="e6J-kD-574"/>
                                                 <constraint firstItem="V8w-KC-aSi" firstAttribute="leading" secondItem="Nih-RP-QHo" secondAttribute="leading" constant="20" id="lzV-Ga-dPr"/>
+                                                <constraint firstAttribute="trailing" secondItem="3di-hR-nGc" secondAttribute="trailing" constant="20" id="mNC-eE-gZS"/>
+                                                <constraint firstItem="3di-hR-nGc" firstAttribute="leading" secondItem="V8w-KC-aSi" secondAttribute="trailing" constant="16" id="uXg-87-MOk"/>
                                                 <constraint firstItem="ZYH-sc-oVw" firstAttribute="leading" secondItem="Nih-RP-QHo" secondAttribute="leading" constant="20" id="wSX-t3-ww5"/>
                                                 <constraint firstItem="V8w-KC-aSi" firstAttribute="top" secondItem="Nih-RP-QHo" secondAttribute="top" constant="8" id="zrr-gJ-6BY"/>
                                             </constraints>
@@ -682,6 +692,7 @@
                                         <connections>
                                             <outlet property="noteDescriptionLabel" destination="ZYH-sc-oVw" id="6gJ-Ua-zaf"/>
                                             <outlet property="noteImageView" destination="9M9-pf-YvG" id="IRP-wi-kVW"/>
+                                            <outlet property="noteImageViewContainer" destination="3di-hR-nGc" id="JKD-BY-YEe"/>
                                             <outlet property="noteTitleLabel" destination="V8w-KC-aSi" id="89N-5N-GNd"/>
                                             <segue destination="gGC-St-vpQ" kind="show" identifier="noteDetailsSegue" id="POj-vj-M8b"/>
                                         </connections>
@@ -727,17 +738,32 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U25-P6-ltv" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="372.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-BH-lGV">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Awj-fJ-uiG">
                                                 <rect key="frame" x="105" y="8" width="204" height="289"/>
-                                                <gestureRecognizers/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0m-BH-lGV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="204" height="289"/>
+                                                        <gestureRecognizers/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="204" id="eVk-HP-2Tu"/>
+                                                            <constraint firstAttribute="height" constant="289" id="q88-sH-DtH"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="E0U-RZ-IYR" appends="YES" id="qlK-8q-XXg"/>
+                                                        </connections>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="204" id="eVk-HP-2Tu"/>
-                                                    <constraint firstAttribute="height" constant="289" id="q88-sH-DtH"/>
+                                                    <constraint firstAttribute="height" constant="289" id="37t-9S-uv6"/>
+                                                    <constraint firstItem="L0m-BH-lGV" firstAttribute="top" secondItem="Awj-fJ-uiG" secondAttribute="top" id="A0T-Af-duI"/>
+                                                    <constraint firstItem="L0m-BH-lGV" firstAttribute="leading" secondItem="Awj-fJ-uiG" secondAttribute="leading" id="LDC-jY-wMD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="L0m-BH-lGV" secondAttribute="trailing" id="cND-AN-va5"/>
+                                                    <constraint firstItem="L0m-BH-lGV" firstAttribute="centerX" secondItem="Awj-fJ-uiG" secondAttribute="centerX" id="ri6-UM-1mK"/>
+                                                    <constraint firstAttribute="bottom" secondItem="L0m-BH-lGV" secondAttribute="bottom" id="tLj-JB-2ux"/>
+                                                    <constraint firstAttribute="width" constant="204" id="ypS-8M-5dp"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="E0U-RZ-IYR" appends="YES" id="qlK-8q-XXg"/>
-                                                </connections>
-                                            </imageView>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHC-wy-NXq">
                                                 <rect key="frame" x="16" y="313" width="382" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -755,12 +781,12 @@
                                         <constraints>
                                             <constraint firstItem="dHC-wy-NXq" firstAttribute="centerX" secondItem="U25-P6-ltv" secondAttribute="centerX" id="9wG-R3-KsK"/>
                                             <constraint firstItem="dHC-wy-NXq" firstAttribute="leading" secondItem="U25-P6-ltv" secondAttribute="leading" constant="16" id="Ack-lS-Onc"/>
-                                            <constraint firstItem="L0m-BH-lGV" firstAttribute="top" secondItem="U25-P6-ltv" secondAttribute="top" constant="8" id="KIj-Ge-YVf"/>
-                                            <constraint firstItem="L0m-BH-lGV" firstAttribute="centerX" secondItem="U25-P6-ltv" secondAttribute="centerX" id="W4V-IR-OgG"/>
+                                            <constraint firstItem="Awj-fJ-uiG" firstAttribute="centerX" secondItem="U25-P6-ltv" secondAttribute="centerX" id="Pxw-Dj-CfX"/>
+                                            <constraint firstItem="Awj-fJ-uiG" firstAttribute="top" secondItem="U25-P6-ltv" secondAttribute="top" constant="8" id="RZc-aX-qYy"/>
                                             <constraint firstAttribute="trailing" secondItem="dHC-wy-NXq" secondAttribute="trailing" constant="16" id="Z53-xa-oRp"/>
                                             <constraint firstItem="xHL-7e-HRU" firstAttribute="leading" secondItem="U25-P6-ltv" secondAttribute="leading" constant="10" id="aiU-Mp-eEk"/>
                                             <constraint firstAttribute="bottom" secondItem="xHL-7e-HRU" secondAttribute="bottom" constant="10" id="fVy-2v-cde"/>
-                                            <constraint firstItem="dHC-wy-NXq" firstAttribute="top" secondItem="L0m-BH-lGV" secondAttribute="bottom" constant="16" id="n0V-qt-QGA"/>
+                                            <constraint firstItem="dHC-wy-NXq" firstAttribute="top" secondItem="Awj-fJ-uiG" secondAttribute="bottom" constant="16" id="k1Z-fJ-s4g"/>
                                             <constraint firstItem="xHL-7e-HRU" firstAttribute="top" secondItem="dHC-wy-NXq" secondAttribute="bottom" constant="8" id="olf-OI-YRV"/>
                                             <constraint firstAttribute="trailing" secondItem="xHL-7e-HRU" secondAttribute="trailing" constant="10" id="teg-E1-6Lf"/>
                                         </constraints>
@@ -797,6 +823,7 @@
                         <outlet property="contentView" destination="U25-P6-ltv" id="QkE-WS-gOZ"/>
                         <outlet property="noteDescriptionLabel" destination="xHL-7e-HRU" id="d24-e6-8OE"/>
                         <outlet property="noteImageView" destination="L0m-BH-lGV" id="cjP-xx-5lg"/>
+                        <outlet property="noteImageViewContainer" destination="Awj-fJ-uiG" id="kTg-AA-Tcg"/>
                         <outlet property="noteTitleLabel" destination="dHC-wy-NXq" id="f3i-pn-Lmr"/>
                         <outlet property="scrollView" destination="xxQ-hX-lFS" id="hBb-Ok-jFO"/>
                     </connections>
@@ -822,38 +849,49 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNY-pG-wBu" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="602"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j54-Ca-iKB" customClass="PFImageView">
-                                                <rect key="frame" x="104" y="8" width="206" height="312"/>
-                                                <gestureRecognizers/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMF-4v-h8k">
+                                                <rect key="frame" x="105" y="8" width="204" height="289"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j54-Ca-iKB" customClass="PFImageView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="204" height="289"/>
+                                                        <gestureRecognizers/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="ECA-Ht-pNo" appends="YES" id="GUn-2r-F9i"/>
+                                                        </connections>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="206" id="bU7-QO-OVY"/>
-                                                    <constraint firstAttribute="height" constant="312" id="xZZ-Ov-V5B"/>
+                                                    <constraint firstItem="j54-Ca-iKB" firstAttribute="leading" secondItem="BMF-4v-h8k" secondAttribute="leading" id="MJe-A7-lWQ"/>
+                                                    <constraint firstAttribute="height" constant="289" id="O0W-Bu-nJ0"/>
+                                                    <constraint firstItem="j54-Ca-iKB" firstAttribute="centerX" secondItem="BMF-4v-h8k" secondAttribute="centerX" id="RVl-cK-7Hc"/>
+                                                    <constraint firstItem="j54-Ca-iKB" firstAttribute="top" secondItem="BMF-4v-h8k" secondAttribute="top" id="a6Q-Kz-wL8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="j54-Ca-iKB" secondAttribute="trailing" id="doR-2d-afT"/>
+                                                    <constraint firstAttribute="bottom" secondItem="j54-Ca-iKB" secondAttribute="bottom" id="uhV-RC-7fN"/>
+                                                    <constraint firstAttribute="width" constant="204" id="y9e-tT-sMg"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="ECA-Ht-pNo" appends="YES" id="GUn-2r-F9i"/>
-                                                </connections>
-                                            </imageView>
+                                            </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Note Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUV-GQ-rJL">
-                                                <rect key="frame" x="8" y="353" width="398" height="34"/>
+                                                <rect key="frame" x="8" y="338" width="398" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the Note Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gv8-fp-YBa">
-                                                <rect key="frame" x="16" y="328" width="382" height="21"/>
+                                                <rect key="frame" x="16" y="313" width="382" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the Note Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOc-lI-IaW">
-                                                <rect key="frame" x="16" y="395" width="382" height="21"/>
+                                                <rect key="frame" x="16" y="380" width="382" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V9w-da-kUU">
-                                                <rect key="frame" x="8" y="420" width="398" height="174"/>
+                                                <rect key="frame" x="8" y="405" width="398" height="174"/>
                                                 <color key="backgroundColor" name="backgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="174" id="Ogr-Xj-jMQ"/>
@@ -866,6 +904,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="gv8-fp-YBa" secondAttribute="trailing" constant="16" id="1wh-jI-Omv"/>
+                                            <constraint firstItem="BMF-4v-h8k" firstAttribute="centerX" secondItem="ZNY-pG-wBu" secondAttribute="centerX" id="45F-1S-k49"/>
                                             <constraint firstItem="gv8-fp-YBa" firstAttribute="centerX" secondItem="ZNY-pG-wBu" secondAttribute="centerX" id="CN8-ck-U7B"/>
                                             <constraint firstItem="QUV-GQ-rJL" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="8" id="NA4-wY-Vtw"/>
                                             <constraint firstItem="gv8-fp-YBa" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="16" id="QRb-mc-HQx"/>
@@ -878,10 +917,9 @@
                                             <constraint firstItem="wOc-lI-IaW" firstAttribute="top" secondItem="QUV-GQ-rJL" secondAttribute="bottom" constant="8" id="VdL-a8-cnn"/>
                                             <constraint firstItem="V9w-da-kUU" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="8" id="cJV-Ob-0qE"/>
                                             <constraint firstItem="wOc-lI-IaW" firstAttribute="leading" secondItem="ZNY-pG-wBu" secondAttribute="leading" constant="16" id="hOr-wa-z8F"/>
+                                            <constraint firstItem="gv8-fp-YBa" firstAttribute="top" secondItem="BMF-4v-h8k" secondAttribute="bottom" constant="16" id="htn-hJ-9fh"/>
                                             <constraint firstItem="wOc-lI-IaW" firstAttribute="centerX" secondItem="ZNY-pG-wBu" secondAttribute="centerX" id="kqf-3O-BHg"/>
-                                            <constraint firstItem="j54-Ca-iKB" firstAttribute="centerX" secondItem="ZNY-pG-wBu" secondAttribute="centerX" id="pIM-BY-W7G"/>
-                                            <constraint firstItem="j54-Ca-iKB" firstAttribute="top" secondItem="ZNY-pG-wBu" secondAttribute="top" constant="8" id="tYj-kh-N9r"/>
-                                            <constraint firstItem="gv8-fp-YBa" firstAttribute="top" secondItem="j54-Ca-iKB" secondAttribute="bottom" constant="8" id="zrL-9c-bx2"/>
+                                            <constraint firstItem="BMF-4v-h8k" firstAttribute="top" secondItem="ZNY-pG-wBu" secondAttribute="top" constant="8" id="mXz-Bz-2ku"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -921,6 +959,7 @@
                         <outlet property="contentView" destination="ZNY-pG-wBu" id="JlT-Mj-3kB"/>
                         <outlet property="noteDescriptionTextView" destination="V9w-da-kUU" id="fpL-p8-o2G"/>
                         <outlet property="noteImageView" destination="j54-Ca-iKB" id="QEx-GK-jhe"/>
+                        <outlet property="noteImageViewContainer" destination="BMF-4v-h8k" id="vVV-a3-ZYs"/>
                         <outlet property="noteTitleField" destination="QUV-GQ-rJL" id="RSF-PT-aKj"/>
                         <outlet property="scrollView" destination="vcl-aw-DRJ" id="gzg-dl-Dc7"/>
                     </connections>
@@ -963,7 +1002,7 @@
             <color red="0.88599997758865356" green="0.90200001001358032" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="alternate1-2">
-            <color red="0.88599997758865356" green="0.92900002002716064" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89399999380111694" green="0.87800002098083496" blue="0.90200001001358032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="backgroundColor">
             <color red="0.94099998474121094" green="0.93000000715255737" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

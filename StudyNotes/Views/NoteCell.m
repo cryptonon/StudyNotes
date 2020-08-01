@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *noteTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
+@property (weak, nonatomic) IBOutlet UIView *noteImageViewContainer;
 
 
 @end
@@ -38,8 +39,17 @@
     [note.noteImage getDataInBackgroundWithBlock:^(NSData * _Nullable imageData, NSError * _Nullable error) {
         self.noteImageView.image = [UIImage imageWithData:imageData];
     }];
+    [self setShadowToNoteImageViewContainer];
     [self animateNoteImageView];
     [self configureLongPressGesture];
+}
+
+// Method that sets shadow to noteImageViewContainer
+-(void)setShadowToNoteImageViewContainer {
+    self.noteImageViewContainer.layer.shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.975f] CGColor];
+    self.noteImageViewContainer.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.noteImageViewContainer.layer.shadowOpacity = 0.0f;
+    self.noteImageViewContainer.layer.shadowRadius = 2.5f;
 }
 
 // Method that animates noteImageView
@@ -47,6 +57,7 @@
     self.noteImageView.alpha = 0;
     [UIView animateWithDuration:0.625 animations:^{
         self.noteImageView.alpha = 1;
+        self.noteImageViewContainer.layer.shadowOpacity = 1.0f;
     }];
 }
 

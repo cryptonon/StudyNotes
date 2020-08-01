@@ -20,8 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *noteDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UILabel *noteTitlePlaceHolderLabel;
-@property (weak, nonatomic) IBOutlet UILabel *noteDescriptionPlaceHolderLabel;
+@property (weak, nonatomic) IBOutlet UIView *noteImageViewContainer;
 
 @end
 
@@ -96,10 +95,14 @@
     self.noteDescriptionTextView.layer.masksToBounds = NO;
 }
 
-// Method that adds border to noteImageView
+// Method that adds border and shadow to noteImageView
 -(void)customizeNoteImageView {
     [self.noteImageView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.75] CGColor]];
-    [self.noteImageView.layer setBorderWidth:1.5];
+    [self.noteImageView.layer setBorderWidth:1.0f];
+    self.noteImageViewContainer.layer.shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9f] CGColor];
+    self.noteImageViewContainer.layer.shadowOffset = CGSizeMake(0.0f, 2.5f);
+    self.noteImageViewContainer.layer.shadowOpacity = 1.0f;
+    self.noteImageViewContainer.layer.shadowRadius = 5.0f;
 }
 
 // Method to dismiss modal view on tapping Cancel button

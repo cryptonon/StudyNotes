@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *noteImageViewContainer;
 
 @end
 
@@ -27,6 +28,7 @@
     [super viewDidLoad];
     [self setViewProperties];
     [self customizeScrollView];
+    [self customizeNoteImageView];
     [self animateNoteImage];
 }
 
@@ -47,6 +49,16 @@
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     backgroundImageView.alpha = 0.25;
     [self.scrollView insertSubview:backgroundImageView atIndex:0];
+}
+
+// Method that adds border and shadow to noteImageView
+-(void)customizeNoteImageView {
+    [self.noteImageView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.75] CGColor]];
+    [self.noteImageView.layer setBorderWidth:1.0f];
+    self.noteImageViewContainer.layer.shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9f] CGColor];
+    self.noteImageViewContainer.layer.shadowOffset = CGSizeMake(0.0f, 2.5f);
+    self.noteImageViewContainer.layer.shadowOpacity = 0.0f;
+    self.noteImageViewContainer.layer.shadowRadius = 5.0f;
 }
 
 // Method to show image full screen on tapping noteImageView
@@ -83,6 +95,7 @@
     [self.noteImageView setAlpha:0];
     [UIView animateWithDuration:0.625 animations:^{
         [self.noteImageView setAlpha:1];
+        self.noteImageViewContainer.layer.shadowOpacity = 1.0f;
     }];
 }
 
