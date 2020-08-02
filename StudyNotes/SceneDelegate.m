@@ -22,8 +22,8 @@
     PFUser *user = [PFUser currentUser];
     if (user != nil) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *homeNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"HomeNavigationController"];
-        self.window.rootViewController = homeNavigationController;
+        UIViewController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+        self.window.rootViewController = tabBarController;
     }
 }
 

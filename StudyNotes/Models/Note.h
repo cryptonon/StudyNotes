@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *noteDescription;
 @property (nonatomic, strong) PFFileObject *noteImage;
 @property (nonatomic) BOOL isPushNotified;
+@property (nonatomic) BOOL isPersonalNote;
 
 //MARK: Methods
 + (void) postNote: ( NSString * _Nonnull )title

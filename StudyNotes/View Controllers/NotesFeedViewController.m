@@ -55,13 +55,24 @@
     [self.tableView deselectRowAtIndexPath:selectedIndexPath animated:YES];
 }
 
-// Method to fetch notes from the parse database
-- (void) fetchNotes {
+// Method that fetches notes (for both group/user)
+- (void)fetchNotes {
     JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     progressHUD.textLabel.text = @"Loading...";
     [progressHUD showInView:self.view];
+    if (self.group) {
+        [self fetchGroupNotes];
+    } else {
+        [self fetchUserNotes];
+    }
+    [progressHUD dismiss];
+}
+
+// Helper method to fetch user notes from the parse database
+- (void)fetchUserNotes {
     PFQuery *noteQuery = [Note query];
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [noteQuery whereKey:@"isPersonalNote" equalTo:@(YES)];
     [noteQuery orderByDescending:@"createdAt"];
     [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
         if (notes) {
@@ -69,7 +80,20 @@
             [self.tableView reloadData];
         }
     }];
-    [progressHUD dismiss];
+    [self.refreshControl endRefreshing];
+}
+
+// Helper method to fetch group notes from the parse database
+- (void)fetchGroupNotes {
+    PFQuery *groupQuery = [Group query];
+    [groupQuery whereKey:@"groupName" equalTo:self.group.groupName];
+    [groupQuery includeKey:@"notes"];
+    [groupQuery findObjectsInBackgroundWithBlock:^(NSArray<Group *> * _Nullable groups, NSError * _Nullable error) {
+        if (groups) {
+            self.notesArray = groups[0].notes;
+            [self.tableView reloadData];
+        }
+    }];
     [self.refreshControl endRefreshing];
 }
 
@@ -90,6 +114,18 @@
     [deleteAlert addAction:deleteAction];
     [deleteAlert addAction:cancelAction];
     [self presentViewController:deleteAlert animated:YES completion:nil];
+}
+
+// Method that handles deleting note feature availability (depending upon group/user notes)
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if (aSelector == @selector(tableView:commitEditingStyle:forRowAtIndexPath:)) {
+        if (self.group) {
+            return NO;
+        } else {
+            return YES;
+        }
+    }
+    return [super respondsToSelector:aSelector];
 }
 
 #pragma mark - Delegate Methods
@@ -118,7 +154,11 @@
 
 // Method to update feed locally after a note has been posted (CreateNoteViewController's delegate method)
 - (void)postedNote:(Note *)newNote {
-    [self.notesArray insertObject:newNote atIndex:0];
+    if (self.notesArray) {
+        [self.notesArray insertObject:newNote atIndex:0];
+    } else {
+        self.notesArray = (NSMutableArray *) @[newNote];
+    }
     [self.tableView reloadData];
 }
 
@@ -165,6 +205,7 @@
     } else if ([segue.identifier isEqualToString:@"composeNoteSegue"]) {
         UINavigationController *navigationController = [segue destinationViewController];
         CreateNoteViewController *composeController = (CreateNoteViewController *) navigationController.topViewController;
+        composeController.group = self.group;
         composeController.delegate = self;
     }
 }

@@ -112,23 +112,50 @@
 
 // Method to post note to parse on tapping Post button
 - (IBAction)onPost:(id)sender {
+    NSString *newNoteTitle = self.noteTitleField.text;
+    NSString *newNoteDescription = self.noteDescriptionTextView.text;
+    UIImage *newNoteImage = self.noteImageView.image;
     if (!self.note) {
         JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
         progressHUD.textLabel.text = @"Posting...";
         [progressHUD showInView:self.view];
         NSString *newNoteID = [[NSUUID UUID] UUIDString];
-        [Note postNote:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                Note *newNote = [[Note alloc] init];
-                newNote.noteID = newNoteID;
-                newNote.noteTitle = self.noteTitleField.text;
-                newNote.noteDescription = self.noteDescriptionTextView.text;
-                newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
-                [self.delegate postedNote:newNote];
-                [self dismissViewControllerAnimated:YES completion:nil];
-                [progressHUD dismiss];
-            }
-        }];
+        if (self.group) {
+            PFQuery *groupQuery = [Group query];
+            [groupQuery whereKey:@"groupID" equalTo:self.group.groupID];
+            [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
+                if (groups) {
+                    Group *groupToPost = groups[0];
+                    [groupToPost postNote:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                        if (succeeded) {
+                            Note *newNote = [[Note alloc] init];
+                            newNote.noteID = newNoteID;
+                            newNote.noteTitle = self.noteTitleField.text;
+                            newNote.noteDescription = self.noteDescriptionTextView.text;
+                            newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
+                            newNote.author = [PFUser currentUser];
+                            [self.delegate postedNote:newNote];
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                            [progressHUD dismiss];
+                        }
+                    }];
+                }
+            }];
+        } else {
+            [Note postNote:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    Note *newNote = [[Note alloc] init];
+                    newNote.noteID = newNoteID;
+                    newNote.noteTitle = self.noteTitleField.text;
+                    newNote.noteDescription = self.noteDescriptionTextView.text;
+                    newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
+                    newNote.author = [PFUser currentUser];
+                    [self.delegate postedNote:newNote];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [progressHUD dismiss];
+                }
+            }];
+        }
     } else {
         JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
         progressHUD.textLabel.text = @"Updating...";
@@ -139,9 +166,9 @@
         [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
             if (notes) {
                 Note *noteToEdit = notes[0];
-                [noteToEdit updateNoteWithTitle:self.noteTitleField.text withDescription:self.noteDescriptionTextView.text withImage:self.noteImageView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                [noteToEdit updateNoteWithTitle:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                     if (succeeded) {
-                        [self.delegate updatedNoteToTitle:self.noteTitleField.text toDescription:self.noteDescriptionTextView.text toImage:self.noteImageView.image];
+                        [self.delegate updatedNoteToTitle:newNoteTitle toDescription:newNoteDescription toImage:newNoteImage];
                         [self dismissViewControllerAnimated:YES completion:nil];
                         [progressHUD dismiss];
                     }

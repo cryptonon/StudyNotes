@@ -18,6 +18,7 @@
 @dynamic noteDescription;
 @dynamic noteImage;
 @dynamic isPushNotified;
+@dynamic isPersonalNote;
 
 // Class method for making PFFileObject from UIImage
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
@@ -36,6 +37,7 @@
     newNote.noteImage = [self getPFFileFromImage:image];
     newNote.author = [PFUser currentUser];
     newNote.isPushNotified = NO;
+    newNote.isPersonalNote = YES;
     [newNote saveInBackgroundWithBlock: completion];
 }
 

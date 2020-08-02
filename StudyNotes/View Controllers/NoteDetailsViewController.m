@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *noteImageViewContainer;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
 @end
 
@@ -26,10 +27,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureEditAccess];
     [self setViewProperties];
     [self customizeScrollView];
     [self customizeNoteImageView];
     [self animateNoteImage];
+}
+
+// Method to hide/unhide editing access depending upon note ownership
+- (void)configureEditAccess {
+    if (![self.note.author.objectId isEqualToString:[PFUser currentUser].objectId]) {
+        self.editButton.enabled = NO;
+        self.editButton.tintColor = [UIColor clearColor];
+    }
 }
 
 // Method that sets properties of DetailsViewController

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Note.h"
+#import "Group.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 // MARK: Properties
 @property (strong, nonatomic) Note *note;
 @property (weak, nonatomic) id<CreateNoteViewControllerDelegate> delegate;
+@property (strong, nonatomic) Group *group;
 
 @end
 

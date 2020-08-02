@@ -1,8 +1,8 @@
 //
-//  NotesFeedViewController.h
+//  GroupCell.h
 //  StudyNotes
 //
-//  Created by Aayush Mani Phuyal on 7/13/20.
+//  Created by Aayush Mani Phuyal on 8/2/20.
 //  Copyright © 2020 Aayush Phuyal. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NotesFeedViewController : UIViewController
+@interface GroupCell : UITableViewCell
 
 // MARK: Properties
 @property (strong, nonatomic) Group *group;
