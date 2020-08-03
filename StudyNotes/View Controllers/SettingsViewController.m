@@ -53,6 +53,7 @@ const CGFloat shadowRadius = 5.0f;
     [self setScrollViewBackground];
     [self setShadowForAllContainers];
     [self checkNoteAvailability];
+    [self configureTimePickers];
 }
 
 // Method that sets up first time default view of SettingViewController
@@ -219,6 +220,27 @@ const CGFloat shadowRadius = 5.0f;
     UINavigationController *navigationController = [segue destinationViewController];
     CreateNoteViewController *composeController = (CreateNoteViewController *) navigationController.topViewController;
     composeController.delegate = self;
+}
+
+# pragma mark - Handling Timers
+
+// Method that configures minimum time interval for each timePickers
+- (void)configureTimePickers {
+    NSDate *currentDateTime = [NSDate date];
+    self.fromDatePicker.minimumDate = currentDateTime;
+    self.toDatePicker.minimumDate = currentDateTime;
+    [self.fromDatePicker addTarget:self action:@selector(setToDate) forControlEvents:UIControlEventValueChanged];
+    [self.startTimePicker addTarget:self action:@selector(setEndTime) forControlEvents:UIControlEventValueChanged];
+}
+
+// Method that changes toDate depending on fromDate
+- (void)setToDate {
+    self.toDatePicker.minimumDate = self.fromDatePicker.date;
+}
+
+// Method that changes toTime depending on startTime
+- (void)setEndTime {
+    self.endTimePicker.minimumDate = [self.startTimePicker.date dateByAddingTimeInterval:30*60];
 }
 
 @end
