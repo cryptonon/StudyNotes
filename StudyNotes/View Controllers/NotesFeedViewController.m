@@ -12,6 +12,7 @@
 #import "NoteDetailsViewController.h"
 #import "CreateNoteViewController.h"
 #import <JGProgressHUD/JGProgressHUD.h>
+#import <SCLAlertView.h>
 
 @interface NotesFeedViewController () <UITableViewDelegate, UITableViewDataSource, CreateNoteViewControllerDelegate, DetailsViewControllerDelegate, NoteCellDelegate>
 
@@ -77,7 +78,13 @@
     [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
         if (notes) {
             self.notesArray = (NSMutableArray *) notes;
-            [self.tableView reloadData];
+            if (self.notesArray.count) {
+                [self.tableView reloadData];
+            } else {
+                [self presentNoNoteAlertWithError:nil];
+            }
+        } else {
+            [self presentNoNoteAlertWithError:error];
         }
     }];
     [self.refreshControl endRefreshing];
@@ -91,10 +98,34 @@
     [groupQuery findObjectsInBackgroundWithBlock:^(NSArray<Group *> * _Nullable groups, NSError * _Nullable error) {
         if (groups) {
             self.notesArray = groups[0].notes;
-            [self.tableView reloadData];
+            if (self.notesArray.count) {
+               [self.tableView reloadData];
+            } else {
+                [self presentNoNoteAlertWithError:nil];
+            }
+        } else {
+            [self presentNoNoteAlertWithError:error];
         }
     }];
     [self.refreshControl endRefreshing];
+}
+
+// Helper method that presents no note alert
+- (void)presentNoNoteAlertWithError: (NSError * _Nullable)error {
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.backgroundType = SCLAlertViewBackgroundBlur;
+    if (error) {
+        [alert addButton:@"Try Again" actionBlock:^(void) {
+            [self fetchNotes];
+        }];
+        [alert showError:self title:@"Error!" subTitle:error.localizedDescription closeButtonTitle:@"Cancel" duration:0.0f];
+    } else {
+        alert.customViewColor = [UIColor systemBlueColor];
+        [alert addButton:@"Create Note" actionBlock:^(void) {
+            [self performSegueWithIdentifier:@"composeNoteSegue" sender:self];
+        }];
+        [alert showEdit:self title:@"No Notes!" subTitle:@"Please create a new Note" closeButtonTitle:@"Cancel" duration:5.0f];
+    }
 }
 
 // Method to present alert and delete the note
