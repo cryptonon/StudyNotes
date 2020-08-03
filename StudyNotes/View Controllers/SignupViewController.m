@@ -9,6 +9,7 @@
 #import "SignupViewController.h"
 #import <Parse/Parse.h>
 #import <JGProgressHUD/JGProgressHUD.h>
+#import <SCLAlertView.h>
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -106,14 +107,9 @@
 
 // Method to display login error alert
 - (void)displayErrorAlertWithError: (NSError * _Nonnull)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Signup Failed!"
-                                                                   message:error.localizedDescription
-                                                            preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
-                                                        style:UIAlertActionStyleCancel
-                                                      handler:nil];
-    [alert addAction:tryAgainAction];
-    [self presentViewController:alert animated:YES completion:nil];
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.backgroundType = SCLAlertViewBackgroundBlur;
+    [alert showError:self title:@"Signup Failed!" subTitle:error.localizedDescription closeButtonTitle:@"Try Again" duration:0.0f];
 }
 
 // Method to check valid user input (handling empty username/password case)

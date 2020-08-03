@@ -12,6 +12,7 @@ target 'StudyNotes' do
   pod 'JGProgressHUD'
   pod 'AFNetworking'
   pod 'TOCropViewController'
+  pod 'SCLAlertView-Objective-C'
 
 
   target 'StudyNotesTests' do

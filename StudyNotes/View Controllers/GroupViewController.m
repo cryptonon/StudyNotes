@@ -9,6 +9,7 @@
 #import "GroupViewController.h"
 #import "GroupCell.h"
 #import "NotesFeedViewController.h"
+#import <SCLAlertView.h>
 
 @interface GroupViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -58,24 +59,14 @@
 
 // Method that handles new group creation
 - (IBAction)onCreateGroup:(id)sender {
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"New Group"
-                                                                              message: @"Enter group details"
-                                                                       preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"Name";
-        textField.clearsOnInsertion =YES;
-    }];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = @"Description";
-        textField.clearsOnInsertion =YES;
-    }];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Create" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        NSArray * textfields = alertController.textFields;
-        UITextField *groupNameField = textfields[0];
-        UITextField *groupDescriptionField = textfields[1];
-        NSString *groupName = groupNameField.text;
-        NSString *groupDescription = groupDescriptionField.text;
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.customViewColor = [UIColor systemBlueColor];
+    UITextField *groupNameField = [alert addTextField:@"Name"];
+    UITextField *groupDescriptionField = [alert addTextField:@"Description"];
+    [alert addButton:@"Create" actionBlock:^(void) {
+        NSCharacterSet *whiteSpaceSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString *groupName = [groupNameField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
+        NSString *groupDescription = [groupDescriptionField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
         if ([self validGroupName:groupName andDescription:groupDescription]) {
             NSString *newGroupID = [[NSUUID UUID] UUIDString];
             [Group createGroup:groupName withGroupID:newGroupID withDescription:groupDescription withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
@@ -91,23 +82,18 @@
                 }
             }];
         }
-    }]];
-    [self presentViewController:alertController animated:YES completion:nil];
+    }];
+    [alert showEdit:self title:@"Create Group" subTitle:@"Enter Group Details" closeButtonTitle:@"Cancel" duration:0.0f];
 }
 
 // Helper method to check valid user input (handling empty name/description case)
 - (BOOL)validGroupName: (NSString *)groupName andDescription: (NSString *)groupDescription {
     if ([groupName isEqualToString:@""] || [groupDescription isEqualToString: @""]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Creation Failed!"
-                                                                       message:@"Name and Description cannot be empty."
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-            [self onCreateGroup:nil];
+        SCLAlertView *alert = [[SCLAlertView alloc] init];
+        [alert addButton:@"Try Again" actionBlock:^(void) {
+            [self onCreateGroup:self];
         }];
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:nil];
+        [alert showError:self title:@"Failed!" subTitle:@"Group Details Cannot be Empty!" closeButtonTitle:@"Cancel" duration:0.0f];
         return NO;
     }
     return YES;
