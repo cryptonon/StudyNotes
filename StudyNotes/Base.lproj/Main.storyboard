@@ -617,6 +617,8 @@
                         <outlet property="timeIntervalContainer" destination="48N-bn-4pj" id="rF9-ZM-eeO"/>
                         <outlet property="toDateContainer" destination="lHM-fl-CfE" id="Jj3-4s-WO4"/>
                         <outlet property="toDatePicker" destination="3WZ-bN-45S" id="esP-Kj-SYR"/>
+                        <outlet property="updateButton" destination="TMu-DM-eJd" id="U2o-d4-jHb"/>
+                        <segue destination="eD4-TF-n2K" kind="presentation" identifier="composeNoteSegue" id="gUT-gY-Cy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="io8-mK-03c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1119,7 +1121,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fvf-tr-BiF"/>
+        <segue reference="gUT-gY-Cy2"/>
         <segue reference="fII-B0-VUp"/>
         <segue reference="jMY-Ua-gBb"/>
     </inferredMetricsTieBreakers>

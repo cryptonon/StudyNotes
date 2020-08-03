@@ -11,6 +11,8 @@
 #import "NotificationSetup.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "DateTimeHelper.h"
+#import <SCLAlertView.h>
+#import "CreateNoteViewController.h"
 
 // Constants required for adding shadow to containers
 #define shadeColor [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.875f] CGColor];
@@ -18,7 +20,7 @@ const CGSize shadowOffset = {0.0f, 2.0f};
 const CGFloat shadowOpacity = 1.0f;
 const CGFloat shadowRadius = 5.0f;
 
-@interface SettingsViewController ()
+@interface SettingsViewController () <CreateNoteViewControllerDelegate>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UIDatePicker *fromDatePicker;
@@ -37,6 +39,7 @@ const CGFloat shadowRadius = 5.0f;
 @property (weak, nonatomic) IBOutlet UIView *endTimeContainer;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *updateButton;
 
 @end
 
@@ -49,15 +52,14 @@ const CGFloat shadowRadius = 5.0f;
     [self setviewProperties];
     [self setScrollViewBackground];
     [self setShadowForAllContainers];
+    [self checkNoteAvailability];
 }
 
 // Method that sets up first time default view of SettingViewController
 - (void)configureInitialView {
-    [self.fromDateContainer setHidden:YES];
-    [self.toDateContainer setHidden:YES];
-    [self.timeIntervalContainer setHidden:YES];
-    [self.startTimeContainer setHidden:YES];
-    [self.endTimeContainer setHidden:YES];
+    self.notificationSwitch.on = NO;
+    [self setUpdateButtonHidden:YES];
+    [self setTimePickeContainersHidden:YES];
 }
 
 // Method that updates SettingViewController's view as per user's saved settings
@@ -120,6 +122,45 @@ const CGFloat shadowRadius = 5.0f;
     });
 }
 
+// Helper method that checks note availability before updating settings
+-(void)checkNoteAvailability {
+    PFQuery *noteQuery = [PFQuery queryWithClassName:@"Note"];
+    [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [noteQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (objects) {
+            if (objects.count) {
+                [self setUpdateButtonHidden:NO];
+            } else {
+                [self presentNoNoteAlert];
+            }
+        }
+    }];
+}
+
+// Helper Method that presents no note alert
+- (void)presentNoNoteAlert {
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.backgroundType = SCLAlertViewBackgroundBlur;
+    alert.customViewColor = [UIColor systemBlueColor];
+    [alert addButton:@"Create Note" actionBlock:^(void) {
+        [self performSegueWithIdentifier:@"composeNoteSegue" sender:self];
+    }];
+    [alert showEdit:self title:@"No Notes!" subTitle:@"Please add a few Notes before updating notification settings" closeButtonTitle:@"Cancel" duration:0.0f];
+}
+
+// Helper method to hide/unhide update button
+- (void)setUpdateButtonHidden: (BOOL)hidden {
+    if (hidden) {
+        [self.updateButton setEnabled:NO];
+    } else {
+        [self.updateButton setEnabled:YES];
+    }
+}
+
+- (void)postedNote:(Note *)newNote {
+    [self setUpdateButtonHidden:NO];
+}
+
 // Method that handles upating/creating settings and scheduling notifications
 - (void)updateUserSettingsAndScheduleNotifications {
     [self combineDateTime];
@@ -149,18 +190,19 @@ const CGFloat shadowRadius = 5.0f;
 // Method for hiding/unhiding time pickers based on notification switch
 - (IBAction)didTapNotificationSwitch:(id)sender {
     if (!self.notificationSwitch.on) {
-        [self.fromDateContainer setHidden:YES];
-        [self.toDateContainer setHidden:YES];
-        [self.timeIntervalContainer setHidden:YES];
-        [self.startTimeContainer setHidden:YES];
-        [self.endTimeContainer setHidden:YES];
+        [self setTimePickeContainersHidden:YES];
     } else {
-        [self.fromDateContainer setHidden:NO];
-        [self.toDateContainer setHidden:NO];
-        [self.timeIntervalContainer setHidden:NO];
-        [self.startTimeContainer setHidden:NO];
-        [self.endTimeContainer setHidden:NO];
+        [self setTimePickeContainersHidden:NO];
     }
+}
+
+// Helper method for hiding/unhiding time picker containers
+-(void)setTimePickeContainersHidden: (BOOL) hidden {
+    [self.fromDateContainer setHidden:hidden];
+    [self.toDateContainer setHidden:hidden];
+    [self.timeIntervalContainer setHidden:hidden];
+    [self.startTimeContainer setHidden:hidden];
+    [self.endTimeContainer setHidden:hidden];
 }
 
 // Method to combine fromDate with startTime and toDate with endTime
@@ -169,6 +211,14 @@ const CGFloat shadowRadius = 5.0f;
     NSDate *notificationEndDateTime = [DateTimeHelper combinedDate:self.toDatePicker.date withTimeOfNSDate:self.endTimePicker.date];
     self.fromDatePicker.date = notificationStartDateTime;
     self.toDatePicker.date = notificationEndDateTime;
+}
+
+# pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UINavigationController *navigationController = [segue destinationViewController];
+    CreateNoteViewController *composeController = (CreateNoteViewController *) navigationController.topViewController;
+    composeController.delegate = self;
 }
 
 @end
