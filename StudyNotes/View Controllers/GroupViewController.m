@@ -59,7 +59,9 @@
 
 // Method that handles new group creation
 - (IBAction)onCreateGroup:(id)sender {
+    [self configureNavAndTabBarUserInteraction];
     SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.backgroundType = SCLAlertViewBackgroundBlur;
     alert.customViewColor = [UIColor systemBlueColor];
     UITextField *groupNameField = [alert addTextField:@"Name"];
     UITextField *groupDescriptionField = [alert addTextField:@"Description"];
@@ -84,16 +86,29 @@
         }
     }];
     [alert showEdit:self title:@"Create Group" subTitle:@"Enter Group Details" closeButtonTitle:@"Cancel" duration:0.0f];
+    [alert alertIsDismissed:^{
+        [self configureNavAndTabBarUserInteraction];
+    }];
+}
+
+// Helper method to enable/disble navBar and tabBar interaction while presenting group creation alert
+- (void)configureNavAndTabBarUserInteraction {
+    self.tabBarController.tabBar.userInteractionEnabled = !self.tabBarController.tabBar.userInteractionEnabled;
+    self.navigationController.navigationBar.userInteractionEnabled = !self.navigationController.navigationBar.userInteractionEnabled;
 }
 
 // Helper method to check valid user input (handling empty name/description case)
 - (BOOL)validGroupName: (NSString *)groupName andDescription: (NSString *)groupDescription {
     if ([groupName isEqualToString:@""] || [groupDescription isEqualToString: @""]) {
+        [self configureNavAndTabBarUserInteraction];
         SCLAlertView *alert = [[SCLAlertView alloc] init];
         [alert addButton:@"Try Again" actionBlock:^(void) {
             [self onCreateGroup:self];
         }];
         [alert showError:self title:@"Failed!" subTitle:@"Group Details Cannot be Empty!" closeButtonTitle:@"Cancel" duration:0.0f];
+        [alert alertIsDismissed:^{
+            [self configureNavAndTabBarUserInteraction];
+        }];
         return NO;
     }
     return YES;
