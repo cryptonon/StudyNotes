@@ -690,14 +690,9 @@
                         <viewLayoutGuide key="safeArea" id="PCJ-jJ-XP3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="fqB-k5-zB0">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="Q7n-3f-D7m">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" image="line.horizontal.3" catalog="system" id="Q7n-3f-D7m">
                             <connections>
-                                <segue destination="SXz-2N-lmd" kind="show" identifier="settingsSegue" id="Qce-jq-yq8"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="9Nu-UC-6UK">
-                            <connections>
-                                <action selector="onLogout:" destination="Zrf-hi-ac2" id="wmD-cO-MWo"/>
+                                <action selector="onMenu:" destination="Zrf-hi-ac2" id="QqL-fj-QHI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -705,6 +700,7 @@
                         <outlet property="collectionView" destination="DU2-rD-6vO" id="aja-4W-y2L"/>
                         <segue destination="p7t-U2-fgC" kind="show" identifier="notesSegue" id="fII-B0-VUp"/>
                         <segue destination="dtP-32-Tk8" kind="show" identifier="numbersFactSegue" id="OCk-tj-vUT"/>
+                        <segue destination="SXz-2N-lmd" kind="show" identifier="settingsSegue" id="p1j-1A-3B9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q1D-fm-e1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1134,6 +1130,7 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="house" catalog="system" width="128" height="110"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <namedColor name="alternate1-1">

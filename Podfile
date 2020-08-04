@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
+  ENV['SWIFT_VERSION'] = '5'
 
 target 'StudyNotes' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -13,6 +14,7 @@ target 'StudyNotes' do
   pod 'AFNetworking'
   pod 'TOCropViewController'
   pod 'SCLAlertView-Objective-C'
+  pod 'PopOverMenu'
 
 
   target 'StudyNotesTests' do

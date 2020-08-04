@@ -36,6 +36,7 @@ PODS:
     - Parse/Core
   - Parse/UI (1.18.0):
     - Parse/Core
+  - PopOverMenu (2.6.0)
   - SCLAlertView-Objective-C (1.1.6)
   - TOCropViewController (2.5.4)
 
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - Parse
   - Parse/FacebookUtils
   - Parse/UI
+  - PopOverMenu
   - SCLAlertView-Objective-C
   - TOCropViewController
 
@@ -56,6 +58,7 @@ SPEC REPOS:
     - FBSDKLoginKit
     - JGProgressHUD
     - Parse
+    - PopOverMenu
     - SCLAlertView-Objective-C
     - TOCropViewController
 
@@ -66,9 +69,10 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
+  PopOverMenu: 958033577cdcfae7dc506c8dfeed621d1491924e
   SCLAlertView-Objective-C: 2bb9be204bffaf24762a0e33fe6ca9645819b3b7
   TOCropViewController: 2a1ae1242600b1f2d996fd91a5268b2309a33b5c
 
-PODFILE CHECKSUM: ffaf17fd2070e2a4a441f853d289ee5bee08736e
+PODFILE CHECKSUM: 77ccfcbeb4363e34d90fb196ab7a35eacf2017f1
 
 COCOAPODS: 1.9.3

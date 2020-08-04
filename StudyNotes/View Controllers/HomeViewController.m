@@ -12,8 +12,9 @@
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
 #import <SCLAlertView.h>
+@import PopOverMenu;
 
-@interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -52,8 +53,36 @@
     layout.itemSize = CGSizeMake(itemWidth, itemWidth);
 }
 
-// Logging out the user when Logout button is tapped
-- (IBAction)onLogout:(id)sender {
+// Method that handles popover menu and its actions
+- (IBAction)onMenu:(id)sender {
+    NSArray *titles = @[@"Notifications", @"Logout", @"Cancel"];
+    NSArray *descriptions = @[@"Go to Notifications Settings", @"Logout from Current Account", @"Go back to previous Screen"];
+    PopOverViewController *popOverViewController = [PopOverViewController instantiate];
+    [popOverViewController setWithTitles:titles];
+    [popOverViewController setWithDescriptions:descriptions];
+    popOverViewController.popoverPresentationController.barButtonItem = sender;
+    popOverViewController.preferredContentSize = CGSizeMake(400, 135);
+    popOverViewController.presentationController.delegate = self;
+    [popOverViewController setCompletionHandler:^(NSInteger selectRow) {
+        switch (selectRow) {
+            case 0:
+                [self performSegueWithIdentifier:@"settingsSegue" sender:self];
+                break;
+            case 1:
+                [self performLogout];
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+        self.view.alpha = 1.0;
+    }];
+    [self presentViewController:popOverViewController animated:YES completion:nil];
+}
+
+// Logging out the user when Logout is selected from dropdown menu
+- (void)performLogout {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to logout?"
                                                                    message:nil
                                                             preferredStyle:(UIAlertControllerStyleActionSheet)];
@@ -101,6 +130,16 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *segueIdentifier = self.segueIdentifierArray[indexPath.item];
     [self performSegueWithIdentifier:segueIdentifier sender:nil];
+}
+
+// Method for setting menu presentation style (PopOverMenu Delegate Method)
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    return UIModalPresentationNone;
+}
+
+// Method for setting menu presentation style (PopOverMenu Delegate Method)
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
+    return UIModalPresentationNone;
 }
 
 @end
