@@ -36,6 +36,7 @@
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     backgroundImageView.alpha = 0.25;
     self.tableView.backgroundView = backgroundImageView;
+    self.tableView.tableFooterView = [UIView new];
 }
 
 // Method to deselect the selected row
