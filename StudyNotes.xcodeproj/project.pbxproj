@@ -35,6 +35,7 @@
 		2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556524BD089700861FEA /* NoteDetailsViewController.m */; };
 		2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556824BD09CE00861FEA /* NoteCell.m */; };
 		2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */; };
+		2CF16BF324DA14360070D014 /* UICustomizationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF16BF224DA14360070D014 /* UICustomizationHelper.m */; };
 		3E402AA28AC0017AAD49313E /* Pods_StudyNotes_StudyNotesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */; };
 		74777B16821483C6A58A9CC9 /* Pods_StudyNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */; };
 		B4647228A8041A2014A48B49 /* Pods_StudyNotesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */; };
@@ -130,6 +131,8 @@
 		2CE7556824BD09CE00861FEA /* NoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		2CE7556A24BD103F00861FEA /* CreateNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateNoteViewController.h; sourceTree = "<group>"; };
 		2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNoteViewController.m; sourceTree = "<group>"; };
+		2CF16BF124DA14360070D014 /* UICustomizationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICustomizationHelper.h; sourceTree = "<group>"; };
+		2CF16BF224DA14360070D014 /* UICustomizationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICustomizationHelper.m; sourceTree = "<group>"; };
 		307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B939A07C68BC805F3FEA20F /* Pods-StudyNotes-StudyNotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes-StudyNotesUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotes-StudyNotesUITests/Pods-StudyNotes-StudyNotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotes_StudyNotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +290,8 @@
 			children = (
 				2C9D42D024CB6D3000BF275B /* DateTimeHelper.h */,
 				2C9D42D124CB6D3000BF275B /* DateTimeHelper.m */,
+				2CF16BF124DA14360070D014 /* UICustomizationHelper.h */,
+				2CF16BF224DA14360070D014 /* UICustomizationHelper.m */,
 			);
 			path = "Helper Methods";
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */,
 				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
 				2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */,
+				2CF16BF324DA14360070D014 /* UICustomizationHelper.m in Sources */,
 				2C7BAF7724D9EA9F008913D3 /* HalfScreenPresentationController.m in Sources */,
 				2C55390F24D7073700AF8CB1 /* GroupViewController.m in Sources */,
 				2C55391224D70E3700AF8CB1 /* Group.m in Sources */,

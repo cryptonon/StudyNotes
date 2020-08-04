@@ -13,12 +13,7 @@
 #import "DateTimeHelper.h"
 #import <SCLAlertView.h>
 #import "CreateNoteViewController.h"
-
-// Constants required for adding shadow to containers
-#define shadeColor [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.875f] CGColor];
-const CGSize shadowOffset = {0.0f, 2.0f};
-const CGFloat shadowOpacity = 1.0f;
-const CGFloat shadowRadius = 5.0f;
+#import "UICustomizationHelper.h"
 
 @interface SettingsViewController () <CreateNoteViewControllerDelegate>
 
@@ -94,21 +89,16 @@ const CGFloat shadowRadius = 5.0f;
 
 // Method that sets shadow for all containers
 -(void)setShadowForAllContainers {
-    [self setShadowForContainer:self.switchContainer];
-    [self setShadowForContainer:self.fromDateContainer];
-    [self setShadowForContainer:self.toDateContainer];
-    [self setShadowForContainer:self.timeIntervalContainer];
-    [self setShadowForContainer:self.startTimeContainer];
-    [self setShadowForContainer:self.endTimeContainer];
-}
-
-// Helper method that sets shadow for a container
--(void)setShadowForContainer: (UIView *)container {
-    container.layer.shadowColor = shadeColor;
-    container.layer.shadowOffset = shadowOffset;
-    container.layer.shadowOpacity = shadowOpacity;
-    container.layer.shadowRadius = shadowRadius;
-    container.layer.masksToBounds = NO;
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.875f] CGColor];
+    CGSize shadowOffset = {0.0f, 2.0f};
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 5.0f;
+    [UICustomizationHelper setShadowFor:self.switchContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setShadowFor:self.fromDateContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setShadowFor:self.toDateContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setShadowFor:self.timeIntervalContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setShadowFor:self.startTimeContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setShadowFor:self.endTimeContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
 }
 
 // Method to update user settings when Update button is tapped

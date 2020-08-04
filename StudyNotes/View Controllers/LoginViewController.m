@@ -11,6 +11,7 @@
 @import Parse;
 #import <JGProgressHUD/JGProgressHUD.h>
 #import <SCLAlertView.h>
+#import "UICustomizationHelper.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -60,14 +61,8 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    self.usernameField.layer.shadowColor = shadowColor;
-    self.usernameField.layer.shadowOffset = shadowOffset;
-    self.usernameField.layer.shadowOpacity = shadowOpacity;
-    self.usernameField.layer.shadowRadius = shadowRadius;
-    self.passwordField.layer.shadowColor = shadowColor;
-    self.passwordField.layer.shadowOffset = shadowOffset;
-    self.passwordField.layer.shadowOpacity = shadowOpacity;
-    self.passwordField.layer.shadowRadius = shadowRadius;
+    [UICustomizationHelper setShadowFor:self.usernameField withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setShadowFor:self.passwordField withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
 }
 
 // Method that adds shadow to studyNotesLabel
@@ -76,10 +71,7 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 2.5f;
-    self.studyNotesLabel.layer.shadowColor = shadowColor;
-    self.studyNotesLabel.layer.shadowOffset = shadowOffset;
-    self.studyNotesLabel.layer.shadowOpacity = shadowOpacity;
-    self.studyNotesLabel.layer.shadowRadius = shadowRadius;
+    [UICustomizationHelper setShadowFor:self.studyNotesLabel withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
 }
 
 // Method that adds shadow and corner radius to Login and Continue with FB buttons
@@ -89,16 +81,10 @@
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 1.25f;
     CGFloat cornerRadius = 15.0f;
-    self.loginButton.layer.shadowColor = shadowColor;
-    self.loginButton.layer.shadowOffset = shadowOffset;
-    self.loginButton.layer.shadowOpacity = shadowOpacity;
-    self.loginButton.layer.shadowRadius = shadowRadius;
-    self.loginButton.layer.cornerRadius = cornerRadius;
-    self.continueWithFBButton.layer.shadowColor = shadowColor;
-    self.continueWithFBButton.layer.shadowOffset = shadowOffset;
-    self.continueWithFBButton.layer.shadowOpacity = shadowOpacity;
-    self.continueWithFBButton.layer.shadowRadius = shadowRadius;
-    self.continueWithFBButton.layer.cornerRadius = cornerRadius;
+    [UICustomizationHelper setShadowFor:self.loginButton withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setShadowFor:self.continueWithFBButton withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setCornerRadiusFor:self.loginButton withRadius:cornerRadius];
+    [UICustomizationHelper setCornerRadiusFor:self.continueWithFBButton withRadius:cornerRadius];
 }
 
 // Logging in the user when Login button is tapped

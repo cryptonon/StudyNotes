@@ -9,6 +9,7 @@
 #import "NoteDetailsViewController.h"
 @import Parse;
 #import "CreateNoteViewController.h"
+#import "UICustomizationHelper.h"
 
 @interface NoteDetailsViewController () <CreateNoteViewControllerDelegate>
 
@@ -63,12 +64,14 @@
 
 // Method that adds border and shadow to noteImageView
 -(void)customizeNoteImageView {
-    [self.noteImageView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.75] CGColor]];
-    [self.noteImageView.layer setBorderWidth:1.0f];
-    self.noteImageViewContainer.layer.shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9f] CGColor];
-    self.noteImageViewContainer.layer.shadowOffset = CGSizeMake(0.0f, 2.5f);
-    self.noteImageViewContainer.layer.shadowOpacity = 0.0f;
-    self.noteImageViewContainer.layer.shadowRadius = 5.0f;
+    CGColorRef borderColor = [[[UIColor darkGrayColor] colorWithAlphaComponent:0.75] CGColor];
+    CGFloat borderWidth = 1.0f;
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0.0f, 2.5f);
+    CGFloat shadowOpacity = 0.0f;
+    CGFloat shadowRadius = 5.0f;
+    [UICustomizationHelper setShadowFor:self.noteImageViewContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    [UICustomizationHelper setBorderFor:self.noteImageView withColor:borderColor withWidth:borderWidth];
 }
 
 // Method to show image full screen on tapping noteImageView

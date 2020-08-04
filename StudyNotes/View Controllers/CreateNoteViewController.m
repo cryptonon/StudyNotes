@@ -11,6 +11,7 @@
 @import Parse;
 #import <JGProgressHUD/JGProgressHUD.h>
 @import TOCropViewController;
+#import "UICustomizationHelper.h"
 
 @interface CreateNoteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate>
 
@@ -72,37 +73,33 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    self.noteTitleField.layer.shadowColor = shadowColor;
-    self.noteTitleField.layer.shadowOffset = shadowOffset;
-    self.noteTitleField.layer.shadowOpacity = shadowOpacity;
-    self.noteTitleField.layer.shadowRadius = shadowRadius;
+    [UICustomizationHelper setShadowFor:self.noteTitleField withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
 }
 
 // Method that adds shadow, corner radius, and border to noteDescriptionTextView
 -(void)customizeNoteDescriptionTextView {
-    [self.noteDescriptionTextView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.45] CGColor]];
-    [self.noteDescriptionTextView.layer setBorderWidth:1.5];
-    self.noteDescriptionTextView.layer.cornerRadius = 15;
-    
+    CGColorRef borderColor = [[[UIColor darkGrayColor] colorWithAlphaComponent:0.45] CGColor];
+    CGFloat borderWidth = 1.5f;
+    CGFloat cornerRadius = 15.0f;
     CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75f] CGColor];
     CGSize shadowOffset = CGSizeMake(0, 5.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 12.5f;
-    self.noteDescriptionViewContainer.layer.shadowColor = shadowColor;
-    self.noteDescriptionViewContainer.layer.shadowOffset = shadowOffset;
-    self.noteDescriptionViewContainer.layer.shadowOpacity = shadowOpacity;
-    self.noteDescriptionViewContainer.layer.shadowRadius = shadowRadius;
-    self.noteDescriptionViewContainer.layer.cornerRadius = 15.0f;
+    [UICustomizationHelper setBorderFor:self.noteDescriptionTextView withColor:borderColor withWidth:borderWidth];
+    [UICustomizationHelper setCornerRadiusFor:self.noteDescriptionTextView withRadius:cornerRadius];
+    [UICustomizationHelper setShadowFor:self.noteDescriptionViewContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
 }
 
 // Method that adds border and shadow to noteImageView
 -(void)customizeNoteImageView {
-    [self.noteImageView.layer setBorderColor:[[[UIColor darkGrayColor] colorWithAlphaComponent:0.75] CGColor]];
-    [self.noteImageView.layer setBorderWidth:1.0f];
-    self.noteImageViewContainer.layer.shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9f] CGColor];
-    self.noteImageViewContainer.layer.shadowOffset = CGSizeMake(0.0f, 2.5f);
-    self.noteImageViewContainer.layer.shadowOpacity = 1.0f;
-    self.noteImageViewContainer.layer.shadowRadius = 5.0f;
+    CGColorRef borderColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9f] CGColor];
+    CGFloat borderWidth = 1.0f;
+    CGColorRef shadowColor = [[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75f] CGColor];
+    CGSize shadowOffset = CGSizeMake(0, 2.5f);
+    CGFloat shadowOpacity = 1.0f;
+    CGFloat shadowRadius = 5.0f;
+    [UICustomizationHelper setBorderFor:self.noteImageView withColor:borderColor withWidth:borderWidth];
+    [UICustomizationHelper setShadowFor:self.noteImageViewContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
 }
 
 // Method to dismiss modal view on tapping Cancel button
