@@ -10,7 +10,7 @@
 #import "UserSetting.h"
 #import "NotificationSetup.h"
 #import <JGProgressHUD/JGProgressHUD.h>
-#import "DateTimeHelper.h"
+#import "DateTimeHelpers.h"
 #import <SCLAlertView.h>
 #import "CreateNoteViewController.h"
 #import "UICustomizationHelper.h"
@@ -198,8 +198,8 @@
 
 // Method to combine fromDate with startTime and toDate with endTime
 - (void) combineDateTime {
-    NSDate *notificationStartDateTime = [DateTimeHelper combinedDate:self.fromDatePicker.date withTimeOfNSDate:self.startTimePicker.date];
-    NSDate *notificationEndDateTime = [DateTimeHelper combinedDate:self.toDatePicker.date withTimeOfNSDate:self.endTimePicker.date];
+    NSDate *notificationStartDateTime = combineDateWithTimeOfNSDate(self.fromDatePicker.date, self.startTimePicker.date);
+    NSDate *notificationEndDateTime = combineDateWithTimeOfNSDate(self.toDatePicker.date, self.endTimePicker.date);
     self.fromDatePicker.date = notificationStartDateTime;
     self.toDatePicker.date = notificationEndDateTime;
 }
