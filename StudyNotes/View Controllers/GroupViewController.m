@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSMutableArray *groupArray;
 @property (strong, nonnull) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableArray *filteredGroupArray;
-@property (nonatomic) BOOL *enableDeleting;
 
 @end
 
@@ -161,12 +160,10 @@
     if (trimmedSearchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@("groupName contains[c] %@"), trimmedSearchText];
         self.filteredGroupArray = (NSMutableArray *) [self.groupArray filteredArrayUsingPredicate:predicate];
-    }
-    else {
+    } else {
         self.filteredGroupArray = self.groupArray;
     }
     [self.tableView reloadData];
-    
 }
 
 #pragma mark - Navigation
