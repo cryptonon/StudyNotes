@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C106BB824C0BFF20025FA6F /* APIManager.m */; };
 		2C11A2BD24CA5E3000003CA1 /* NumbersFactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C11A2BC24CA5E3000003CA1 /* NumbersFactViewController.m */; };
-		2C3F79CD24DB52D000AA46A9 /* DateTimeHelpers.h in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79CC24DB52C800AA46A9 /* DateTimeHelpers.h */; };
 		2C3F79CF24DB530E00AA46A9 /* DateTimeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79CE24DB530E00AA46A9 /* DateTimeHelpers.m */; };
-		2C3F79D124DB60B500AA46A9 /* UICustomizationHelpers.h in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79D024DB60AD00AA46A9 /* UICustomizationHelpers.h */; };
 		2C3F79D324DB630B00AA46A9 /* UICustomizationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79D224DB630B00AA46A9 /* UICustomizationHelpers.m */; };
 		2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */; };
 		2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */; };
@@ -80,9 +78,9 @@
 		2C106BB824C0BFF20025FA6F /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		2C11A2BB24CA5E3000003CA1 /* NumbersFactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersFactViewController.h; sourceTree = "<group>"; };
 		2C11A2BC24CA5E3000003CA1 /* NumbersFactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersFactViewController.m; sourceTree = "<group>"; };
-		2C3F79CC24DB52C800AA46A9 /* DateTimeHelpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = DateTimeHelpers.h; sourceTree = "<group>"; };
+		2C3F79CC24DB52C800AA46A9 /* DateTimeHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateTimeHelpers.h; sourceTree = "<group>"; };
 		2C3F79CE24DB530E00AA46A9 /* DateTimeHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateTimeHelpers.m; sourceTree = "<group>"; };
-		2C3F79D024DB60AD00AA46A9 /* UICustomizationHelpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = UICustomizationHelpers.h; sourceTree = "<group>"; };
+		2C3F79D024DB60AD00AA46A9 /* UICustomizationHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICustomizationHelpers.h; sourceTree = "<group>"; };
 		2C3F79D224DB630B00AA46A9 /* UICustomizationHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICustomizationHelpers.m; sourceTree = "<group>"; };
 		2C4F3D4C24BCF8EE003D7B5C /* StudyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4F3D4F24BCF8EE003D7B5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -583,7 +581,6 @@
 				2C9E990624C204BC0009579F /* SignupViewController.m in Sources */,
 				2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */,
 				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
-				2C3F79CD24DB52D000AA46A9 /* DateTimeHelpers.h in Sources */,
 				2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */,
 				2C55390F24D7073700AF8CB1 /* GroupViewController.m in Sources */,
 				2C55391224D70E3700AF8CB1 /* Group.m in Sources */,
@@ -591,7 +588,6 @@
 				2CE7555724BCFF6900861FEA /* LoginViewController.m in Sources */,
 				2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */,
 				2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */,
-				2C3F79D124DB60B500AA46A9 /* UICustomizationHelpers.h in Sources */,
 				2C55390C24D7071F00AF8CB1 /* GroupCell.m in Sources */,
 				2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */,
 				2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */,

@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 // MARK: Helper Method Declarations
 
 NSDateComponents *hourAndMinuteComponentForTimeOfNSDate(NSDate *dateTime);
 NSDate *combineDateWithTimeOfNSDate(NSDate *date, NSDate *dateTime);
 BOOL dateTimeIsBefore(NSDate *dateTime, NSDate *referenceDateTime);
 NSTimeInterval dailySkipIntervalInSecondsBetweenStartAndEndTime(NSDate *notificationStartDateTime, NSDate *notificationEndDateTime);
+
+NS_ASSUME_NONNULL_END
