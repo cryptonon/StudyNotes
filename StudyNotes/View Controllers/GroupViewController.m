@@ -10,12 +10,14 @@
 #import "GroupCell.h"
 #import "NotesFeedViewController.h"
 #import <SCLAlertView.h>
+#import <JGProgressHUD/JGProgressHUD.h>
 
 @interface GroupViewController () <UITableViewDelegate, UITableViewDataSource>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *groupArray;
+@property (strong, nonnull) UIRefreshControl *refreshControl;
 
 @end
 
@@ -26,6 +28,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self customizeTableView];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchGroups) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     [self fetchGroups];
 }
 
@@ -48,6 +53,9 @@
 
 // Method that fetches groups form parse
 -(void)fetchGroups {
+    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    progressHUD.textLabel.text = @"Loading";
+    [progressHUD showInView:self.view];
     PFQuery *groupQuery = [Group query];
     [groupQuery orderByDescending:@"createdAt"];
     [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
@@ -55,7 +63,9 @@
             self.groupArray = (NSMutableArray *) groups;
             [self.tableView reloadData];
         }
+        [progressHUD dismissAnimated:YES];
     }];
+    [self.refreshControl endRefreshing];
 }
 
 // Method that handles new group creation
