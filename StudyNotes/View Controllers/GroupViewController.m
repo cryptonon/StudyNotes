@@ -31,7 +31,7 @@
 
 // Method that customizes tableView
 - (void)customizeTableView {
-    self.tableView.separatorColor = [UIColor blackColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     backgroundImageView.alpha = 0.25;

@@ -320,31 +320,43 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT9-a0-kMT">
-                                                    <rect key="frame" x="20" y="11" width="374" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvh-fM-6p6">
-                                                    <rect key="frame" x="20" y="39.5" width="374" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="244-FU-7yX">
+                                                    <rect key="frame" x="8" y="8" width="398" height="70"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT9-a0-kMT">
+                                                            <rect key="frame" x="20" y="13" width="358" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvh-fM-6p6">
+                                                            <rect key="frame" x="20" y="41.5" width="358" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="cvh-fM-6p6" firstAttribute="top" secondItem="FT9-a0-kMT" secondAttribute="bottom" constant="8" id="2gD-E0-KKq"/>
+                                                        <constraint firstItem="cvh-fM-6p6" firstAttribute="leading" secondItem="244-FU-7yX" secondAttribute="leading" constant="20" id="72c-w6-8Iu"/>
+                                                        <constraint firstItem="FT9-a0-kMT" firstAttribute="top" secondItem="244-FU-7yX" secondAttribute="top" constant="13" id="BWu-ZH-8io"/>
+                                                        <constraint firstItem="FT9-a0-kMT" firstAttribute="leading" secondItem="244-FU-7yX" secondAttribute="leading" constant="20" id="PsE-q7-5je"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cvh-fM-6p6" secondAttribute="bottom" constant="8" id="Vr3-DM-w67"/>
+                                                        <constraint firstAttribute="trailing" secondItem="FT9-a0-kMT" secondAttribute="trailing" constant="20" id="d1P-qq-T7m"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cvh-fM-6p6" secondAttribute="trailing" constant="20" id="feg-di-IJN"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cvh-fM-6p6" firstAttribute="leading" secondItem="YOx-xB-wxt" secondAttribute="leading" constant="20" id="KM7-jx-jtm"/>
-                                                <constraint firstAttribute="trailing" secondItem="cvh-fM-6p6" secondAttribute="trailing" constant="20" id="Trh-ce-WXV"/>
-                                                <constraint firstItem="FT9-a0-kMT" firstAttribute="leading" secondItem="YOx-xB-wxt" secondAttribute="leading" constant="20" id="Wjo-S3-1gP"/>
-                                                <constraint firstItem="cvh-fM-6p6" firstAttribute="top" secondItem="FT9-a0-kMT" secondAttribute="bottom" constant="8" id="cTc-uy-gEB"/>
-                                                <constraint firstItem="FT9-a0-kMT" firstAttribute="top" secondItem="YOx-xB-wxt" secondAttribute="top" constant="11" id="iI3-Cu-9mN"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cvh-fM-6p6" secondAttribute="bottom" constant="8" id="lJb-fX-paL"/>
-                                                <constraint firstAttribute="trailing" secondItem="FT9-a0-kMT" secondAttribute="trailing" constant="20" id="ykZ-9t-iSG"/>
+                                                <constraint firstAttribute="trailing" secondItem="244-FU-7yX" secondAttribute="trailing" constant="8" id="F8Z-h0-uSv"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="244-FU-7yX" secondAttribute="bottom" constant="8" id="W1M-Ox-7jx"/>
+                                                <constraint firstItem="244-FU-7yX" firstAttribute="top" secondItem="YOx-xB-wxt" secondAttribute="top" constant="8" id="cYC-Ha-9El"/>
+                                                <constraint firstItem="244-FU-7yX" firstAttribute="leading" secondItem="YOx-xB-wxt" secondAttribute="leading" constant="8" id="uge-7E-tCz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="containerView" destination="244-FU-7yX" id="n1P-Sl-ONr"/>
                                             <outlet property="groupDescriptionLabel" destination="cvh-fM-6p6" id="w9s-z0-7EC"/>
                                             <outlet property="groupNameLabel" destination="FT9-a0-kMT" id="yD2-dg-kUa"/>
                                             <segue destination="p7t-U2-fgC" kind="show" identifier="groupNotesSegue" id="XmQ-8p-XQU"/>
@@ -1123,8 +1135,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gUT-gY-Cy2"/>
-        <segue reference="fII-B0-VUp"/>
+        <segue reference="Fvf-tr-BiF"/>
+        <segue reference="XmQ-8p-XQU"/>
         <segue reference="jMY-Ua-gBb"/>
     </inferredMetricsTieBreakers>
     <resources>
