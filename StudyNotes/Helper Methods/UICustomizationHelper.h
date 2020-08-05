@@ -27,6 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)setCornerRadiusFor: (UIView *)view withRadius: (CGFloat)cornerRadius;
 
++ (void)setBackgroundForScrollView: (UIScrollView *)scrollView
+            containgingContentView: (UIView *)contentView
+                         withImage: (UIImage *)backgroundImage
+                         withAlpha: (CGFloat)imageAlpha;
+
++ (void)setBackgroundForTableView: (UITableView *)tableView
+                        withImage: (UIImage *)backgroundImage
+                        withAlpha: (CGFloat)imageAlpha;
+
 @end
 
 NS_ASSUME_NONNULL_END

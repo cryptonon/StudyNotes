@@ -13,6 +13,7 @@
 #import "CreateNoteViewController.h"
 #import <JGProgressHUD/JGProgressHUD.h>
 #import <SCLAlertView.h>
+#import "UICustomizationHelper.h"
 
 @interface NotesFeedViewController () <UITableViewDelegate, UITableViewDataSource, CreateNoteViewControllerDelegate, DetailsViewControllerDelegate, NoteCellDelegate>
 
@@ -42,10 +43,8 @@
 // Method that customizes tableView
 - (void)customizeTableView {
     self.tableView.separatorColor = [UIColor blackColor];
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
-    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    backgroundImageView.alpha = 0.25;
-    self.tableView.backgroundView = backgroundImageView;
+    UIImage *tableViewBgImage = [UIImage imageNamed:@"note"];
+    [UICustomizationHelper setBackgroundForTableView:self.tableView withImage:tableViewBgImage withAlpha:0.25];
     self.tableView.tableFooterView = [UIView new];
 }
 

@@ -55,11 +55,8 @@
 
 // Method that customizes scrollView's appearance
 - (void)customizeScrollView {
-    self.contentView.backgroundColor = [UIColor clearColor];
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
-    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    backgroundImageView.alpha = 0.25;
-    [self.scrollView insertSubview:backgroundImageView atIndex:0];
+    UIImage *scrollViewBgImage = [UIImage imageNamed:@"note"];
+    [UICustomizationHelper setBackgroundForScrollView:self.scrollView containgingContentView:self.contentView withImage:scrollViewBgImage withAlpha:0.25];
 }
 
 // Method that adds border and shadow to noteImageView

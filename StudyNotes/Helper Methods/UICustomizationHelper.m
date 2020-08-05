@@ -31,4 +31,22 @@
     view.layer.cornerRadius = cornerRadius;
 }
 
+// Method that sets scrollView Background Image
++ (void)setBackgroundForScrollView:(UIScrollView *)scrollView containgingContentView:(UIView *)contentView withImage:(UIImage *)backgroundImage withAlpha:(CGFloat)imageAlpha {
+    contentView.backgroundColor = [UIColor clearColor];
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.alpha = imageAlpha;
+    [scrollView insertSubview:backgroundImageView atIndex:0];
+    
+}
+
+// Method that sets tableView Background Image
++ (void)setBackgroundForTableView:(UITableView *)tableView withImage:(UIImage *)backgroundImage withAlpha:(CGFloat)imageAlpha {
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.alpha = 0.25;
+    tableView.backgroundView = backgroundImageView;
+}
+
 @end

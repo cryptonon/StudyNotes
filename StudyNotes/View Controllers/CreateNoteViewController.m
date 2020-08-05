@@ -60,11 +60,8 @@
 
 // Method that sets scrollView's background matching to app theme image
 - (void)setScrollViewBackground {
-    self.contentView.backgroundColor = [UIColor clearColor];
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"note"]];
-    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    backgroundImageView.alpha = 0.25;
-    [self.scrollView insertSubview:backgroundImageView atIndex:0];
+    UIImage *scrollViewBgImage = [UIImage imageNamed:@"note"];
+    [UICustomizationHelper setBackgroundForScrollView:self.scrollView containgingContentView:self.contentView withImage:scrollViewBgImage withAlpha:0.25];
 }
 
 // Method that adds shadow to noteTitleField
