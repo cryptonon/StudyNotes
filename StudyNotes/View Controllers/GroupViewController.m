@@ -13,12 +13,14 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import "UICustomizationHelper.h"
 
-@interface GroupViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface GroupViewController () <UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *groupArray;
 @property (strong, nonnull) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) NSMutableArray *filteredGroupArray;
+@property (nonatomic) BOOL *enableDeleting;
 
 @end
 
@@ -26,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addSearchBar];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self customizeTableView];
@@ -33,6 +36,16 @@
     [self.refreshControl addTarget:self action:@selector(fetchGroups) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     [self fetchGroups];
+}
+
+// Method that adds searchBar
+- (void)addSearchBar {
+    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    searchController.searchResultsUpdater = self;
+    searchController.obscuresBackgroundDuringPresentation = NO;
+    searchController.searchBar.placeholder = @"Search Groups";
+    self.navigationItem.searchController = searchController;
+    self.definesPresentationContext = YES;
 }
 
 // Method that customizes tableView
@@ -60,6 +73,7 @@
     [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
         if(groups) {
             self.groupArray = (NSMutableArray *) groups;
+            self.filteredGroupArray = (NSMutableArray *) groups;
             [self.tableView reloadData];
         }
         [progressHUD dismissAnimated:YES];
@@ -129,14 +143,30 @@
 
 // Method to find out the number of rows in Table View (Table View Data Source's required method)
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.groupArray.count;
+    return self.filteredGroupArray.count;
 }
 
 // Method to configure the Table View's cell (Table View Data Source's required method)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GroupCell"];
-    cell.group = self.groupArray[indexPath.row];
+    cell.group = self.filteredGroupArray[indexPath.row];
     return cell;
+}
+
+// Method to filter groups when searching starts (UISearchResultsUpdating's required method)
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchText = searchController.searchBar.searchTextField.text;
+    NSCharacterSet *whiteSpaceSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString *trimmedSearchText = [searchText stringByTrimmingCharactersInSet:whiteSpaceSet];
+    if (trimmedSearchText.length != 0) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@("groupName contains[c] %@"), trimmedSearchText];
+        self.filteredGroupArray = (NSMutableArray *) [self.groupArray filteredArrayUsingPredicate:predicate];
+    }
+    else {
+        self.filteredGroupArray = self.groupArray;
+    }
+    [self.tableView reloadData];
+    
 }
 
 #pragma mark - Navigation
@@ -144,7 +174,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    Group *group = self.groupArray[indexPath.row];
+    Group *group = self.filteredGroupArray[indexPath.row];
     NotesFeedViewController *feedViewController = [segue destinationViewController];
     feedViewController.group = group;
 }
