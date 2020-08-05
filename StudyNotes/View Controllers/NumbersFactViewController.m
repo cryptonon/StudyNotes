@@ -9,12 +9,15 @@
 #import "NumbersFactViewController.h"
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
+#import "UICustomizationHelper.h"
 
 @interface NumbersFactViewController ()
 
 // MARK: Properties
 @property (weak, nonatomic) IBOutlet UIImageView *factImageView;
 @property (weak, nonatomic) IBOutlet UILabel *factLabel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -22,8 +25,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setScrollViewBackground];
     [self loadNumberImage];
     [self generateNewFact:nil];
+}
+
+// Method that sets scrollView's background matching to app theme image
+- (void)setScrollViewBackground {
+    UIImage *scrollViewBgImage = [UIImage imageNamed:@"note"];
+    [UICustomizationHelper setBackgroundForScrollView:self.scrollView containgingContentView:self.contentView withImage:scrollViewBgImage withAlpha:0.25];
 }
 
 // Method to generate a new fact on tapping Refresh button

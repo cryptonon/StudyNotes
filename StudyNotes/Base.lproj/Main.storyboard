@@ -293,8 +293,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentView" destination="STs-d8-WAr" id="0BA-mJ-Gfj"/>
                         <outlet property="factImageView" destination="Ndr-ZQ-ioY" id="UGf-Hf-V0l"/>
                         <outlet property="factLabel" destination="GvN-Xe-0Xi" id="rdc-e8-7to"/>
+                        <outlet property="scrollView" destination="Hz0-dd-kCb" id="WHm-1i-ETY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfn-pe-FeJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
