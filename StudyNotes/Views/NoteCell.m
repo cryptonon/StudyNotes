@@ -8,7 +8,7 @@
 
 #import "NoteCell.h"
 @import Parse;
-#import "UICustomizationHelper.h"
+#import "UICustomizationHelpers.h"
 
 @interface NoteCell()
 
@@ -51,7 +51,7 @@
     CGSize shadowOffset = CGSizeMake(0.0f, 2.0f);
     CGFloat shadowOpacity = 0.0f;
     CGFloat shadowRadius = 2.5f;
-    [UICustomizationHelper setShadowFor:self.noteImageViewContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    setShadowForView(self.noteImageViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that animates noteImageView

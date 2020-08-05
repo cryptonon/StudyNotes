@@ -7,7 +7,7 @@
 //
 
 #import "GroupCell.h"
-#import "UICustomizationHelper.h"
+#import "UICustomizationHelpers.h"
 
 @interface GroupCell()
 
@@ -27,9 +27,9 @@
 // Setter method that sets GroupCell properties if provided a group
 - (void)setGroup:(Group *)group {
     self.containerView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.825];
-    [UICustomizationHelper setCornerRadiusFor:self.containerView withRadius:12.5f];
-    [UICustomizationHelper setBorderFor:self.containerView withColor:[[UIColor grayColor] CGColor] withWidth:1];
-    [UICustomizationHelper setShadowFor:self.containerView withColor:[[UIColor blackColor] CGColor] withOpacity:1.0 withOffset:CGSizeMake(0, 2) withRadius:8];
+    setCornerRadiusForView(self.containerView, 12.5f);
+    setBorderForView(self.containerView, [[UIColor grayColor] CGColor], 1.0f);
+    setShadowForView(self.containerView, [[UIColor blackColor] CGColor], 1.0f, CGSizeMake(0.0f, 2.0f), 8.0f);
     self.groupNameLabel.text = group.groupName;
     self.groupDescriptionLabel.text = group.groupDescription;
 }

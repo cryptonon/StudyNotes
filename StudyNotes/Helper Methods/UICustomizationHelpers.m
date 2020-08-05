@@ -1,19 +1,17 @@
 //
-//  UICustomizationHelper.m
+//  UICustomizationHelpers.m
 //  StudyNotes
 //
-//  Created by Aayush Mani Phuyal on 8/4/20.
+//  Created by Aayush Mani Phuyal on 8/5/20.
 //  Copyright © 2020 Aayush Phuyal. All rights reserved.
 //
 
-#import "UICustomizationHelper.h"
+#import "UICustomizationHelpers.h"
 
-@implementation UICustomizationHelper
-
-// MARK: Methods
+// MARK: Helper Methods Implementation
 
 // Method that sets Shadow to a view with provided details
-+ (void)setShadowFor:(UIView *)view withColor:(CGColorRef)shadowColor withOpacity:(CGFloat)shadowOpacity withOffset:(CGSize)shadowOffset withRadius:(CGFloat)shadowRadius {
+void setShadowForView(UIView *view, CGColorRef shadowColor, CGFloat shadowOpacity, CGSize shadowOffset, CGFloat shadowRadius) {
     view.layer.shadowColor = shadowColor;
     view.layer.shadowOpacity = shadowOpacity;
     view.layer.shadowOffset = shadowOffset;
@@ -21,32 +19,30 @@
 }
 
 // Method that sets Border to a view with provided details
-+ (void)setBorderFor:(UIView *)view withColor:(CGColorRef)borderColor withWidth:(CGFloat)borderWidth {
+void setBorderForView(UIView *view, CGColorRef borderColor, CGFloat borderWidth) {
     view.layer.borderColor = borderColor;
     view.layer.borderWidth = borderWidth;
 }
 
 // Method that sets Corner Radius to a view with provided details
-+ (void)setCornerRadiusFor:(UIView *)view withRadius:(CGFloat)cornerRadius {
+void setCornerRadiusForView(UIView *view, CGFloat cornerRadius) {
     view.layer.cornerRadius = cornerRadius;
 }
 
 // Method that sets scrollView Background Image
-+ (void)setBackgroundForScrollView:(UIScrollView *)scrollView containgingContentView:(UIView *)contentView withImage:(UIImage *)backgroundImage withAlpha:(CGFloat)imageAlpha {
+void setBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, UIImage *backgroundImage, CGFloat alpha) {
     contentView.backgroundColor = [UIColor clearColor];
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    backgroundImageView.alpha = imageAlpha;
+    backgroundImageView.alpha = alpha;
     [scrollView insertSubview:backgroundImageView atIndex:0];
     
 }
 
 // Method that sets tableView Background Image
-+ (void)setBackgroundForTableView:(UITableView *)tableView withImage:(UIImage *)backgroundImage withAlpha:(CGFloat)imageAlpha {
+void setBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha) {
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     backgroundImageView.alpha = 0.25;
     tableView.backgroundView = backgroundImageView;
 }
-
-@end

@@ -9,7 +9,7 @@
 #import "NoteDetailsViewController.h"
 @import Parse;
 #import "CreateNoteViewController.h"
-#import "UICustomizationHelper.h"
+#import "UICustomizationHelpers.h"
 
 @interface NoteDetailsViewController () <CreateNoteViewControllerDelegate>
 
@@ -56,7 +56,7 @@
 // Method that customizes scrollView's appearance
 - (void)customizeScrollView {
     UIImage *scrollViewBgImage = [UIImage imageNamed:@"note"];
-    [UICustomizationHelper setBackgroundForScrollView:self.scrollView containgingContentView:self.contentView withImage:scrollViewBgImage withAlpha:0.25];
+    setBackgroundForScrollView(self.scrollView, self.contentView, scrollViewBgImage, 0.25);
 }
 
 // Method that adds border and shadow to noteImageView
@@ -67,8 +67,8 @@
     CGSize shadowOffset = CGSizeMake(0.0f, 2.5f);
     CGFloat shadowOpacity = 0.0f;
     CGFloat shadowRadius = 5.0f;
-    [UICustomizationHelper setShadowFor:self.noteImageViewContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
-    [UICustomizationHelper setBorderFor:self.noteImageView withColor:borderColor withWidth:borderWidth];
+    setShadowForView(self.noteImageViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setBorderForView(self.noteImageView, borderColor, borderWidth);
 }
 
 // Method to show image full screen on tapping noteImageView

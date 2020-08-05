@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <JGProgressHUD/JGProgressHUD.h>
 #import <SCLAlertView.h>
+#import "UICustomizationHelpers.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -48,14 +49,8 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    self.usernameField.layer.shadowColor = shadowColor;
-    self.usernameField.layer.shadowOffset = shadowOffset;
-    self.usernameField.layer.shadowOpacity = shadowOpacity;
-    self.usernameField.layer.shadowRadius = shadowRadius;
-    self.passwordField.layer.shadowColor = shadowColor;
-    self.passwordField.layer.shadowOffset = shadowOffset;
-    self.passwordField.layer.shadowOpacity = shadowOpacity;
-    self.passwordField.layer.shadowRadius = shadowRadius;
+    setShadowForView(self.usernameField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setShadowForView(self.passwordField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds shadow to studyNotesLabel
@@ -64,10 +59,7 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 2.5f;
-    self.studyNotesLabel.layer.shadowColor = shadowColor;
-    self.studyNotesLabel.layer.shadowOffset = shadowOffset;
-    self.studyNotesLabel.layer.shadowOpacity = shadowOpacity;
-    self.studyNotesLabel.layer.shadowRadius = shadowRadius;
+    setShadowForView(self.studyNotesLabel, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds shadow and corner radius to Signup button
@@ -77,11 +69,8 @@
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 1.25f;
     CGFloat cornerRadius = 15.0f;
-    self.signupButton.layer.shadowColor = shadowColor;
-    self.signupButton.layer.shadowOffset = shadowOffset;
-    self.signupButton.layer.shadowOpacity = shadowOpacity;
-    self.signupButton.layer.shadowRadius = shadowRadius;
-    self.signupButton.layer.cornerRadius = cornerRadius;
+    setShadowForView(self.signupButton, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setCornerRadiusForView(self.signupButton, cornerRadius);
 }
 
 // Signing up the new user when Signup button is tapped

@@ -9,7 +9,7 @@
 #import "NumbersFactViewController.h"
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
-#import "UICustomizationHelper.h"
+#import "UICustomizationHelpers.h"
 
 @interface NumbersFactViewController ()
 
@@ -33,7 +33,7 @@
 // Method that sets scrollView's background matching to app theme image
 - (void)setScrollViewBackground {
     UIImage *scrollViewBgImage = [UIImage imageNamed:@"note"];
-    [UICustomizationHelper setBackgroundForScrollView:self.scrollView containgingContentView:self.contentView withImage:scrollViewBgImage withAlpha:0.25];
+    setBackgroundForScrollView(self.scrollView, self.contentView, scrollViewBgImage, 0.25);
 }
 
 // Method to generate a new fact on tapping Refresh button

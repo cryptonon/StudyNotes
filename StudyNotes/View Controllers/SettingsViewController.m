@@ -13,7 +13,7 @@
 #import "DateTimeHelpers.h"
 #import <SCLAlertView.h>
 #import "CreateNoteViewController.h"
-#import "UICustomizationHelper.h"
+#import "UICustomizationHelpers.h"
 
 @interface SettingsViewController () <CreateNoteViewControllerDelegate>
 
@@ -93,12 +93,12 @@
     CGSize shadowOffset = {0.0f, 2.0f};
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    [UICustomizationHelper setShadowFor:self.switchContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
-    [UICustomizationHelper setShadowFor:self.fromDateContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
-    [UICustomizationHelper setShadowFor:self.toDateContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
-    [UICustomizationHelper setShadowFor:self.timeIntervalContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
-    [UICustomizationHelper setShadowFor:self.startTimeContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
-    [UICustomizationHelper setShadowFor:self.endTimeContainer withColor:shadowColor withOpacity:shadowOpacity withOffset:shadowOffset withRadius:shadowRadius];
+    setShadowForView(self.switchContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setShadowForView(self.fromDateContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setShadowForView(self.toDateContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setShadowForView(self.timeIntervalContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setShadowForView(self.startTimeContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    setShadowForView(self.endTimeContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method to update user settings when Update button is tapped

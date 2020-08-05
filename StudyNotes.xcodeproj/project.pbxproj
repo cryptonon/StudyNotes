@@ -11,6 +11,8 @@
 		2C11A2BD24CA5E3000003CA1 /* NumbersFactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C11A2BC24CA5E3000003CA1 /* NumbersFactViewController.m */; };
 		2C3F79CD24DB52D000AA46A9 /* DateTimeHelpers.h in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79CC24DB52C800AA46A9 /* DateTimeHelpers.h */; };
 		2C3F79CF24DB530E00AA46A9 /* DateTimeHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79CE24DB530E00AA46A9 /* DateTimeHelpers.m */; };
+		2C3F79D124DB60B500AA46A9 /* UICustomizationHelpers.h in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79D024DB60AD00AA46A9 /* UICustomizationHelpers.h */; };
+		2C3F79D324DB630B00AA46A9 /* UICustomizationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C3F79D224DB630B00AA46A9 /* UICustomizationHelpers.m */; };
 		2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */; };
 		2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5324BCF8EE003D7B5C /* SceneDelegate.m */; };
 		2C4F3D5A24BCF8EE003D7B5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4F3D5824BCF8EE003D7B5C /* Main.storyboard */; };
@@ -36,7 +38,6 @@
 		2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556524BD089700861FEA /* NoteDetailsViewController.m */; };
 		2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556824BD09CE00861FEA /* NoteCell.m */; };
 		2CE7556C24BD103F00861FEA /* CreateNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */; };
-		2CF16BF324DA14360070D014 /* UICustomizationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF16BF224DA14360070D014 /* UICustomizationHelper.m */; };
 		3E402AA28AC0017AAD49313E /* Pods_StudyNotes_StudyNotesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */; };
 		74777B16821483C6A58A9CC9 /* Pods_StudyNotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */; };
 		B4647228A8041A2014A48B49 /* Pods_StudyNotesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273340661C1827CBA3764EA2 /* Pods_StudyNotesTests.framework */; };
@@ -82,6 +83,8 @@
 		2C11A2BC24CA5E3000003CA1 /* NumbersFactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersFactViewController.m; sourceTree = "<group>"; };
 		2C3F79CC24DB52C800AA46A9 /* DateTimeHelpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = DateTimeHelpers.h; sourceTree = "<group>"; };
 		2C3F79CE24DB530E00AA46A9 /* DateTimeHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateTimeHelpers.m; sourceTree = "<group>"; };
+		2C3F79D024DB60AD00AA46A9 /* UICustomizationHelpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = UICustomizationHelpers.h; sourceTree = "<group>"; };
+		2C3F79D224DB630B00AA46A9 /* UICustomizationHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICustomizationHelpers.m; sourceTree = "<group>"; };
 		2C4F3D4C24BCF8EE003D7B5C /* StudyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4F3D4F24BCF8EE003D7B5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2C4F3D5024BCF8EE003D7B5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -132,8 +135,6 @@
 		2CE7556824BD09CE00861FEA /* NoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		2CE7556A24BD103F00861FEA /* CreateNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateNoteViewController.h; sourceTree = "<group>"; };
 		2CE7556B24BD103F00861FEA /* CreateNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateNoteViewController.m; sourceTree = "<group>"; };
-		2CF16BF124DA14360070D014 /* UICustomizationHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICustomizationHelper.h; sourceTree = "<group>"; };
-		2CF16BF224DA14360070D014 /* UICustomizationHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICustomizationHelper.m; sourceTree = "<group>"; };
 		307B814846B4555F7C228A59 /* Pods_StudyNotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B939A07C68BC805F3FEA20F /* Pods-StudyNotes-StudyNotesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyNotes-StudyNotesUITests.debug.xcconfig"; path = "Target Support Files/Pods-StudyNotes-StudyNotesUITests/Pods-StudyNotes-StudyNotesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FAF01954054C7D50741C537 /* Pods_StudyNotes_StudyNotesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyNotes_StudyNotesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,10 +290,10 @@
 		2C9D42CF24CB6D0C00BF275B /* Helper Methods */ = {
 			isa = PBXGroup;
 			children = (
-				2CF16BF124DA14360070D014 /* UICustomizationHelper.h */,
-				2CF16BF224DA14360070D014 /* UICustomizationHelper.m */,
 				2C3F79CC24DB52C800AA46A9 /* DateTimeHelpers.h */,
 				2C3F79CE24DB530E00AA46A9 /* DateTimeHelpers.m */,
+				2C3F79D024DB60AD00AA46A9 /* UICustomizationHelpers.h */,
+				2C3F79D224DB630B00AA46A9 /* UICustomizationHelpers.m */,
 			);
 			path = "Helper Methods";
 			sourceTree = "<group>";
@@ -597,7 +598,6 @@
 				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
 				2C3F79CD24DB52D000AA46A9 /* DateTimeHelpers.h in Sources */,
 				2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */,
-				2CF16BF324DA14360070D014 /* UICustomizationHelper.m in Sources */,
 				2C7BAF7724D9EA9F008913D3 /* HalfScreenPresentationController.m in Sources */,
 				2C55390F24D7073700AF8CB1 /* GroupViewController.m in Sources */,
 				2C55391224D70E3700AF8CB1 /* Group.m in Sources */,
@@ -605,12 +605,14 @@
 				2CE7555724BCFF6900861FEA /* LoginViewController.m in Sources */,
 				2C4F3D5124BCF8EE003D7B5C /* AppDelegate.m in Sources */,
 				2CE7556924BD09CE00861FEA /* NoteCell.m in Sources */,
+				2C3F79D124DB60B500AA46A9 /* UICustomizationHelpers.h in Sources */,
 				2C55390C24D7071F00AF8CB1 /* GroupCell.m in Sources */,
 				2C4F3D6224BCF8EF003D7B5C /* main.m in Sources */,
 				2C106BB924C0BFF20025FA6F /* APIManager.m in Sources */,
 				2CE7555D24BD016600861FEA /* SettingsViewController.m in Sources */,
 				2CE7555A24BD006900861FEA /* HomeViewController.m in Sources */,
 				2C4F3D5424BCF8EE003D7B5C /* SceneDelegate.m in Sources */,
+				2C3F79D324DB630B00AA46A9 /* UICustomizationHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
