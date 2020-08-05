@@ -27,7 +27,6 @@
 		2C55F4E924C73814006B48B1 /* NotificationSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55F4E824C73814006B48B1 /* NotificationSetup.m */; };
 		2C55F4EA24C73BCC006B48B1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9E990C24C214B80009579F /* UserNotifications.framework */; };
 		2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */; };
-		2C7BAF7724D9EA9F008913D3 /* HalfScreenPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7BAF7624D9EA9F008913D3 /* HalfScreenPresentationController.m */; };
 		2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C96705024BE057F006CA805 /* HomeCollectionCell.m */; };
 		2C9E990624C204BC0009579F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9E990524C204BC0009579F /* SignupViewController.m */; };
 		2CD4C8DF24BF4DE6001563A5 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4C8DE24BF4DE6001563A5 /* Note.m */; };
@@ -111,8 +110,6 @@
 		2C55F4E824C73814006B48B1 /* NotificationSetup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationSetup.m; sourceTree = "<group>"; };
 		2C6D3FF124BF4FAD0041ABD2 /* UserSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
 		2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
-		2C7BAF7524D9EA9F008913D3 /* HalfScreenPresentationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HalfScreenPresentationController.h; sourceTree = "<group>"; };
-		2C7BAF7624D9EA9F008913D3 /* HalfScreenPresentationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HalfScreenPresentationController.m; sourceTree = "<group>"; };
 		2C96704F24BE057F006CA805 /* HomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
 		2C96705024BE057F006CA805 /* HomeCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionCell.m; sourceTree = "<group>"; };
 		2C9E990424C204BC0009579F /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
@@ -231,7 +228,6 @@
 		2C4F3D4E24BCF8EE003D7B5C /* StudyNotes */ = {
 			isa = PBXGroup;
 			children = (
-				2C7BAF7424D9EA6E008913D3 /* Presentation Controllers */,
 				2C9D42CF24CB6D0C00BF275B /* Helper Methods */,
 				2C55F4E624C737E3006B48B1 /* Notification */,
 				2C106BB624C0BFD30025FA6F /* API */,
@@ -276,15 +272,6 @@
 				2C55F4E824C73814006B48B1 /* NotificationSetup.m */,
 			);
 			path = Notification;
-			sourceTree = "<group>";
-		};
-		2C7BAF7424D9EA6E008913D3 /* Presentation Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				2C7BAF7524D9EA9F008913D3 /* HalfScreenPresentationController.h */,
-				2C7BAF7624D9EA9F008913D3 /* HalfScreenPresentationController.m */,
-			);
-			path = "Presentation Controllers";
 			sourceTree = "<group>";
 		};
 		2C9D42CF24CB6D0C00BF275B /* Helper Methods */ = {
@@ -598,7 +585,6 @@
 				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
 				2C3F79CD24DB52D000AA46A9 /* DateTimeHelpers.h in Sources */,
 				2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */,
-				2C7BAF7724D9EA9F008913D3 /* HalfScreenPresentationController.m in Sources */,
 				2C55390F24D7073700AF8CB1 /* GroupViewController.m in Sources */,
 				2C55391224D70E3700AF8CB1 /* Group.m in Sources */,
 				2CD4C8DF24BF4DE6001563A5 /* Note.m in Sources */,
