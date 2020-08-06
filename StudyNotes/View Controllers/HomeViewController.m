@@ -73,10 +73,7 @@
                 break;
             case 2:
                 break;
-            default:
-                break;
         }
-        self.view.alpha = 1.0;
     }];
     [self presentViewController:popOverViewController animated:YES completion:nil];
 }
