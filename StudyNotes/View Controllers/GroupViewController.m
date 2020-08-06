@@ -84,8 +84,8 @@
     [groupQuery orderByDescending:@"createdAt"];
     [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
         if(groups) {
-            self.groupArray = (NSMutableArray *) groups;
-            self.filteredGroupArray = (NSMutableArray *) groups;
+            self.groupArray = (NSMutableArray *) [[NSMutableArray alloc] initWithArray:groups];
+            self.filteredGroupArray = [(NSMutableArray *) [NSMutableArray alloc] initWithArray:groups];
             [self.tableView reloadData];
         }
         [progressHUD dismissAnimated:YES];
@@ -150,6 +150,38 @@
     return YES;
 }
 
+// Method to present alert and delete the group
+- (void) presentDeleteAlertAndDeleteGroup: (Group *)group {
+    UIAlertController *deleteAlert = [UIAlertController alertControllerWithTitle:@"Are you sure you want to delete the Group?"
+                                                                         message:@"Deleting the Group will also delete all notes posted in the Group"
+                                                                  preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.groupArray removeObject:group];
+        [self.filteredGroupArray removeObject:group];
+        [self.tableView reloadData];
+        [PFObject deleteAllInBackground:group.notes];
+        [group deleteInBackground];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    [deleteAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
+    [deleteAlert addAction:deleteAction];
+    [deleteAlert addAction:cancelAction];
+    [self presentViewController:deleteAlert animated:YES completion:nil];
+}
+
+// Helper method to check group ownership
+- (BOOL)groupIsOwnedByCurrentUser: (Group *) group {
+    return [group.createdBy.objectId isEqualToString:[PFUser currentUser].objectId];
+}
+
+// Helper method to present cannot delete the note (depending upon ownership)
+- (void)presentCannotDeleteAlert {
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.backgroundType = SCLAlertViewBackgroundBlur;
+    [alert showError:self title:@"Oops!" subTitle:@"You do not have permission to delete this note!" closeButtonTitle:@"OK" duration:0.0f];
+}
 
 # pragma mark - Delegate Methods
 
@@ -165,6 +197,24 @@
     return cell;
 }
 
+// Method for configuring trailing swipe for deleting groups (Table View Delegate method)
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Group *selectedGroup = self.filteredGroupArray[indexPath.row];
+    if ([self groupIsOwnedByCurrentUser:selectedGroup]) {
+        UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+            completionHandler(YES);
+            [self presentDeleteAlertAndDeleteGroup:selectedGroup];
+        }];
+        UIImage *deleteImage = [UIImage systemImageNamed:@"trash"];
+        deleteAction.image = deleteImage;
+        UISwipeActionsConfiguration *actionConfigurations = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+        return actionConfigurations;
+    } else {
+        [self presentCannotDeleteAlert];
+        return [UISwipeActionsConfiguration configurationWithActions:@[]];
+    }
+}
+
 // Method to filter groups when searching starts (UISearchResultsUpdating's required method)
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchText = searchController.searchBar.searchTextField.text;
@@ -172,7 +222,8 @@
     NSString *trimmedSearchText = [searchText stringByTrimmingCharactersInSet:whiteSpaceSet];
     if (trimmedSearchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@("groupName contains[c] %@"), trimmedSearchText];
-        self.filteredGroupArray = (NSMutableArray *) [self.groupArray filteredArrayUsingPredicate:predicate];
+        NSArray *filteredArray = [self.groupArray filteredArrayUsingPredicate:predicate];
+        self.filteredGroupArray = [(NSMutableArray *) [NSMutableArray alloc] initWithArray:filteredArray];
     } else {
         self.filteredGroupArray = self.groupArray;
     }
