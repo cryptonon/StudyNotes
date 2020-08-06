@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addSwipeGestureRecognizer];
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -51,6 +52,18 @@
     layout.minimumLineSpacing = 2.5;
     CGFloat itemWidth = (collectionViewSize.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/postersPerLine;
     layout.itemSize = CGSizeMake(itemWidth, itemWidth);
+}
+
+// Method to add Swipe Gesture Recognizer (LeftSwipe) to switch tabs
+- (void)addSwipeGestureRecognizer {
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleTabSwitching:)];
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeGesture];
+}
+
+// Method that handles swipeGesture and tab switching (switches to home tab)
+- (void)handleTabSwitching: (UISwipeGestureRecognizer *) swipeGesture {
+    self.tabBarController.selectedIndex = 1;
 }
 
 // Method that handles popover menu and its actions

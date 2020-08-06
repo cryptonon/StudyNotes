@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addSearchBar];
+    [self addSwipeGestureRecognizer];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self customizeTableView];
@@ -45,6 +46,18 @@
     searchController.searchBar.placeholder = @"Search Groups";
     self.navigationItem.searchController = searchController;
     self.definesPresentationContext = YES;
+}
+
+// Method to add Swipe Gesture Recognizer to switch tabs (RightSwipe)
+- (void)addSwipeGestureRecognizer {
+    UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleTabSwitching:)];
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeGesture];
+}
+
+// Method that handles swipeGesture and tab switching (switches to group tab)
+- (void)handleTabSwitching: (UISwipeGestureRecognizer *) swipeGesture {
+    self.tabBarController.selectedIndex = 0;
 }
 
 // Method that customizes tableView
