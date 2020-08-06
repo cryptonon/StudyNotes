@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *noteDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *noteImageView;
 @property (weak, nonatomic) IBOutlet UIView *noteImageViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *ownerColorView;
 
 
 @end
@@ -40,9 +41,22 @@
     [note.noteImage getDataInBackgroundWithBlock:^(NSData * _Nullable imageData, NSError * _Nullable error) {
         self.noteImageView.image = [UIImage imageWithData:imageData];
     }];
+    [self setOwnerColorIndicator];
     [self setShadowToNoteImageViewContainer];
     [self animateNoteImageView];
     [self configureLongPressGesture];
+}
+
+// Method that sets owner color indicator for group notes
+- (void)setOwnerColorIndicator {
+    Note *note = self.note;
+    if (!self.note.isPersonalNote) {
+        if ([note.author.objectId isEqualToString:[PFUser currentUser].objectId]) {
+            self.ownerColorView.backgroundColor = [[UIColor cyanColor] colorWithAlphaComponent:0.425];
+        } else {
+            self.ownerColorView.backgroundColor = [[UIColor systemYellowColor] colorWithAlphaComponent:0.425];
+        }
+    }
 }
 
 // Method that sets shadow to noteImageViewContainer

@@ -128,6 +128,7 @@
                             newNote.noteDescription = self.noteDescriptionTextView.text;
                             newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
                             newNote.author = [PFUser currentUser];
+                            newNote.isPersonalNote = NO;
                             [self.delegate postedNote:newNote];
                             [self dismissViewControllerAnimated:YES completion:nil];
                             [progressHUD dismiss];
@@ -144,6 +145,7 @@
                     newNote.noteDescription = self.noteDescriptionTextView.text;
                     newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
                     newNote.author = [PFUser currentUser];
+                    newNote.isPersonalNote = YES;
                     [self.delegate postedNote:newNote];
                     [self dismissViewControllerAnimated:YES completion:nil];
                     [progressHUD dismiss];

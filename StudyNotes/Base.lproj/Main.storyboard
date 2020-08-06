@@ -794,6 +794,11 @@
                                                         <constraint firstAttribute="trailing" secondItem="9M9-pf-YvG" secondAttribute="trailing" id="s3J-6N-Jqa"/>
                                                     </constraints>
                                                 </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJJ-8y-l4N">
+                                                    <rect key="frame" x="7" y="7" width="5" height="108"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZYH-sc-oVw" firstAttribute="top" secondItem="V8w-KC-aSi" secondAttribute="bottom" constant="8" id="Q5u-8l-cyh"/>
@@ -812,6 +817,7 @@
                                             <outlet property="noteImageView" destination="9M9-pf-YvG" id="IRP-wi-kVW"/>
                                             <outlet property="noteImageViewContainer" destination="3di-hR-nGc" id="JKD-BY-YEe"/>
                                             <outlet property="noteTitleLabel" destination="V8w-KC-aSi" id="89N-5N-GNd"/>
+                                            <outlet property="ownerColorView" destination="IJJ-8y-l4N" id="Ckq-8m-f8f"/>
                                             <segue destination="gGC-St-vpQ" kind="show" identifier="noteDetailsSegue" id="POj-vj-M8b"/>
                                         </connections>
                                     </tableViewCell>
@@ -840,7 +846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfq-vi-IVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2612" y="138"/>
+            <point key="canvasLocation" x="2611.594202898551" y="137.94642857142856"/>
         </scene>
         <!--Note Details View Controller-->
         <scene sceneID="Bqz-vt-iXv">
