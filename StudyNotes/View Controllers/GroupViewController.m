@@ -105,7 +105,7 @@
         NSCharacterSet *whiteSpaceSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
         NSString *groupName = [groupNameField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
         NSString *groupDescription = [groupDescriptionField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
-        if ([self validGroupName:groupName andDescription:groupDescription]) {
+        if ([self validGroupName:groupName andDescription:groupDescription forGroup:nil]) {
             NSString *newGroupID = [[NSUUID UUID] UUIDString];
             [Group createGroup:groupName withGroupID:newGroupID withDescription:groupDescription withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
@@ -134,12 +134,16 @@
 }
 
 // Helper method to check valid user input (handling empty name/description case)
-- (BOOL)validGroupName: (NSString *)groupName andDescription: (NSString *)groupDescription {
+- (BOOL)validGroupName: (NSString *)groupName andDescription: (NSString *)groupDescription forGroup: (Group *)group {
     if ([groupName isEqualToString:@""] || [groupDescription isEqualToString: @""]) {
         [self configureNavAndTabBarUserInteraction];
         SCLAlertView *alert = [[SCLAlertView alloc] init];
         [alert addButton:@"Try Again" actionBlock:^(void) {
-            [self onCreateGroup:self];
+            if (group) {
+                [self presentEditAlertAndEditGroup:group];
+            } else {
+                [self onCreateGroup:self];
+            }
         }];
         [alert showError:self title:@"Failed!" subTitle:@"Group Details Cannot be Empty!" closeButtonTitle:@"Cancel" duration:0.0f];
         [alert alertIsDismissed:^{
@@ -171,16 +175,57 @@
     [self presentViewController:deleteAlert animated:YES completion:nil];
 }
 
+// Method to present edit alert and edit group details
+- (void)presentEditAlertAndEditGroup: (Group *)group {
+    [self configureNavAndTabBarUserInteraction];
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.backgroundType = SCLAlertViewBackgroundBlur;
+    alert.customViewColor = [UIColor systemBlueColor];
+    UITextField *groupNameField = [alert addTextField:@"New Group Name"];
+    UITextField *groupDescriptionField = [alert addTextField:@"New Description"];
+    groupNameField.text = group.groupName;
+    groupDescriptionField.text = group.groupDescription;
+    [alert addButton:@"Update" actionBlock:^(void) {
+        NSCharacterSet *whiteSpaceSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString *groupName = [groupNameField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
+        NSString *groupDescription = [groupDescriptionField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
+        if ([self validGroupName:groupName andDescription:groupDescription forGroup:group]) {
+            NSString *groupID = group.groupID;
+            PFQuery *groupQuery = [Group query];
+            [groupQuery whereKey:@"groupID" equalTo:groupID];
+            [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
+                if (groups) {
+                    Group *groupToEdit = groups[0];
+                    groupToEdit.groupName = groupName;
+                    groupToEdit.groupDescription = groupDescription;
+                    [groupToEdit saveInBackground];
+                    group.groupName = groupName;
+                    group.groupDescription = groupDescription;
+                    [self.tableView reloadData];
+                }
+            }];
+        }
+    }];
+    [alert showEdit:self title:@"Update Group" subTitle:@"Enter the New Group Details" closeButtonTitle:@"Cancel" duration:0.0f];
+    [alert alertIsDismissed:^{
+        [self configureNavAndTabBarUserInteraction];
+    }];
+}
+
 // Helper method to check group ownership
 - (BOOL)groupIsOwnedByCurrentUser: (Group *) group {
     return [group.createdBy.objectId isEqualToString:[PFUser currentUser].objectId];
 }
 
 // Helper method to present cannot delete the note (depending upon ownership)
-- (void)presentCannotDeleteAlert {
+- (void)presentCannotEditAlert {
+    [self configureNavAndTabBarUserInteraction];
     SCLAlertView *alert = [[SCLAlertView alloc] init];
     alert.backgroundType = SCLAlertViewBackgroundBlur;
-    [alert showError:self title:@"Oops!" subTitle:@"You do not have permission to delete this note!" closeButtonTitle:@"OK" duration:0.0f];
+    [alert showError:self title:@"Oops!" subTitle:@"You do not have permissions to make changes to this group!" closeButtonTitle:@"OK" duration:0.0f];
+    [alert alertIsDismissed:^{
+        [self configureNavAndTabBarUserInteraction];
+    }];
 }
 
 # pragma mark - Delegate Methods
@@ -197,7 +242,7 @@
     return cell;
 }
 
-// Method for configuring trailing swipe for deleting groups (Table View Delegate method)
+// Method for configuring trailing swipe for editing/deleting groups (Table View Delegate method)
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     Group *selectedGroup = self.filteredGroupArray[indexPath.row];
     if ([self groupIsOwnedByCurrentUser:selectedGroup]) {
@@ -207,10 +252,17 @@
         }];
         UIImage *deleteImage = [UIImage systemImageNamed:@"trash"];
         deleteAction.image = deleteImage;
-        UISwipeActionsConfiguration *actionConfigurations = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+        UIContextualAction *editAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Edit" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+            completionHandler(YES);
+            [self presentEditAlertAndEditGroup:selectedGroup];
+        }];
+        UIImage *editImage = [UIImage systemImageNamed:@"square.and.pencil"];
+        editAction.image = editImage;
+        editAction.backgroundColor = [UIColor systemBlueColor];
+        UISwipeActionsConfiguration *actionConfigurations = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction, editAction]];
         return actionConfigurations;
     } else {
-        [self presentCannotDeleteAlert];
+        [self presentCannotEditAlert];
         return [UISwipeActionsConfiguration configurationWithActions:@[]];
     }
 }
