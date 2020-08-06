@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *groupDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *ownerColorView;
 
 @end
 
@@ -28,7 +29,11 @@
 - (void)setGroup:(Group *)group {
     self.containerView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.825];
     setCornerRadiusForView(self.containerView, 12.5f);
-    setBorderForView(self.containerView, [[UIColor grayColor] CGColor], 1.0f);
+    if ([group.createdBy.objectId isEqualToString:[PFUser currentUser].objectId]) {
+        self.ownerColorView.backgroundColor = [UIColor cyanColor];
+    } else {
+        self.ownerColorView.backgroundColor = [UIColor systemYellowColor];
+    }
     setShadowForView(self.containerView, [[UIColor blackColor] CGColor], 1.0f, CGSizeMake(0.0f, 2.0f), 8.0f);
     self.groupNameLabel.text = group.groupName;
     self.groupDescriptionLabel.text = group.groupDescription;

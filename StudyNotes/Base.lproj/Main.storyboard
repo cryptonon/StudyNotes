@@ -325,6 +325,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="244-FU-7yX">
                                                     <rect key="frame" x="8" y="8" width="398" height="70"/>
                                                     <subviews>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Al-kF-Kyw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="9" height="70"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT9-a0-kMT">
                                                             <rect key="frame" x="20" y="13" width="358" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -361,6 +365,7 @@
                                             <outlet property="containerView" destination="244-FU-7yX" id="n1P-Sl-ONr"/>
                                             <outlet property="groupDescriptionLabel" destination="cvh-fM-6p6" id="w9s-z0-7EC"/>
                                             <outlet property="groupNameLabel" destination="FT9-a0-kMT" id="yD2-dg-kUa"/>
+                                            <outlet property="ownerColorView" destination="4Al-kF-Kyw" id="C44-KP-Hka"/>
                                             <segue destination="p7t-U2-fgC" kind="show" identifier="groupNotesSegue" id="XmQ-8p-XQU"/>
                                         </connections>
                                     </tableViewCell>
