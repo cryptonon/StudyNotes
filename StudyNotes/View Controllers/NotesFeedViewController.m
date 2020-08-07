@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setNavBarTitle];
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -48,6 +49,14 @@
     self.tableView.tableFooterView = [UIView new];
 }
 
+// Method that sets navBar title to Group's name if applicable
+- (void)setNavBarTitle {
+    if (self.group) {
+        self.navigationItem.title = self.group.groupName;
+    } else {
+        self.navigationItem.title = @"Personal Notes";
+    }
+}
 
 // Method to deselect the selected row
 - (void)viewWillAppear:(BOOL)animated {
