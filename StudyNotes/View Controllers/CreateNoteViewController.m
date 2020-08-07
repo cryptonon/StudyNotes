@@ -82,6 +82,7 @@
     CGSize shadowOffset = CGSizeMake(0, 5.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 12.5f;
+    self.noteDescriptionViewContainer.backgroundColor = [UIColor clearColor];
     setBorderForView(self.noteDescriptionTextView, borderColor, borderWidth);
     setCornerRadiusForView(self.noteDescriptionTextView, cornerRadius);
     setShadowForView(self.noteDescriptionViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
@@ -245,7 +246,7 @@
 - (void)keyboardWillAppear:(NSNotification*)keyboardNotification {
     NSDictionary* info = [keyboardNotification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - (keyboardSize.height)*0.5, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - keyboardSize.height, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
