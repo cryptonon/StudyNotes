@@ -60,6 +60,7 @@
 + (void)resetPushNotifiedFlagForAllNotes {
     PFQuery *noteQuery = [Note query];
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [noteQuery whereKey:@"isPersonalNote" equalTo:@(YES)];
     NSArray *noteArray = [noteQuery findObjects];
     if (noteArray.count) {
         for (Note *note in noteArray) {
@@ -73,6 +74,7 @@
 + (NSArray *)fetchNoteArrayForPushNotification {
     PFQuery *noteQuery = [Note query];
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [noteQuery whereKey:@"isPersonalNote" equalTo:@(YES)];
     [noteQuery whereKey:@"isPushNotified" equalTo:@(NO)];
     [noteQuery orderByAscending:@"updatedAt"];
     NSArray *noteArray = [noteQuery findObjects];

@@ -117,6 +117,7 @@
 -(void)checkNoteAvailability {
     PFQuery *noteQuery = [PFQuery queryWithClassName:@"Note"];
     [noteQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [noteQuery whereKey:@"isPersonalNote" equalTo:@(YES)];
     [noteQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (objects) {
             if (objects.count) {
