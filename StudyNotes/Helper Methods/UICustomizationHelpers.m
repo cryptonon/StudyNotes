@@ -54,3 +54,9 @@ void setBackgroundForCollectionView(UICollectionView *collectionView, UIImage *b
     backgroundImageView.alpha = alpha;
     collectionView.backgroundView = backgroundImageView;
 }
+
+// Helper method to enable/disble navBar and tabBar interaction while presenting group creation alert
+void configureNavAndTabBarUserInteractionForViewController(UIViewController *viewController) {
+    viewController.tabBarController.tabBar.userInteractionEnabled = !viewController.tabBarController.tabBar.userInteractionEnabled;
+    viewController.navigationController.navigationBar.userInteractionEnabled = !viewController.navigationController.navigationBar.userInteractionEnabled;
+}

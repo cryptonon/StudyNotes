@@ -18,5 +18,6 @@ void setCornerRadiusForView(UIView *view, CGFloat cornerRadius);
 void setBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, UIImage *backgroundImage, CGFloat alpha);
 void setBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha);
 void setBackgroundForCollectionView(UICollectionView *collectionView, UIImage *backgroundImage, CGFloat alpha);
+void configureNavAndTabBarUserInteractionForViewController(UIViewController *viewController);
 
 NS_ASSUME_NONNULL_END

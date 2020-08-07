@@ -12,6 +12,8 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 @import TOCropViewController;
 #import "UICustomizationHelpers.h"
+#import <SCLAlertView.h>
+#import "ValidInputHelpers.h"
 
 @interface CreateNoteViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate>
 
@@ -107,72 +109,90 @@
 
 // Method to post note to parse on tapping Post button
 - (IBAction)onPost:(id)sender {
-    NSString *newNoteTitle = self.noteTitleField.text;
-    NSString *newNoteDescription = self.noteDescriptionTextView.text;
+    NSString *rawNoteTitle = self.noteTitleField.text;
+    NSString *rawNoteDescription = self.noteDescriptionTextView.text;
     UIImage *newNoteImage = self.noteImageView.image;
-    if (!self.note) {
-        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
-        progressHUD.textLabel.text = @"Posting";
-        [progressHUD showInView:self.view];
-        NSString *newNoteID = [[NSUUID UUID] UUIDString];
-        if (self.group) {
-            PFQuery *groupQuery = [Group query];
-            [groupQuery whereKey:@"groupID" equalTo:self.group.groupID];
-            [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
-                if (groups) {
-                    Group *groupToPost = groups[0];
-                    [groupToPost postNote:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    NSString *newNoteTitle = whitespaceTrimmedString(rawNoteTitle);
+    NSString *newNoteDescription = whitespaceTrimmedString(rawNoteDescription);
+    if ([self validNoteTitle:newNoteTitle andDescription:newNoteDescription andImage:newNoteImage]) {
+        if (!self.note) {
+            JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
+            progressHUD.textLabel.text = @"Posting";
+            [progressHUD showInView:self.view];
+            NSString *newNoteID = [[NSUUID UUID] UUIDString];
+            if (self.group) {
+                PFQuery *groupQuery = [Group query];
+                [groupQuery whereKey:@"groupID" equalTo:self.group.groupID];
+                [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
+                    if (groups) {
+                        Group *groupToPost = groups[0];
+                        [groupToPost postNote:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                            if (succeeded) {
+                                Note *newNote = [[Note alloc] init];
+                                newNote.noteID = newNoteID;
+                                newNote.noteTitle = self.noteTitleField.text;
+                                newNote.noteDescription = self.noteDescriptionTextView.text;
+                                newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
+                                newNote.author = [PFUser currentUser];
+                                newNote.isPersonalNote = NO;
+                                [self.delegate postedNote:newNote];
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                                [progressHUD dismiss];
+                            }
+                        }];
+                    }
+                }];
+            } else {
+                [Note postNote:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded) {
+                        Note *newNote = [[Note alloc] init];
+                        newNote.noteID = newNoteID;
+                        newNote.noteTitle = self.noteTitleField.text;
+                        newNote.noteDescription = self.noteDescriptionTextView.text;
+                        newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
+                        newNote.author = [PFUser currentUser];
+                        newNote.isPersonalNote = YES;
+                        [self.delegate postedNote:newNote];
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                        [progressHUD dismiss];
+                    }
+                }];
+            }
+        } else {
+            JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
+            progressHUD.textLabel.text = @"Updating";
+            [progressHUD showInView:self.view];
+            NSString *noteID = self.note.noteID;
+            PFQuery *noteQuery = [Note query];
+            [noteQuery whereKey:@"noteID" equalTo:noteID];
+            [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
+                if (notes) {
+                    Note *noteToEdit = notes[0];
+                    [noteToEdit updateNoteWithTitle:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                         if (succeeded) {
-                            Note *newNote = [[Note alloc] init];
-                            newNote.noteID = newNoteID;
-                            newNote.noteTitle = self.noteTitleField.text;
-                            newNote.noteDescription = self.noteDescriptionTextView.text;
-                            newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
-                            newNote.author = [PFUser currentUser];
-                            newNote.isPersonalNote = NO;
-                            [self.delegate postedNote:newNote];
+                            [self.delegate updatedNoteToTitle:newNoteTitle toDescription:newNoteDescription toImage:newNoteImage];
                             [self dismissViewControllerAnimated:YES completion:nil];
                             [progressHUD dismiss];
                         }
                     }];
                 }
             }];
-        } else {
-            [Note postNote:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withNoteID:newNoteID withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (succeeded) {
-                    Note *newNote = [[Note alloc] init];
-                    newNote.noteID = newNoteID;
-                    newNote.noteTitle = self.noteTitleField.text;
-                    newNote.noteDescription = self.noteDescriptionTextView.text;
-                    newNote.noteImage = [Note getPFFileFromImage:self.noteImageView.image];
-                    newNote.author = [PFUser currentUser];
-                    newNote.isPersonalNote = YES;
-                    [self.delegate postedNote:newNote];
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    [progressHUD dismiss];
-                }
-            }];
         }
-    } else {
-        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
-        progressHUD.textLabel.text = @"Updating";
-        [progressHUD showInView:self.view];
-        NSString *noteID = self.note.noteID;
-        PFQuery *noteQuery = [Note query];
-        [noteQuery whereKey:@"noteID" equalTo:noteID];
-        [noteQuery findObjectsInBackgroundWithBlock:^(NSArray<Note *> * _Nullable notes, NSError * _Nullable error) {
-            if (notes) {
-                Note *noteToEdit = notes[0];
-                [noteToEdit updateNoteWithTitle:newNoteTitle withDescription:newNoteDescription withImage:newNoteImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (succeeded) {
-                        [self.delegate updatedNoteToTitle:newNoteTitle toDescription:newNoteDescription toImage:newNoteImage];
-                        [self dismissViewControllerAnimated:YES completion:nil];
-                        [progressHUD dismiss];
-                    }
-                }];
-            }
-        }];
     }
+}
+
+// Helper method to check valid user input (handling empty title/description/image case)
+- (BOOL)validNoteTitle: (NSString *)noteTitle andDescription: (NSString *)noteDescription andImage: (UIImage *)noteImage {
+    if ([noteTitle isEqualToString:@""] || [noteDescription isEqualToString: @""] || [noteImage isEqual:[UIImage imageNamed:@"note"]]) {
+        configureNavAndTabBarUserInteractionForViewController(self);
+        SCLAlertView *alert = [[SCLAlertView alloc] init];
+        [alert showError:self title:@"Failed!" subTitle:@"Please make sure that you have entered valid note descriptions and image" closeButtonTitle:@"Cancel" duration:0.0f];
+        [alert alertIsDismissed:^{
+            configureNavAndTabBarUserInteractionForViewController(self);
+        }];
+        return NO;
+    }
+    return YES;
 }
 
 // Method to bring camera/library on tapping noteImageView
