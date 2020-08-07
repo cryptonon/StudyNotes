@@ -116,6 +116,7 @@
                     newGroup.createdBy = [PFUser currentUser];
                     newGroup.noOfNotes = @(0);
                     [self.groupArray insertObject:newGroup atIndex:0];
+                    [self.filteredGroupArray insertObject:newGroup atIndex:0];
                     [self.tableView reloadData];
                 }
             }];
