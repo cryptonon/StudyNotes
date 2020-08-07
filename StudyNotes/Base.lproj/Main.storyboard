@@ -325,9 +325,11 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="244-FU-7yX">
                                                     <rect key="frame" x="8" y="8" width="398" height="70"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Al-kF-Kyw">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Al-kF-Kyw">
                                                             <rect key="frame" x="0.0" y="0.0" width="9" height="70"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="9" id="CJI-Au-H9b"/>
+                                                            </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT9-a0-kMT">
                                                             <rect key="frame" x="20" y="13" width="358" height="20.5"/>
@@ -346,10 +348,13 @@
                                                         <constraint firstItem="cvh-fM-6p6" firstAttribute="top" secondItem="FT9-a0-kMT" secondAttribute="bottom" constant="8" id="2gD-E0-KKq"/>
                                                         <constraint firstItem="cvh-fM-6p6" firstAttribute="leading" secondItem="244-FU-7yX" secondAttribute="leading" constant="20" id="72c-w6-8Iu"/>
                                                         <constraint firstItem="FT9-a0-kMT" firstAttribute="top" secondItem="244-FU-7yX" secondAttribute="top" constant="13" id="BWu-ZH-8io"/>
+                                                        <constraint firstItem="4Al-kF-Kyw" firstAttribute="leading" secondItem="244-FU-7yX" secondAttribute="leading" id="JdT-77-hkr"/>
                                                         <constraint firstItem="FT9-a0-kMT" firstAttribute="leading" secondItem="244-FU-7yX" secondAttribute="leading" constant="20" id="PsE-q7-5je"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cvh-fM-6p6" secondAttribute="bottom" constant="8" id="Vr3-DM-w67"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4Al-kF-Kyw" secondAttribute="bottom" id="azC-1d-vLi"/>
                                                         <constraint firstAttribute="trailing" secondItem="FT9-a0-kMT" secondAttribute="trailing" constant="20" id="d1P-qq-T7m"/>
                                                         <constraint firstAttribute="trailing" secondItem="cvh-fM-6p6" secondAttribute="trailing" constant="20" id="feg-di-IJN"/>
+                                                        <constraint firstItem="4Al-kF-Kyw" firstAttribute="top" secondItem="244-FU-7yX" secondAttribute="top" id="lYu-KF-LLq"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
