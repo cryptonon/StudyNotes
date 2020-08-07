@@ -58,8 +58,8 @@
 
 // Method that fetches notes (for both group/user)
 - (void)fetchNotes {
-    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-    progressHUD.textLabel.text = @"Loading...";
+    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
+    progressHUD.textLabel.text = @"Loading";
     [progressHUD showInView:self.view];
     if (self.group) {
         [self fetchGroupNotes];

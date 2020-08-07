@@ -77,7 +77,7 @@
 
 // Method that fetches groups form parse
 -(void)fetchGroups {
-    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
     progressHUD.textLabel.text = @"Loading";
     [progressHUD showInView:self.view];
     PFQuery *groupQuery = [Group query];

@@ -103,8 +103,8 @@
 
 // Method to update user settings when Update button is tapped
 - (IBAction)onUpdate:(id)sender {
-    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-    progressHUD.textLabel.text = @"Updating...";
+    JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
+    progressHUD.textLabel.text = @"Updating";
     [progressHUD showInView:self.view];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self performSelectorOnMainThread:@selector(updateUserSettingsAndScheduleNotifications) withObject:nil waitUntilDone:YES];

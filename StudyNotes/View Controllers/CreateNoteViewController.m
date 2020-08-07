@@ -111,8 +111,8 @@
     NSString *newNoteDescription = self.noteDescriptionTextView.text;
     UIImage *newNoteImage = self.noteImageView.image;
     if (!self.note) {
-        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-        progressHUD.textLabel.text = @"Posting...";
+        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
+        progressHUD.textLabel.text = @"Posting";
         [progressHUD showInView:self.view];
         NSString *newNoteID = [[NSUUID UUID] UUIDString];
         if (self.group) {
@@ -154,8 +154,8 @@
             }];
         }
     } else {
-        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
-        progressHUD.textLabel.text = @"Updating...";
+        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
+        progressHUD.textLabel.text = @"Updating";
         [progressHUD showInView:self.view];
         NSString *noteID = self.note.noteID;
         PFQuery *noteQuery = [Note query];

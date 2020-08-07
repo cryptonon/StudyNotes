@@ -76,7 +76,7 @@
 // Signing up the new user when Signup button is tapped
 - (IBAction)onSignup:(id)sender {
     if ([self inputIsValid]) {
-        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
         progressHUD.textLabel.text = @"Signing up";
         [progressHUD showInView:self.view];
         PFUser *newUser = [PFUser user];

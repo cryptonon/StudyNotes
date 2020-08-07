@@ -90,7 +90,7 @@
 // Logging in the user when Login button is tapped
 - (IBAction)onLogin:(id)sender {
     if ([self inputIsValid]) {
-        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
+        JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
         progressHUD.textLabel.text = @"Logging in";
         [progressHUD showInView:self.view];
         NSString *username = self.usernameField.text;
