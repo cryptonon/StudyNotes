@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *segueIdentifierArray;
 @property (strong, nonatomic) NSArray *cellNameArray;
+@property (strong, nonatomic) NSString *username;
 
 @end
 
@@ -32,7 +33,7 @@
     [self setCollectionViewBackground];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    
+    self.username = [PFUser currentUser].username;
     self.segueIdentifierArray = @[@"notesSegue", @"numbersFactSegue"];
     self.cellNameArray = @[@"Notes", @"Numbers"];
 }
@@ -76,7 +77,8 @@
 // Method that handles popover menu and its actions
 - (IBAction)onMenu:(id)sender {
     NSArray *titles = @[@"Notifications", @"Logout", @"Cancel"];
-    NSArray *descriptions = @[@"Go to Notifications Settings", @"Logout from Current Account", @"Go back to previous Screen"];
+    NSString *logoutMessage = [NSString stringWithFormat:@"Logout from %@", self.username];
+    NSArray *descriptions = @[@"Go to Notifications Settings", logoutMessage, @"Cancel the Menu"];
     PopOverViewController *popOverViewController = [PopOverViewController instantiate];
     [popOverViewController setWithTitles:titles];
     [popOverViewController setWithDescriptions:descriptions];
