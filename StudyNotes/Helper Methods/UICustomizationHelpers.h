@@ -17,5 +17,6 @@ void setBorderForView(UIView *view, CGColorRef borderColor, CGFloat borderWidth)
 void setCornerRadiusForView(UIView *view, CGFloat cornerRadius);
 void setBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, UIImage *backgroundImage, CGFloat alpha);
 void setBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha);
+void setBackgroundForCollectionView(UICollectionView *collectionView, UIImage *backgroundImage, CGFloat alpha);
 
 NS_ASSUME_NONNULL_END

@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import <SCLAlertView.h>
 @import PopOverMenu;
+#import "UICustomizationHelpers.h"
 
 @interface HomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAdaptivePresentationControllerDelegate>
 
@@ -28,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addSwipeGestureRecognizer];
-    
+    [self setCollectionViewBackground];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
@@ -52,6 +53,12 @@
     layout.minimumLineSpacing = 2.5;
     CGFloat itemWidth = (collectionViewSize.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/postersPerLine;
     layout.itemSize = CGSizeMake(itemWidth, itemWidth);
+}
+
+// Method that sets collectionView Background to app theme image
+- (void)setCollectionViewBackground {
+    UIImage *collectionViewBgImage = [UIImage imageNamed:@"note"];
+    setBackgroundForCollectionView(self.collectionView, collectionViewBgImage, 0.25);
 }
 
 // Method to add Swipe Gesture Recognizer (LeftSwipe) to switch tabs

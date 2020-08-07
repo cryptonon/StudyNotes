@@ -43,6 +43,14 @@ void setBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, U
 void setBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha) {
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    backgroundImageView.alpha = 0.25;
+    backgroundImageView.alpha = alpha;
     tableView.backgroundView = backgroundImageView;
+}
+
+// Method that sets collectionView Background Image
+void setBackgroundForCollectionView(UICollectionView *collectionView, UIImage *backgroundImage, CGFloat alpha) {
+    UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
+    backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    backgroundImageView.alpha = alpha;
+    collectionView.backgroundView = backgroundImageView;
 }
