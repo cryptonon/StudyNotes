@@ -7,10 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserSetting.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+// MARK: Protocols
+@protocol ResumingNotificationDelegate
+
+// Required Methods
+- (void)resumeNotificationsWithSetting: (UserSetting *)setting;
+
+@end
+
 @interface LoginViewController : UIViewController
+
+// MARK: Properties
+@property (weak, nonatomic) id<ResumingNotificationDelegate> delegate;
 
 @end
 

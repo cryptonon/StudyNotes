@@ -11,6 +11,7 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import <SCLAlertView.h>
 #import "UICustomizationHelpers.h"
+#import "UserSetting.h"
 
 @interface SignupViewController () <UITextFieldDelegate>
 
@@ -82,6 +83,10 @@
         PFUser *newUser = [PFUser user];
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
+        UserSetting *newSetting = [UserSetting new];
+        newSetting.notificationCanceledOnLogout = NO;
+        newSetting.notificationTurnedOn = NO;
+        newUser[@"setting"] = newSetting;
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (succeeded) {
                 [progressHUD dismiss];

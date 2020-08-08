@@ -25,6 +25,7 @@
 		2C55F4E924C73814006B48B1 /* NotificationSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C55F4E824C73814006B48B1 /* NotificationSetup.m */; };
 		2C55F4EA24C73BCC006B48B1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9E990C24C214B80009579F /* UserNotifications.framework */; };
 		2C5A589524DDDB5B0050D856 /* ValidInputHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A589424DDDB5B0050D856 /* ValidInputHelpers.m */; };
+		2C5A589924DE6C2F0050D856 /* QueryHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A589824DE6C2F0050D856 /* QueryHelpers.m */; };
 		2C6D3FF324BF4FAD0041ABD2 /* UserSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */; };
 		2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C96705024BE057F006CA805 /* HomeCollectionCell.m */; };
 		2C9E990624C204BC0009579F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9E990524C204BC0009579F /* SignupViewController.m */; };
@@ -109,6 +110,8 @@
 		2C55F4E824C73814006B48B1 /* NotificationSetup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationSetup.m; sourceTree = "<group>"; };
 		2C5A589324DDDB430050D856 /* ValidInputHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ValidInputHelpers.h; sourceTree = "<group>"; };
 		2C5A589424DDDB5B0050D856 /* ValidInputHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ValidInputHelpers.m; sourceTree = "<group>"; };
+		2C5A589724DE6C090050D856 /* QueryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueryHelpers.h; sourceTree = "<group>"; };
+		2C5A589824DE6C2F0050D856 /* QueryHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueryHelpers.m; sourceTree = "<group>"; };
 		2C6D3FF124BF4FAD0041ABD2 /* UserSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSetting.h; sourceTree = "<group>"; };
 		2C6D3FF224BF4FAD0041ABD2 /* UserSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSetting.m; sourceTree = "<group>"; };
 		2C96704F24BE057F006CA805 /* HomeCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				2C3F79D224DB630B00AA46A9 /* UICustomizationHelpers.m */,
 				2C5A589324DDDB430050D856 /* ValidInputHelpers.h */,
 				2C5A589424DDDB5B0050D856 /* ValidInputHelpers.m */,
+				2C5A589724DE6C090050D856 /* QueryHelpers.h */,
+				2C5A589824DE6C2F0050D856 /* QueryHelpers.m */,
 			);
 			path = "Helper Methods";
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				2CE7556024BD067D00861FEA /* NotesFeedViewController.m in Sources */,
 				2CE7556624BD089700861FEA /* NoteDetailsViewController.m in Sources */,
 				2C96705124BE057F006CA805 /* HomeCollectionCell.m in Sources */,
+				2C5A589924DE6C2F0050D856 /* QueryHelpers.m in Sources */,
 				2C55390F24D7073700AF8CB1 /* GroupViewController.m in Sources */,
 				2C55391224D70E3700AF8CB1 /* Group.m in Sources */,
 				2CD4C8DF24BF4DE6001563A5 /* Note.m in Sources */,

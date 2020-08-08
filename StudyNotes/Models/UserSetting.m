@@ -12,23 +12,13 @@
 
 // Declaring all properties as @dynamic
 @dynamic settingID;
-@dynamic user;
 @dynamic from;
 @dynamic to;
 @dynamic intervalBetweenNotifications;
 @dynamic notificationTurnedOn;
+@dynamic notificationCanceledOnLogout;
 
-// Class method to post new setting to parse
-+ (void)postSettingWithNotificationsTurnedOn:(BOOL)notificationTurnedOn from:(NSDate *)from to:(NSDate *)to withIntervalOf:(NSNumber *)intervalBetweenNotifications withCompletion:(PFBooleanResultBlock)completion {
-    UserSetting *newSetting = [UserSetting new];
-    newSetting.user = [PFUser currentUser];
-    newSetting.notificationTurnedOn = notificationTurnedOn;
-    newSetting.from = from;
-    newSetting.to = to;
-    newSetting.intervalBetweenNotifications = intervalBetweenNotifications;
-    [newSetting saveInBackgroundWithBlock:completion];
-}
-
+// Method to update user settings
 - (void)updateSettingWithNotificationsTurnedOn:(BOOL)notificationTurnedOn from:(NSDate *)from to:(NSDate *)to withIntervalOf:(NSNumber *)intervalBetweenNotifications withCompletion:(PFBooleanResultBlock)completion {
     self.notificationTurnedOn = notificationTurnedOn;
     self.from = from;
