@@ -12,6 +12,8 @@
 #import <JGProgressHUD/JGProgressHUD.h>
 #import <SCLAlertView.h>
 #import "UICustomizationHelpers.h"
+#import "HomeViewController.h"
+#import "QueryHelpers.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 
@@ -99,12 +101,26 @@
             if (!error) {
                 [progressHUD dismiss];
                 [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+                [self prepareResumingNotificationsForUser:user];
             } else {
                 [progressHUD dismiss];
                 [self displayErrorAlertWithError:error];
             }
         }];
     }
+}
+
+// Method that prepares for reshceduling if needed
+- (void)prepareResumingNotificationsForUser: (PFUser *)currentUser {
+    UserSetting *notificationSetting = currentUser[@"setting"];
+    fetchCompleteSettingWithCompletion(notificationSetting, ^(UserSetting * _Nullable setting, NSError * _Nullable error) {
+        if (setting) {
+            UserSetting *userSetting = (UserSetting *) setting;
+            if (userSetting.notificationCanceledOnLogout) {
+                [self.delegate resumeNotificationsWithSetting:userSetting];
+            }
+        }
+    });
 }
 
 // Signing the user with facebook when Continue with Facebook is tapped
@@ -180,6 +196,17 @@
         [self disableLoginButton];
     }
     return YES;
+}
+
+# pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"loginSegue"]) {
+        UITabBarController *tabBarController = [segue destinationViewController];
+        UINavigationController *navigationController = tabBarController.viewControllers[0];
+        HomeViewController *homeViewController = (HomeViewController *) navigationController.topViewController;
+        self.delegate = homeViewController;
+    }
 }
 
 @end

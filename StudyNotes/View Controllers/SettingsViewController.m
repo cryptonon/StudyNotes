@@ -14,6 +14,7 @@
 #import <SCLAlertView.h>
 #import "CreateNoteViewController.h"
 #import "UICustomizationHelpers.h"
+#import "QueryHelpers.h"
 
 @interface SettingsViewController () <CreateNoteViewControllerDelegate>
 
@@ -60,22 +61,22 @@
 
 // Method that updates SettingViewController's view as per user's saved settings
 - (void)setviewProperties {
-    PFQuery *settingQuery = [UserSetting query];
-    [settingQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [settingQuery findObjectsInBackgroundWithBlock:^(NSArray<UserSetting*> * _Nullable settings, NSError * _Nullable error) {
-        if (!error) {
-            if (settings.count) {
-                UserSetting *currentSetting = settings[0];
-                self.notificationSwitch.on = currentSetting.notificationTurnedOn;
-                self.toDatePicker.date = currentSetting.to;
-                self.intervalTimePicker.countDownDuration = [currentSetting.intervalBetweenNotifications intValue];
-                self.startTimePicker.date = currentSetting.from;
-                self.endTimePicker.date = currentSetting.to;
-                self.currentUserSetting = currentSetting;
-                [self didTapNotificationSwitch:self.notificationSwitch];
+    queryForCurrentUserSettingWithCompletion(^(UserSetting * _Nullable setting, NSError * _Nullable error) {
+        if (setting) {
+            UserSetting *currentSetting = (UserSetting *) setting;
+            self.currentUserSetting = currentSetting;
+            self.notificationSwitch.on = currentSetting.notificationTurnedOn;
+            self.toDatePicker.date = currentSetting.to;
+            if (dateTimeIsBefore(self.toDatePicker.date, [NSDate date])) {
+                self.toDatePicker.date = [NSDate date];
             }
+            self.intervalTimePicker.countDownDuration = [currentSetting.intervalBetweenNotifications intValue];
+            self.startTimePicker.date = currentSetting.from;
+            self.endTimePicker.date = currentSetting.to;
+            self.currentUserSetting = currentSetting;
+            [self didTapNotificationSwitch:self.notificationSwitch];
         }
-    }];
+    });
 }
 
 // Method that sets scrollView's background
@@ -156,11 +157,7 @@
 // Method that handles upating/creating settings and scheduling notifications
 - (void)updateUserSettingsAndScheduleNotifications {
     [self combineDateTime];
-    if (self.currentUserSetting) {
-        [self.currentUserSetting updateSettingWithNotificationsTurnedOn:self.notificationSwitch.on from:self.fromDatePicker.date to:self.toDatePicker.date withIntervalOf:@(self.intervalTimePicker.countDownDuration) withCompletion:nil];
-    } else {
-        [UserSetting postSettingWithNotificationsTurnedOn:self.notificationSwitch.on from:self.fromDatePicker.date to:self.toDatePicker.date withIntervalOf:@(self.intervalTimePicker.countDownDuration) withCompletion:nil];
-    }
+    [self.currentUserSetting updateSettingWithNotificationsTurnedOn:self.notificationSwitch.on from:self.fromDatePicker.date to:self.toDatePicker.date withIntervalOf:@(self.intervalTimePicker.countDownDuration) withCompletion:nil];
     // Notification scheduling starts here
     [[UNUserNotificationCenter currentNotificationCenter] removeAllPendingNotificationRequests];
     if (self.notificationPermissionAllowed && self.notificationSwitch.on) {
