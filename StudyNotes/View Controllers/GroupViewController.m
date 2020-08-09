@@ -105,27 +105,32 @@
     [alert addButton:@"Create" actionBlock:^(void) {
         NSString *groupName = whitespaceTrimmedString(groupNameField.text);
         NSString *groupDescription = whitespaceTrimmedString(groupDescriptionField.text);
-        if ([self validGroupName:groupName andDescription:groupDescription forGroup:nil]) {
-            NSString *newGroupID = [[NSUUID UUID] UUIDString];
-            [Group createGroup:groupName withGroupID:newGroupID withDescription:groupDescription withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (succeeded) {
-                    Group *newGroup = [Group new];
-                    newGroup.groupName = groupName;
-                    newGroup.groupID = newGroupID;
-                    newGroup.groupDescription = groupDescription;
-                    newGroup.createdBy = [PFUser currentUser];
-                    newGroup.noOfNotes = @(0);
-                    [self.groupArray insertObject:newGroup atIndex:0];
-                    [self.filteredGroupArray insertObject:newGroup atIndex:0];
-                    [self.tableView reloadData];
-                }
-            }];
-        }
+        [self createNewGroupWithName:groupName withDescription:groupDescription];
     }];
     [alert showEdit:self title:@"Create Group" subTitle:@"Enter Group Details" closeButtonTitle:@"Cancel" duration:0.0f];
     [alert alertIsDismissed:^{
         configureNavAndTabBarUserInteractionForViewController(self);
     }];
+}
+
+// Method that creates a new group
+-(void)createNewGroupWithName: (NSString *)groupName withDescription: (NSString *)groupDescription {
+    if ([self validGroupName:groupName andDescription:groupDescription forGroup:nil]) {
+        NSString *newGroupID = [[NSUUID UUID] UUIDString];
+        [Group createGroup:groupName withGroupID:newGroupID withDescription:groupDescription withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                Group *newGroup = [Group new];
+                newGroup.groupName = groupName;
+                newGroup.groupID = newGroupID;
+                newGroup.groupDescription = groupDescription;
+                newGroup.createdBy = [PFUser currentUser];
+                newGroup.noOfNotes = @(0);
+                [self.groupArray insertObject:newGroup atIndex:0];
+                [self.filteredGroupArray insertObject:newGroup atIndex:0];
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 // Helper method to check valid user input (handling empty name/description case)
@@ -170,7 +175,7 @@
     [self presentViewController:deleteAlert animated:YES completion:nil];
 }
 
-// Method to present edit alert and edit group details
+// Method to present edit alert and edit/update group details
 - (void)presentEditAlertAndEditGroup: (Group *)group {
     configureNavAndTabBarUserInteractionForViewController(self);
     SCLAlertView *alert = [[SCLAlertView alloc] init];
@@ -181,30 +186,34 @@
     groupNameField.text = group.groupName;
     groupDescriptionField.text = group.groupDescription;
     [alert addButton:@"Update" actionBlock:^(void) {
-        NSCharacterSet *whiteSpaceSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        NSString *groupName = [groupNameField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
-        NSString *groupDescription = [groupDescriptionField.text stringByTrimmingCharactersInSet:whiteSpaceSet];
-        if ([self validGroupName:groupName andDescription:groupDescription forGroup:group]) {
-            NSString *groupID = group.groupID;
-            PFQuery *groupQuery = [Group query];
-            [groupQuery whereKey:@"groupID" equalTo:groupID];
-            [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
-                if (groups) {
-                    Group *groupToEdit = groups[0];
-                    groupToEdit.groupName = groupName;
-                    groupToEdit.groupDescription = groupDescription;
-                    [groupToEdit saveInBackground];
-                    group.groupName = groupName;
-                    group.groupDescription = groupDescription;
-                    [self.tableView reloadData];
-                }
-            }];
-        }
+        NSString *groupName = whitespaceTrimmedString(groupNameField.text);
+        NSString *groupDescription = whitespaceTrimmedString(groupDescriptionField.text);
+        [self updateGroup:group withName:groupName withDescription:groupDescription];
     }];
     [alert showEdit:self title:@"Update Group" subTitle:@"Enter the New Group Details" closeButtonTitle:@"Cancel" duration:0.0f];
     [alert alertIsDismissed:^{
         configureNavAndTabBarUserInteractionForViewController(self);
     }];
+}
+
+// Method that updates group details
+-(void)updateGroup: (Group *)group withName: (NSString *)newGroupName withDescription: (NSString *)newGroupDescription {
+    if ([self validGroupName:newGroupName andDescription:newGroupDescription forGroup:group]) {
+        NSString *groupID = group.groupID;
+        PFQuery *groupQuery = [Group query];
+        [groupQuery whereKey:@"groupID" equalTo:groupID];
+        [groupQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable groups, NSError * _Nullable error) {
+            if (groups.count) {
+                Group *groupToEdit = groups[0];
+                groupToEdit.groupName = newGroupName;
+                groupToEdit.groupDescription = newGroupDescription;
+                [groupToEdit saveInBackground];
+                group.groupName = newGroupName;
+                group.groupDescription = newGroupDescription;
+                [self.tableView reloadData];
+            }
+        }];
+    }
 }
 
 // Helper method to check group ownership
