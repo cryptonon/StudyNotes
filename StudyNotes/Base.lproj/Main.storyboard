@@ -80,6 +80,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Pud-jl-H3U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dpz-mT-sQW"/>
                             <constraint firstItem="Pud-jl-H3U" firstAttribute="top" secondItem="gaM-ST-Vwv" secondAttribute="bottom" constant="8" id="IjO-Nt-07o"/>
@@ -97,6 +98,9 @@
                             <constraint firstItem="gaM-ST-Vwv" firstAttribute="top" secondItem="gb4-sl-FUJ" secondAttribute="bottom" constant="32" id="yBY-7p-cLi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4yI-5T-XNT" appends="YES" id="nyI-aM-Bq3"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="continueWithFBButton" destination="Pud-jl-H3U" id="6CN-6G-R7e"/>
@@ -110,6 +114,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4yI-5T-XNT">
+                    <connections>
+                        <action selector="onTapOutside:" destination="BYZ-38-t0r" id="82r-sN-EGV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-828" y="138"/>
         </scene>
@@ -172,6 +181,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="GIk-UR-BDk" firstAttribute="leading" secondItem="I1f-It-x4D" secondAttribute="leading" id="3Dn-Q4-deh"/>
                             <constraint firstItem="HCX-Zh-OvH" firstAttribute="top" secondItem="7u7-px-Upo" secondAttribute="bottom" constant="40" id="8Hy-Ih-tzA"/>
@@ -187,6 +197,9 @@
                             <constraint firstItem="I1f-It-x4D" firstAttribute="top" secondItem="HCX-Zh-OvH" secondAttribute="bottom" constant="32" id="zTk-Pi-WCX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GmM-bb-f3C"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="WoX-jJ-tHk" appends="YES" id="NcC-GJ-6aI"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="HCX-Zh-OvH" id="Gl8-m9-uN8"/>
@@ -199,6 +212,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4m9-R8-hbB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="WoX-jJ-tHk">
+                    <connections>
+                        <action selector="onTapOutside:" destination="u5h-qF-qI4" id="C4Z-K5-XRq"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-829" y="845"/>
         </scene>

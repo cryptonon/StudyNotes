@@ -76,6 +76,8 @@
 
 // Signing up the new user when Signup button is tapped
 - (IBAction)onSignup:(id)sender {
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
     if ([self inputIsValid]) {
         JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
         progressHUD.textLabel.text = @"Signing up";
@@ -97,6 +99,12 @@
             }
         }];
     }
+}
+
+// Method that hides keyboard on tapping outside of buttons and text fields
+- (IBAction)onTapOutside:(id)sender {
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
 }
 
 // Method to display login error alert

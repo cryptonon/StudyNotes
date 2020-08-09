@@ -91,6 +91,8 @@
 
 // Logging in the user when Login button is tapped
 - (IBAction)onLogin:(id)sender {
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
     if ([self inputIsValid]) {
         JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
         progressHUD.textLabel.text = @"Logging in";
@@ -149,6 +151,13 @@
     alert.backgroundType = SCLAlertViewBackgroundBlur;
     [alert showError:self title:@"Login Failed!" subTitle:error.localizedDescription closeButtonTitle:@"Try Again" duration:0.0f];
 }
+
+// Method that hides keyboard on tapping outside of buttons and text fields
+- (IBAction)onTapOutside:(id)sender {
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+}
+
 
 // Method to check valid user input (handling empty username/password case)
 - (BOOL)inputIsValid {
