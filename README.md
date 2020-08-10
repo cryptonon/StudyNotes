@@ -1,140 +1,149 @@
-# StudyNotes
+# *StudyNotes*
 
 ## Table of Contents
 1. [Overview](#Overview)
-2. [Product Spec](#Product-Spec)
-3. [Wireframes](#Wireframes)
-4. [Schema](#Schema)
+2. [User Stories](#User-Stories)
+3. [Video Walkthrough](#Video-Walkthrough)
+4. [Credits](#Credits)
+5. [License](#License)
 
 ## Overview
-### Description
-This app lets anyone learn new things/revise whatever they have learned depending upon how frequent they want. This app sends push notifications in a certain interval of time (that can be set by users like every 45 minutes from 9 am to 5 pm). 
+
+**StudyNotes** is an app that lets users post their personal study notes and share study notes in different groups. This app also sends notifications about the user's personal notes in a certain interval of time that can be set by users (like every 2 hours from 9 am to 5 pm, from 08/09/2020 to 08/11/2020)
+
+A note consists of a note image, title, and description. The notifications will have the details about a specific note; the notification title will be a note's title and notification body will contain the note's description.
+
+**Platform**: iOS
+**Category**: Education/Productivity
+
+This is the app I worked on for the final project for my FBU Internship.
+
+**StudyNotes** is an app that lets users post their personal study notes and share study notes in different groups. StudyNotes also sends notifications about the user's personal notes in a certain interval of time that can be set by users (like every 2 hours from 9 am to 5 pm, from 08/09/2020 to 08/11/2020).
+
+Link to Github Repo: https://github.com/cryptonon/StudyNotes
 
 
-### App Evaluation
-- **Category:** Learning/Productivity
-- **Mobile:** The app will be primarly focused for mobile use as it uses push notifications.
-- **Story:** Personally, I like to learn something new everyday, and this app lets anyone learn new things/revise whatever they have learned depending upon how frequent they want.
-- **Market:** This app uses push notifications feature, targeting the smartphone users, to help everyone study/learn.
-- **Habit:** The app would be used on a daily basis. More specifically, user the user will have control over how frequently they want the app to provide them push notifications.
-- **Scope:** V1 will let users post/edit custom notes and get push notification, in a periodic manner, about those notes and some math facts.
+## User Stories
 
-## Product Spec
+#### 1. User Authentication
 
-### 1. User Stories (Required and Optional)
+- [X] User can login/signup/continue with Facebook
+- [X] The current signed in user is persisted across app restarts
+- [X] Signed in user can logout
 
-**Required Must-have Stories**
+#### 2. Creating/Editing/Deleting Notes
 
-* User can register
-* User can login/logout
-* User can create new notes
-* User can add photo to their notes using the camera
-* User can view all of their notes in table view
-* User can tap table view cell to view note details
-* User can edit their notes
-* User can turn on/off the notifications
-* User can set interval of time and frequency of notifications they want like every 45 minutes from 9 am to 5 pm
-* User can view random facts about numbers/math using [numbersapi](http://numbersapi.com/)
+- [X] User can create a new note/edit existing note using camera or library images
+- [X] User can crop the images to desized sizes
+- [X] User can edit note image, title and description
+- [X] User can delete the created notes by swiping (trailing) table view cell 
 
-**Optional Nice-to-have Stories**
+#### 3. Viewing all saved notes
 
-* Users can view other random facts like physics, chemistry, etc.
-* Login with facebook
-* Chat Functionality
-* Group Functionality (depending upon subjects where user can post notes)
-* Tapping on a push notification to directly go to that specific notes
+- [X] User can view all their notes with note image, title, and description preview in a table view.
+- [X] User can view the detailed view of the note and can edit the note from details screen
 
-### 2. Screen Archetypes
+#### 4. Deleting a note
+- [X] User can delete their personal notes
+- [X] User can swipe table view cellss from right to left and use delete button to delete the note
 
-* Login/Register
-   * User is able to create an account
-   * User is able to login/logout from account
-* Creation
-   * User can add text and photos to notes that will be push notified
-* Home
-   * User can see all the notes they created
-* Details
-   * User can select a specific note and edit the note in detail view
-* Settings
-   * User can turn on/off the notification and edit notification timings
+#### 5. Viewing random numbers fact
 
-### 3. Navigation
+- [X] User can view a random number fact fetched from [numbersapi](http://numbersapi.com/#42)
+- [X] User can generate new random fact by reloading
 
-**Tab Navigation** (Tab to Screen)
+#### 6. Updating Notification Settings
 
-* Home Screen
-* User Settings
+- [X] User can opt in for local push notifications
+- [X] User can specify the timeframe for notifications (like from July 28 to August 1, 9:00 am to 5:00 pm, every 2 hours)
+- [X] Notifications will have title of a specific note title and notification body will contain that note’s description
+- [X] Notifications will only contain user's personal notes
+- [X] User will only get notification for the same note again only when a cycle has been completed
+- [X] User cannot schedule notifications if they have no saved notes
 
-**Flow Navigation** (Screen to Screen)
+#### 7. Creating a Group
 
-* Login/Registration Screen
-* Home Screen (Collection view screen with Notes, Math Facts, etc.)
-   * Settings
-* Notes (Table View)
-   * Detailed Screen
-   * Creation Screen
-   
-## Wireframes
+- [X] A group will have a name and description
+- [X] User can create a new group for sharing notes to other users
+- [X] For now, the groups are public i.e. everyone will have access to every groups created (both viewing and posting notes in the group)
 
-<img src="https://i.imgur.com/19GYDd5.jpg" width=600>
+#### 8. Creating/Editing Notes on the groups
 
-## Schema 
-### Models
-#### Post
+- [X] Users can publicly post notes to specific groups similarly to creating personal notes
+- [X] Specific users can only edit the notes i.e. only if they have created that specific note
 
-   | Property      | Type     | Description |
-   | ------------- | -------- | ------------|
-   | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User| post author |
-   | image         | File     | image that user posts |
-   | description   | String   | note/description for the image |
-   | createdAt     | DateTime | date when post is created (default field) |
-   | updatedAt     | DateTime | date when post is last updated (default field) |
-   
-#### Setting
+#### 9. Viewing all Groups and posted Notes
 
-   | Property      | Type     | Description |
-   | ------------- | -------- | ------------|
-   | notificationOn| Boolean  | is the notification turned on or off for the specific user|
-   | from          | DateTime | time from which the user wants to be notified |
-   | to            | DateTime | time to which the user wants to be notified |
-   | interval      | Time/Number     | time interval for subsequent notifications (frequency)| 
-   | createdAt     | DateTime | date when user setting is created (default field) |
-   | updatedAt     | DateTime | date when user setting is last updated (default field) |
-### Networking
+- [X] User can view all groups with their names and respective descriptions in groups tab
+- [X] User can view notes posted in all groups in a table view like user can view their presonal notes
+- [X] User can also view the detailed view of all notes in details screen in similar way to presonal notes 
 
-- Notes Feed Screen
-     - (Read/GET) Query all posts where user is author
-         ```Objective-C
-         PFQuery *postQuery = [Post query];
-         [postQuery whereKey:@"author" isEqualTo:[PFUser currentUser]];
-         [postQuery orderByDescending:@"createdAt"];
-         ```
-     - (Delete) Delete existing post
+#### 10. Editing/Deleting Groups
 
-- Create Post Screen
-     - (Create/POST) Create a new post object
-         ```Objective-C
-         Post *newPost = [Post new];
-         newPost.image = [self getPFFileFromImage:image];
-         newPost.author = [PFUser currentUser];
-         newPost.description = description;
-         [newPost saveInBackgroundWithBlock: completion];
-         ```
-- Note Details Screen
-     - (Update/PUT) Update the note
-     
-- Setting Screen
-     - (Read/GET) Query logged in user object's settings 
-     - (Update/PUT) Update user settings
+- [X] Group Details (Name/Description) can be edited by the owner/creator of the group only
+- [X] Groups can be deleted by the owner/creator of the group only
+
+#### 11. Scheduled notifications cancel on Logout and Resume on subsequent Login
+
+- [X] Scheduled Notifications are cancelled upon Logout
+- [X] Users are asked if they want to resume previously Scheduled Notifications upon subsequent Login after Logout
+- [X] Notifications resume upon Login if Users allow Permission to resume
 
 
-### Existing API Endpoints
-##### An API of Numbers
-- Base URL - [http://numbersapi.com](http://numbersapi.com/)
+## Video Walkthrough
 
-   HTTP Verb | Endpoint | Description
-   ----------|----------|------------
-    `GET`    | /random  | returns a fact about random number
-    `GET`    | /random/year | returns a fact about random year
-    `GET`    | /random/date   | returns a fact about random date
+#### [*Video Demo*](https://drive.google.com/file/d/1sl6kwpny2AOBOtm9ppwkVu8VEgzO9Alu/view?usp=sharing)
+
+#### GIFs
+1. <img src='http://g.recordit.co/5vXFe3LUZk.gif' title='Video Walkthrough' width='' alt='' />
+2. <img src='http://g.recordit.co/vfIBDVtAfC.gif' title='Video Walkthrough' width='' alt='' />
+3. <img src='http://g.recordit.co/XwY0zdhMLe.gif' title='Video Walkthrough' width='' alt='' />
+4. <img src='http://g.recordit.co/AQDjYBdLKn.gif' title='Video Walkthrough' width='' alt='' />
+5. <img src='http://g.recordit.co/VeavuCcUPp.gif' title='Video Walkthrough' width='' alt='' />
+6. <img src='http://g.recordit.co/WziNZr1gdO.gif' title='Video Walkthrough' width='' alt='' />
+7. <img src='http://g.recordit.co/LnVZ7HHQs7.gif' title='Video Walkthrough' width='' alt='' />
+8. <img src='http://g.recordit.co/LYbrme5yEp.gif' title='Video Walkthrough' width='' alt='' />
+9. <img src='http://g.recordit.co/1rIqJpSEAV.gif' title='Video Walkthrough' width='' alt='' />
+
+GIF created with [Recordit.co](https://recordit.co/).
+
+## Credits
+
+3rd party libraries, icons, graphics, or other assets used in the app.
+
+- [AFNetworking](https://github.com/AFNetworking/AFNetworking) 
+- [App Icon](https://drive.google.com/open?id=1UQyC-HpWPfauYWJ4loRQsg1nSmLCMVlg)
+- [App Theme Image](https://upload.wikimedia.org/wikipedia/en/thumb/4/49/Carter-notes-pope-mtg-xl.jpg/1920px-Carter-notes-pope-mtg-xl.jpg)
+- [JGProgressHUD](https://github.com/JonasGessner/JGProgressHUD)
+- [Numbers API](http://numbersapi.com/)
+- [Parse](https://github.com/parse-community/Parse-SDK-iOS-OSX)
+- [PopOverMenu](https://github.com/tichise/PopOverMenu)
+- [SCLAlertView-Objective-C](https://github.com/dogo/SCLAlertView)
+- [TOCropViewController](https://github.com/TimOliver/TOCropViewController)
+
+
+## License
+
+```
+MIT License
+
+Copyright (c) 2020 Aayush Phuyal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
