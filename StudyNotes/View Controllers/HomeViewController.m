@@ -39,7 +39,7 @@
     self.collectionView.delegate = self;
     self.username = [PFUser currentUser].username;
     self.segueIdentifierArray = @[@"notesSegue", @"numbersFactSegue"];
-    self.cellNameArray = @[@"Notes", @"Numbers"];
+    self.cellNameArray = @[@"My Notes", @"Numbers"];
 }
 
 - (void)viewDidLayoutSubviews {

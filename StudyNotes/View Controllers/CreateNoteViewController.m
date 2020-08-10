@@ -266,13 +266,15 @@
 - (void)keyboardWillAppear:(NSNotification*)keyboardNotification {
     NSDictionary* info = [keyboardNotification userInfo];
     CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - keyboardSize.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - (keyboardSize.height)*0.75, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
 // Method that pushes down the view to original state once keyboard disappers
 - (void)keyboardWillDisappear:(NSNotification*)keyboardNotification {
-    [UIView animateWithDuration:0.2 animations:^{self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
     }];
 }
 
