@@ -16,12 +16,6 @@ A note consists of a note image, title, and description. The notifications will 
 **Platform**: iOS
 **Category**: Education/Productivity
 
-This is the app I worked on for the final project for my FBU Internship.
-
-**StudyNotes** is an app that lets users post their personal study notes and share study notes in different groups. StudyNotes also sends notifications about the user's personal notes in a certain interval of time that can be set by users (like every 2 hours from 9 am to 5 pm, from 08/09/2020 to 08/11/2020).
-
-Link to Github Repo: https://github.com/cryptonon/StudyNotes
-
 
 ## User Stories
 
