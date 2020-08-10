@@ -37,6 +37,7 @@
     [self.refreshControl addTarget:self action:@selector(fetchGroups) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     [self fetchGroups];
+    [self registerForKeyboardNotifications];
 }
 
 // Method that adds searchBar
@@ -231,6 +232,34 @@
         configureNavAndTabBarUserInteractionForViewController(self);
     }];
 }
+
+// Method that registers keyboard notifications
+- (void)registerForKeyboardNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillAppear:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillDisappear:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Method that pushes up the view once keyboard appears
+- (void)keyboardWillAppear:(NSNotification*)keyboardNotification {
+    NSDictionary* info = [keyboardNotification userInfo];
+    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = CGRectMake(self.view.frame.origin.x, 0 - (keyboardSize.height)*0.25, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
+// Method that pushes down the view to original state once keyboard disappers
+- (void)keyboardWillDisappear:(NSNotification*)keyboardNotification {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = CGRectMake(self.view.frame.origin.x, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
 
 # pragma mark - Delegate Methods
 
