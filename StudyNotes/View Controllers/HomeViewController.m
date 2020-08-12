@@ -128,8 +128,8 @@
 - (void)logoutUser: (PFUser *)currentUser {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (!error) {
-            [self presentLoginViewController];
             [self removePendingNotificationsForUser:currentUser];
+            [self presentLoginViewController];
         } else {
             SCLAlertView *alert = [[SCLAlertView alloc] init];
             alert.backgroundType = SCLAlertViewBackgroundBlur;
@@ -153,7 +153,12 @@
     fetchCompleteSettingWithCompletion(setting, ^(UserSetting * _Nullable setting, NSError * _Nullable error) {
         if (setting) {
             UserSetting *userSetting = (UserSetting *) setting;
-            [self notificationNeedsResumingWithSettings:userSetting];
+            if ([self notificationNeedsResumingWithSettings:userSetting]) {
+                setting.notificationCanceledOnLogout = YES;
+            } else {
+                setting.notificationTurnedOn = NO;
+            }
+            [setting saveInBackground];
         }
     });
 }
@@ -191,6 +196,7 @@
 
 // Method that resumes/reschedules notification (ResumingNotificationDelegate's required method)
 - (void)resumeNotificationsWithSetting:(UserSetting *)setting {
+    setting.notificationCanceledOnLogout = NO;
     if ([self notificationNeedsResumingWithSettings:setting]) {
         SCLAlertView *alert = [[SCLAlertView alloc] init];
         alert.backgroundType = SCLAlertViewBackgroundBlur;
@@ -199,14 +205,16 @@
             [NotificationSetup scheduleNotificationFrom:setting.from to:setting.to separatedByIntervalInSeconds:[setting.intervalBetweenNotifications intValue]];
         }];
         [alert showEdit:self title:@"Do you want to resume notifications" subTitle:@"Your scheduled notifications were canceled because you logged out. Do you want to resume notifications" closeButtonTitle:@"No Thanks" duration:0.0f];
+    } else {
+        setting.notificationTurnedOn = NO;
     }
+    [setting saveInBackground];
 }
 
 # pragma mark - Helper Methods
 
 // Helper Method that checks whether resuming notifications is needed (depending upon interval, current time, and toTime)
 - (BOOL)notificationNeedsResumingWithSettings: (UserSetting *)setting {
-    __block BOOL needsResuming = NO;
     NSDate *currentTime = [NSDate date];
     NSInteger intervalBetweenNotificationsInSeconds = [setting.intervalBetweenNotifications intValue];
     NSDate *nextNotificationTime = [currentTime dateByAddingTimeInterval:intervalBetweenNotificationsInSeconds];
@@ -214,14 +222,10 @@
     BOOL notificationTurnedOn = setting.notificationTurnedOn;
     if (notificationTurnedOn) {
         if (dateTimeIsBefore(nextNotificationTime, notificationEndTime)) {
-            setting.notificationCanceledOnLogout = !setting.notificationCanceledOnLogout; // Check this step!!!
-            needsResuming = YES;
-        } else {
-            setting.notificationTurnedOn = NO;
+            return YES;
         }
-        [setting saveInBackground];
     }
-    return needsResuming;
+    return NO;
 }
 
 @end
