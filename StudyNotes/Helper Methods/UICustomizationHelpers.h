@@ -12,12 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: Helper Methods Declaration
 
-void setShadowForView(UIView *view, CGColorRef shadowColor, CGFloat shadowOpacity, CGSize shadowOffset, CGFloat shadowRadius);
-void setBorderForView(UIView *view, CGColorRef borderColor, CGFloat borderWidth);
-void setCornerRadiusForView(UIView *view, CGFloat cornerRadius);
-void setBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, UIImage *backgroundImage, CGFloat alpha);
-void setBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha);
-void setBackgroundForCollectionView(UICollectionView *collectionView, UIImage *backgroundImage, CGFloat alpha);
-void configureNavAndTabBarUserInteractionForViewController(UIViewController *viewController);
+void SetShadowForView(UIView *view, CGColorRef shadowColor, CGFloat shadowOpacity, CGSize shadowOffset, CGFloat shadowRadius);
+void SetBorderForView(UIView *view, CGColorRef borderColor, CGFloat borderWidth);
+void SetCornerRadiusForView(UIView *view, CGFloat cornerRadius);
+void SetBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, UIImage *backgroundImage, CGFloat alpha);
+void SetBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha);
+void SetBackgroundForCollectionView(UICollectionView *collectionView, UIImage *backgroundImage, CGFloat alpha);
+void ConfigureNavAndTabBarUserInteractionForViewController(UIViewController *viewController);
 
 NS_ASSUME_NONNULL_END

@@ -16,18 +16,18 @@
 + (void)scheduleNotificationFrom:(NSDate *)fromDateTime to:(NSDate *)toDateTime separatedByIntervalInSeconds:(NSInteger)intervalInSeconds {
     NSDate *currentDateTime = [NSDate date];
     NSDate *notificationDateTime;
-    if (dateTimeIsBefore(fromDateTime, currentDateTime)) {
+    if (DateTimeIsBefore(fromDateTime, currentDateTime)) {
         notificationDateTime = currentDateTime;
     } else {
         notificationDateTime = fromDateTime;
     }
-    NSDate *dailyEndTime = combineDateWithTimeOfNSDate(fromDateTime, toDateTime);
-    NSTimeInterval dailySkipIntervalInSeconds = dailySkipIntervalInSecondsBetweenStartAndEndTime(fromDateTime, toDateTime);
-        while (dateTimeIsBefore(notificationDateTime, toDateTime)) {
+    NSDate *dailyEndTime = CombineDateWithTimeOfNSDate(fromDateTime, toDateTime);
+    NSTimeInterval dailySkipIntervalInSeconds = DailySkipIntervalInSecondsBetweenStartAndEndTime(fromDateTime, toDateTime);
+        while (DateTimeIsBefore(notificationDateTime, toDateTime)) {
         [self scheduleNotificationForTime:notificationDateTime];
         notificationDateTime = [notificationDateTime dateByAddingTimeInterval:intervalInSeconds];
         // Skipping to tomorrow once notification is done for today
-            if (!dateTimeIsBefore(notificationDateTime, dailyEndTime)) {
+            if (!DateTimeIsBefore(notificationDateTime, dailyEndTime)) {
             notificationDateTime = [dailyEndTime dateByAddingTimeInterval:dailySkipIntervalInSeconds];
             dailyEndTime = [dailyEndTime dateByAddingTimeInterval:24*60*60];
         }

@@ -63,8 +63,8 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    setShadowForView(self.usernameField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.passwordField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.usernameField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.passwordField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds shadow to studyNotesLabel
@@ -73,7 +73,7 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 2.5f;
-    setShadowForView(self.studyNotesLabel, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.studyNotesLabel, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds shadow and corner radius to Login and Continue with FB buttons
@@ -83,10 +83,10 @@
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 1.25f;
     CGFloat cornerRadius = 15.0f;
-    setShadowForView(self.loginButton, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.continueWithFBButton, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setCornerRadiusForView(self.loginButton, cornerRadius);
-    setCornerRadiusForView(self.continueWithFBButton, cornerRadius);
+    SetShadowForView(self.loginButton, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.continueWithFBButton, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetCornerRadiusForView(self.loginButton, cornerRadius);
+    SetCornerRadiusForView(self.continueWithFBButton, cornerRadius);
 }
 
 // Logging in the user when Login button is tapped
@@ -115,7 +115,7 @@
 // Method that prepares for reshceduling if needed
 - (void)prepareResumingNotificationsForUser: (PFUser *)currentUser {
     UserSetting *notificationSetting = currentUser[@"setting"];
-    fetchCompleteSettingWithCompletion(notificationSetting, ^(UserSetting * _Nullable setting, NSError * _Nullable error) {
+    FetchCompleteSettingWithCompletion(notificationSetting, ^(UserSetting * _Nullable setting, NSError * _Nullable error) {
         if (setting) {
             UserSetting *userSetting = (UserSetting *) setting;
             if (userSetting.notificationCanceledOnLogout) {

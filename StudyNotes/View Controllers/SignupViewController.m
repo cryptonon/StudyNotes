@@ -50,8 +50,8 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    setShadowForView(self.usernameField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.passwordField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.usernameField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.passwordField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds shadow to studyNotesLabel
@@ -60,7 +60,7 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 2.5f;
-    setShadowForView(self.studyNotesLabel, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.studyNotesLabel, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds shadow and corner radius to Signup button
@@ -70,8 +70,8 @@
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 1.25f;
     CGFloat cornerRadius = 15.0f;
-    setShadowForView(self.signupButton, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setCornerRadiusForView(self.signupButton, cornerRadius);
+    SetShadowForView(self.signupButton, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetCornerRadiusForView(self.signupButton, cornerRadius);
 }
 
 // Signing up the new user when Signup button is tapped

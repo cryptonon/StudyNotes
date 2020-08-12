@@ -45,7 +45,7 @@
 - (void)customizeTableView {
     self.tableView.separatorColor = [UIColor blackColor];
     UIImage *tableViewBgImage = [UIImage imageNamed:@"note"];
-    setBackgroundForTableView(self.tableView, tableViewBgImage, 0.25);
+    SetBackgroundForTableView(self.tableView, tableViewBgImage, 0.25);
     self.tableView.tableFooterView = [UIView new];
 }
 

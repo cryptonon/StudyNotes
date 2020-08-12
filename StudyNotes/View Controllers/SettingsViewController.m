@@ -61,13 +61,13 @@
 
 // Method that updates SettingViewController's view as per user's saved settings
 - (void)setviewProperties {
-    queryForCurrentUserSettingWithCompletion(^(UserSetting * _Nullable setting, NSError * _Nullable error) {
+    QueryForCurrentUserSettingWithCompletion(^(UserSetting * _Nullable setting, NSError * _Nullable error) {
         if (setting) {
             UserSetting *currentSetting = (UserSetting *) setting;
             self.currentUserSetting = currentSetting;
             self.notificationSwitch.on = currentSetting.notificationTurnedOn;
             self.toDatePicker.date = currentSetting.to;
-            if (dateTimeIsBefore(self.toDatePicker.date, [NSDate date])) {
+            if (DateTimeIsBefore(self.toDatePicker.date, [NSDate date])) {
                 self.toDatePicker.date = [NSDate date];
             }
             self.intervalTimePicker.countDownDuration = [currentSetting.intervalBetweenNotifications intValue];
@@ -94,12 +94,12 @@
     CGSize shadowOffset = {0.0f, 2.0f};
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    setShadowForView(self.switchContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.fromDateContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.toDateContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.timeIntervalContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.startTimeContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
-    setShadowForView(self.endTimeContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.switchContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.fromDateContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.toDateContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.timeIntervalContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.startTimeContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.endTimeContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method to update user settings when Update button is tapped
@@ -196,8 +196,8 @@
 
 // Method to combine fromDate with startTime and toDate with endTime
 - (void) combineDateTime {
-    NSDate *notificationStartDateTime = combineDateWithTimeOfNSDate(self.fromDatePicker.date, self.startTimePicker.date);
-    NSDate *notificationEndDateTime = combineDateWithTimeOfNSDate(self.toDatePicker.date, self.endTimePicker.date);
+    NSDate *notificationStartDateTime = CombineDateWithTimeOfNSDate(self.fromDatePicker.date, self.startTimePicker.date);
+    NSDate *notificationEndDateTime = CombineDateWithTimeOfNSDate(self.toDatePicker.date, self.endTimePicker.date);
     self.fromDatePicker.date = notificationStartDateTime;
     self.toDatePicker.date = notificationEndDateTime;
 }

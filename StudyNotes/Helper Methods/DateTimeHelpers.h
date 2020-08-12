@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: Helper Method Declarations
 
-NSDateComponents *hourAndMinuteComponentForTimeOfNSDate(NSDate *dateTime);
-NSDate *combineDateWithTimeOfNSDate(NSDate *date, NSDate *dateTime);
-BOOL dateTimeIsBefore(NSDate *dateTime, NSDate *referenceDateTime);
-NSTimeInterval dailySkipIntervalInSecondsBetweenStartAndEndTime(NSDate *notificationStartDateTime, NSDate *notificationEndDateTime);
+NSDateComponents *HourAndMinuteComponentForTimeOfNSDate(NSDate *dateTime);
+NSDate *CombineDateWithTimeOfNSDate(NSDate *date, NSDate *dateTime);
+BOOL DateTimeIsBefore(NSDate *dateTime, NSDate *referenceDateTime);
+NSTimeInterval DailySkipIntervalInSecondsBetweenStartAndEndTime(NSDate *notificationStartDateTime, NSDate *notificationEndDateTime);
 
 NS_ASSUME_NONNULL_END

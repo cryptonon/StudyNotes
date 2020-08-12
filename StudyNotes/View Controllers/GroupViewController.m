@@ -66,7 +66,7 @@
 - (void)customizeTableView {
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIImage *tableViewBgImage = [UIImage imageNamed:@"note"];
-    setBackgroundForTableView(self.tableView, tableViewBgImage, 0.25);
+    SetBackgroundForTableView(self.tableView, tableViewBgImage, 0.25);
     self.tableView.tableFooterView = [UIView new];
 }
 
@@ -97,20 +97,20 @@
 
 // Method that handles new group creation
 - (IBAction)onCreateGroup:(id)sender {
-    configureNavAndTabBarUserInteractionForViewController(self);
+    ConfigureNavAndTabBarUserInteractionForViewController(self);
     SCLAlertView *alert = [[SCLAlertView alloc] init];
     alert.backgroundType = SCLAlertViewBackgroundBlur;
     alert.customViewColor = [UIColor systemBlueColor];
     UITextField *groupNameField = [alert addTextField:@"Name"];
     UITextField *groupDescriptionField = [alert addTextField:@"Description"];
     [alert addButton:@"Create" actionBlock:^(void) {
-        NSString *groupName = whitespaceTrimmedString(groupNameField.text);
-        NSString *groupDescription = whitespaceTrimmedString(groupDescriptionField.text);
+        NSString *groupName = WhitespaceTrimmedString(groupNameField.text);
+        NSString *groupDescription = WhitespaceTrimmedString(groupDescriptionField.text);
         [self createNewGroupWithName:groupName withDescription:groupDescription];
     }];
     [alert showEdit:self title:@"Create Group" subTitle:@"Enter Group Details" closeButtonTitle:@"Cancel" duration:0.0f];
     [alert alertIsDismissed:^{
-        configureNavAndTabBarUserInteractionForViewController(self);
+        ConfigureNavAndTabBarUserInteractionForViewController(self);
     }];
 }
 
@@ -137,7 +137,7 @@
 // Helper method to check valid user input (handling empty name/description case)
 - (BOOL)validGroupName: (NSString *)groupName andDescription: (NSString *)groupDescription forGroup: (Group *)group {
     if ([groupName isEqualToString:@""] || [groupDescription isEqualToString: @""]) {
-        configureNavAndTabBarUserInteractionForViewController(self);
+        ConfigureNavAndTabBarUserInteractionForViewController(self);
         SCLAlertView *alert = [[SCLAlertView alloc] init];
         [alert addButton:@"Try Again" actionBlock:^(void) {
             if (group) {
@@ -148,7 +148,7 @@
         }];
         [alert showError:self title:@"Failed!" subTitle:@"Group Details Cannot be Empty!" closeButtonTitle:@"Cancel" duration:0.0f];
         [alert alertIsDismissed:^{
-            configureNavAndTabBarUserInteractionForViewController(self);
+            ConfigureNavAndTabBarUserInteractionForViewController(self);
         }];
         return NO;
     }
@@ -178,7 +178,7 @@
 
 // Method to present edit alert and edit/update group details
 - (void)presentEditAlertAndEditGroup: (Group *)group {
-    configureNavAndTabBarUserInteractionForViewController(self);
+    ConfigureNavAndTabBarUserInteractionForViewController(self);
     SCLAlertView *alert = [[SCLAlertView alloc] init];
     alert.backgroundType = SCLAlertViewBackgroundBlur;
     alert.customViewColor = [UIColor systemBlueColor];
@@ -187,13 +187,13 @@
     groupNameField.text = group.groupName;
     groupDescriptionField.text = group.groupDescription;
     [alert addButton:@"Update" actionBlock:^(void) {
-        NSString *groupName = whitespaceTrimmedString(groupNameField.text);
-        NSString *groupDescription = whitespaceTrimmedString(groupDescriptionField.text);
+        NSString *groupName = WhitespaceTrimmedString(groupNameField.text);
+        NSString *groupDescription = WhitespaceTrimmedString(groupDescriptionField.text);
         [self updateGroup:group withName:groupName withDescription:groupDescription];
     }];
     [alert showEdit:self title:@"Update Group" subTitle:@"Enter the New Group Details" closeButtonTitle:@"Cancel" duration:0.0f];
     [alert alertIsDismissed:^{
-        configureNavAndTabBarUserInteractionForViewController(self);
+        ConfigureNavAndTabBarUserInteractionForViewController(self);
     }];
 }
 
@@ -224,12 +224,12 @@
 
 // Helper method to present cannot delete the note (depending upon ownership)
 - (void)presentCannotEditAlert {
-    configureNavAndTabBarUserInteractionForViewController(self);
+    ConfigureNavAndTabBarUserInteractionForViewController(self);
     SCLAlertView *alert = [[SCLAlertView alloc] init];
     alert.backgroundType = SCLAlertViewBackgroundBlur;
     [alert showError:self title:@"Oops!" subTitle:@"You do not have permissions to make changes to this group!" closeButtonTitle:@"OK" duration:0.0f];
     [alert alertIsDismissed:^{
-        configureNavAndTabBarUserInteractionForViewController(self);
+        ConfigureNavAndTabBarUserInteractionForViewController(self);
     }];
 }
 

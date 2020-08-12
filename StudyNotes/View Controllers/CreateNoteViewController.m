@@ -63,7 +63,7 @@
 // Method that sets scrollView's background matching to app theme image
 - (void)setScrollViewBackground {
     UIImage *scrollViewBgImage = [UIImage imageNamed:@"note"];
-    setBackgroundForScrollView(self.scrollView, self.contentView, scrollViewBgImage, 0.25);
+    SetBackgroundForScrollView(self.scrollView, self.contentView, scrollViewBgImage, 0.25);
 }
 
 // Method that adds shadow to noteTitleField
@@ -72,7 +72,7 @@
     CGSize shadowOffset = CGSizeMake(0, 2.0f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    setShadowForView(self.noteTitleField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.noteTitleField, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds shadow, corner radius, and border to noteDescriptionTextView
@@ -85,9 +85,9 @@
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 12.5f;
     self.noteDescriptionViewContainer.backgroundColor = [UIColor clearColor];
-    setBorderForView(self.noteDescriptionTextView, borderColor, borderWidth);
-    setCornerRadiusForView(self.noteDescriptionTextView, cornerRadius);
-    setShadowForView(self.noteDescriptionViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetBorderForView(self.noteDescriptionTextView, borderColor, borderWidth);
+    SetCornerRadiusForView(self.noteDescriptionTextView, cornerRadius);
+    SetShadowForView(self.noteDescriptionViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that adds border and shadow to noteImageView
@@ -98,8 +98,8 @@
     CGSize shadowOffset = CGSizeMake(0, 2.5f);
     CGFloat shadowOpacity = 1.0f;
     CGFloat shadowRadius = 5.0f;
-    setBorderForView(self.noteImageView, borderColor, borderWidth);
-    setShadowForView(self.noteImageViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetBorderForView(self.noteImageView, borderColor, borderWidth);
+    SetShadowForView(self.noteImageViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method to dismiss modal view on tapping Cancel button
@@ -112,8 +112,8 @@
     NSString *rawNoteTitle = self.noteTitleField.text;
     NSString *rawNoteDescription = self.noteDescriptionTextView.text;
     UIImage *newNoteImage = self.noteImageView.image;
-    NSString *newNoteTitle = whitespaceTrimmedString(rawNoteTitle);
-    NSString *newNoteDescription = whitespaceTrimmedString(rawNoteDescription);
+    NSString *newNoteTitle = WhitespaceTrimmedString(rawNoteTitle);
+    NSString *newNoteDescription = WhitespaceTrimmedString(rawNoteDescription);
     if ([self validNoteTitle:newNoteTitle andDescription:newNoteDescription andImage:newNoteImage]) {
         if (!self.note) {
             JGProgressHUD *progressHUD = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleLight];
@@ -184,11 +184,11 @@
 // Helper method to check valid user input (handling empty title/description/image case)
 - (BOOL)validNoteTitle: (NSString *)noteTitle andDescription: (NSString *)noteDescription andImage: (UIImage *)noteImage {
     if ([noteTitle isEqualToString:@""] || [noteDescription isEqualToString: @""] || [noteImage isEqual:[UIImage imageNamed:@"note"]]) {
-        configureNavAndTabBarUserInteractionForViewController(self);
+        ConfigureNavAndTabBarUserInteractionForViewController(self);
         SCLAlertView *alert = [[SCLAlertView alloc] init];
         [alert showError:self title:@"Failed!" subTitle:@"Please make sure that you have entered valid note descriptions and image" closeButtonTitle:@"Cancel" duration:0.0f];
         [alert alertIsDismissed:^{
-            configureNavAndTabBarUserInteractionForViewController(self);
+            ConfigureNavAndTabBarUserInteractionForViewController(self);
         }];
         return NO;
     }

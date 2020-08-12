@@ -15,7 +15,7 @@ typedef void (^userSettingCompletion)(UserSetting * _Nullable setting, NSError *
 
 // MARK: Helper Methods Declaration
 
-void fetchCompleteSettingWithCompletion(UserSetting *settingFromUserQuery, userSettingCompletion completionBlock);
-void queryForCurrentUserSettingWithCompletion(userSettingCompletion completionBlock);
+void FetchCompleteSettingWithCompletion(UserSetting *settingFromUserQuery, userSettingCompletion completionBlock);
+void QueryForCurrentUserSettingWithCompletion(userSettingCompletion completionBlock);
 
 NS_ASSUME_NONNULL_END

@@ -13,6 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 // MARK: Helper Methods Declaration
 
-NSString *whitespaceTrimmedString(NSString *rawString);
+NSString *WhitespaceTrimmedString(NSString *rawString);
 
 NS_ASSUME_NONNULL_END

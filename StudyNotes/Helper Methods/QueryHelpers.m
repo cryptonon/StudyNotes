@@ -11,7 +11,7 @@
 // MARK: Helper Methods Implementaion
 
 // Method that fetches UserSetting provided a local UserSetting object
-void fetchCompleteSettingWithCompletion(UserSetting *settingFromUserQuery, userSettingCompletion completionBlock) {
+void FetchCompleteSettingWithCompletion(UserSetting *settingFromUserQuery, userSettingCompletion completionBlock) {
     [settingFromUserQuery fetchInBackgroundWithBlock:^(PFObject * _Nullable setting, NSError * _Nullable error) {
         UserSetting *userSetting = (UserSetting *) setting;
         completionBlock(userSetting, error);
@@ -19,8 +19,8 @@ void fetchCompleteSettingWithCompletion(UserSetting *settingFromUserQuery, userS
 }
 
 // Method that fetches current user's setting
-void queryForCurrentUserSettingWithCompletion(userSettingCompletion completionBlock) {
+void QueryForCurrentUserSettingWithCompletion(userSettingCompletion completionBlock) {
     PFUser *currentUser = [PFUser currentUser];
     UserSetting *setting = currentUser[@"setting"];
-    fetchCompleteSettingWithCompletion(setting, completionBlock);
+    FetchCompleteSettingWithCompletion(setting, completionBlock);
 }

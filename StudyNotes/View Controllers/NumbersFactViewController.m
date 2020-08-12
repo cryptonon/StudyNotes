@@ -33,7 +33,7 @@
 // Method that sets scrollView's background matching to app theme image
 - (void)setScrollViewBackground {
     UIImage *scrollViewBgImage = [UIImage imageNamed:@"note"];
-    setBackgroundForScrollView(self.scrollView, self.contentView, scrollViewBgImage, 0.25);
+    SetBackgroundForScrollView(self.scrollView, self.contentView, scrollViewBgImage, 0.25);
 }
 
 // Method to generate a new fact on tapping Refresh button

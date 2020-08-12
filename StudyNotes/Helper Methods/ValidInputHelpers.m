@@ -11,7 +11,7 @@
 // MARK: Helper Methods Implementation
 
 // Method that trims leading and trailing whitespaces on a string
-NSString *whitespaceTrimmedString(NSString *rawString) {
+NSString *WhitespaceTrimmedString(NSString *rawString) {
     NSCharacterSet *whiteSpaceSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
     NSString *trimmedString = [rawString stringByTrimmingCharactersInSet:whiteSpaceSet];
     return trimmedString;

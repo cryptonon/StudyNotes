@@ -65,7 +65,7 @@
     CGSize shadowOffset = CGSizeMake(0.0f, 2.0f);
     CGFloat shadowOpacity = 0.0f;
     CGFloat shadowRadius = 2.5f;
-    setShadowForView(self.noteImageViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
+    SetShadowForView(self.noteImageViewContainer, shadowColor, shadowOpacity, shadowOffset, shadowRadius);
 }
 
 // Method that animates noteImageView

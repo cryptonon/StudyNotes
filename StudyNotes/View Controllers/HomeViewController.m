@@ -63,7 +63,7 @@
 // Method that sets collectionView Background to app theme image
 - (void)setCollectionViewBackground {
     UIImage *collectionViewBgImage = [UIImage imageNamed:@"note"];
-    setBackgroundForCollectionView(self.collectionView, collectionViewBgImage, 0.25);
+    SetBackgroundForCollectionView(self.collectionView, collectionViewBgImage, 0.25);
 }
 
 // Method to add Swipe Gesture Recognizer (LeftSwipe) to switch tabs
@@ -150,7 +150,7 @@
 - (void)removePendingNotificationsForUser: (PFUser *)currentUser {
     [[UNUserNotificationCenter currentNotificationCenter] removeAllPendingNotificationRequests];
     UserSetting *setting = currentUser[@"setting"];
-    fetchCompleteSettingWithCompletion(setting, ^(UserSetting * _Nullable setting, NSError * _Nullable error) {
+    FetchCompleteSettingWithCompletion(setting, ^(UserSetting * _Nullable setting, NSError * _Nullable error) {
         if (setting) {
             UserSetting *userSetting = (UserSetting *) setting;
             if ([self notificationNeedsResumingWithSettings:userSetting]) {
@@ -221,7 +221,7 @@
     NSDate *notificationEndTime = setting.to;
     BOOL notificationTurnedOn = setting.notificationTurnedOn;
     if (notificationTurnedOn) {
-        if (dateTimeIsBefore(nextNotificationTime, notificationEndTime)) {
+        if (DateTimeIsBefore(nextNotificationTime, notificationEndTime)) {
             return YES;
         }
     }

@@ -11,7 +11,7 @@
 // MARK: Helper Methods Implementation
 
 // Method that sets Shadow to a view with provided details
-void setShadowForView(UIView *view, CGColorRef shadowColor, CGFloat shadowOpacity, CGSize shadowOffset, CGFloat shadowRadius) {
+void SetShadowForView(UIView *view, CGColorRef shadowColor, CGFloat shadowOpacity, CGSize shadowOffset, CGFloat shadowRadius) {
     view.layer.shadowColor = shadowColor;
     view.layer.shadowOpacity = shadowOpacity;
     view.layer.shadowOffset = shadowOffset;
@@ -19,18 +19,18 @@ void setShadowForView(UIView *view, CGColorRef shadowColor, CGFloat shadowOpacit
 }
 
 // Method that sets Border to a view with provided details
-void setBorderForView(UIView *view, CGColorRef borderColor, CGFloat borderWidth) {
+void SetBorderForView(UIView *view, CGColorRef borderColor, CGFloat borderWidth) {
     view.layer.borderColor = borderColor;
     view.layer.borderWidth = borderWidth;
 }
 
 // Method that sets Corner Radius to a view with provided details
-void setCornerRadiusForView(UIView *view, CGFloat cornerRadius) {
+void SetCornerRadiusForView(UIView *view, CGFloat cornerRadius) {
     view.layer.cornerRadius = cornerRadius;
 }
 
 // Method that sets scrollView Background Image
-void setBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, UIImage *backgroundImage, CGFloat alpha) {
+void SetBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, UIImage *backgroundImage, CGFloat alpha) {
     contentView.backgroundColor = [UIColor clearColor];
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -40,7 +40,7 @@ void setBackgroundForScrollView(UIScrollView *scrollView, UIView *contentView, U
 }
 
 // Method that sets tableView Background Image
-void setBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha) {
+void SetBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage, CGFloat alpha) {
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     backgroundImageView.alpha = alpha;
@@ -48,7 +48,7 @@ void setBackgroundForTableView(UITableView *tableView, UIImage *backgroundImage,
 }
 
 // Method that sets collectionView Background Image
-void setBackgroundForCollectionView(UICollectionView *collectionView, UIImage *backgroundImage, CGFloat alpha) {
+void SetBackgroundForCollectionView(UICollectionView *collectionView, UIImage *backgroundImage, CGFloat alpha) {
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     backgroundImageView.alpha = alpha;
@@ -56,7 +56,7 @@ void setBackgroundForCollectionView(UICollectionView *collectionView, UIImage *b
 }
 
 // Helper method to enable/disble navBar and tabBar interaction while presenting group creation alert
-void configureNavAndTabBarUserInteractionForViewController(UIViewController *viewController) {
+void ConfigureNavAndTabBarUserInteractionForViewController(UIViewController *viewController) {
     viewController.tabBarController.tabBar.userInteractionEnabled = !viewController.tabBarController.tabBar.userInteractionEnabled;
     viewController.navigationController.navigationBar.userInteractionEnabled = !viewController.navigationController.navigationBar.userInteractionEnabled;
 }
